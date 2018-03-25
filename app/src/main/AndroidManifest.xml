@@ -13,14 +13,14 @@
         <!--<activity android:name=".RegistrationScreenActivity">-->
         <!--<activity android:name=".UserHomeScreenActivity">-->
         <!--<activity android:name=".StaffHomeScreenActivity">-->
-        <activity android:name=".CatererHomeScreenActivity">
+        <!--<activity android:name=".CatererHomeScreenActivity">-->
+        <activity android:name=".ApplicationScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"></activity>
     </application>
 
 </manifest>
