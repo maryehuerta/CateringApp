@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!--<activity android:name=".CatererSelectedEventActivity">-->
-        <activity android:name=".RegistrationScreenActivity">
+        <!--<activity android:name=".RegistrationScreenActivity">-->
+        <!--<activity android:name=".UserHomeScreenActivity">-->
+        <!--<activity android:name=".StaffHomeScreenActivity">-->
+        <activity android:name=".CatererHomeScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
