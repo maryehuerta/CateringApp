@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SelectedEventScreenActivity">
         <!--<activity android:name=".RegistrationScreenActivity">-->
+        <!--<activity android:name=".HallList">-->
         <!--<activity android:name=".UserHomeScreenActivity">-->
         <!--<activity android:name=".StaffHomeScreenActivity">-->
         <!--<activity android:name=".CatererHomeScreenActivity">-->
