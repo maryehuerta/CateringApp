@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--<activity android:name=".CatererSelectedEventActivity">-->
+        <activity android:name=".SelectedEventScreenActivity">
         <!--<activity android:name=".RegistrationScreenActivity">-->
         <!--<activity android:name=".UserHomeScreenActivity">-->
         <!--<activity android:name=".StaffHomeScreenActivity">-->
         <!--<activity android:name=".CatererHomeScreenActivity">-->
-        <activity android:name=".ApplicationScreenActivity">
+        <!--<activity android:name=".ApplicationScreenActivity">-->
+        <!--<activity android:name=".LoginScreenActivity">-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
