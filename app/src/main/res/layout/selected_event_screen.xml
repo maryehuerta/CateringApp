@@ -3,15 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
+    android:id="@+id/activity_caterer_selected_event"
     android:paddingRight="16dp"
     android:orientation="vertical" >
 
+    <Button
+        android:id="@+id/LogoutButton"
+        android:layout_width="60sp"
+        android:layout_height="30sp"
+        android:text="Logout"
+        android:layout_alignParentRight="@+id/activity_caterer_selected_event"
+        android:textSize="9sp" />
+
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:orientation="vertical"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:id="@+id/linearLayout2">
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
 
         <TextView
             android:id="@+id/LastName"
@@ -37,21 +46,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Start Time" />
+
         <TextView
             android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Duration" />
+
         <TextView
             android:id="@+id/HallName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hall Name" />
+
         <TextView
             android:id="@+id/estAttendees"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="est. Attendees" />
+
         <TextView
             android:id="@+id/EventName"
             android:layout_width="wrap_content"
