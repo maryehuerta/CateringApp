@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.maryhuerta.cateringapp.UserRequestedEvents">
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="USER REQUESTED EVENTS"
+        android:textColor="@android:color/background_dark"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="365dp"
+        android:layout_height="381dp"
+        android:scrollbars="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="65dp"
+        tools:listitem="@android:layout/simple_selectable_list_item" />
+
+</android.support.constraint.ConstraintLayout>

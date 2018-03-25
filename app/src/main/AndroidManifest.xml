@@ -24,7 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SelectedUserEventDetails"></activity>
+        <activity android:name=".SelectedUserEventDetails" />
+        <activity android:name=".UserRequestedEvents"></activity>
     </application>
 
 </manifest>
