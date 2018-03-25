@@ -10,19 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SelectedEventScreenActivity">
-        <!--<activity android:name=".RegistrationScreenActivity">-->
-        <!--<activity android:name=".HallList">-->
-        <!--<activity android:name=".UserHomeScreenActivity">-->
-        <!--<activity android:name=".StaffHomeScreenActivity">-->
-        <!--<activity android:name=".CatererHomeScreenActivity">-->
-        <!--<activity android:name=".ApplicationScreenActivity">-->
-        <!--<activity android:name=".LoginScreenActivity">-->
+
+            <!-- <activity android:name=".RegistrationScreenActivity"> -->
+            <!-- <activity android:name=".HallList"> -->
+            <!-- <activity android:name=".UserHomeScreenActivity"> -->
+            <!-- <activity android:name=".StaffHomeScreenActivity"> -->
+            <!-- <activity android:name=".CatererHomeScreenActivity"> -->
+            <!-- <activity android:name=".ApplicationScreenActivity"> -->
+            <!-- <activity android:name=".LoginScreenActivity"> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SelectedUserEventDetails"></activity>
     </application>
 
 </manifest>
