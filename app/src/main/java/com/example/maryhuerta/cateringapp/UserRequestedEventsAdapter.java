@@ -45,6 +45,20 @@ public class UserRequestedEventsAdapter extends RecyclerView.Adapter<UserRequest
         holder.entertainmentItemsText.setText(currentEvent.getEntertainmentItems());
         holder.firstNameText.setText(currentEvent.getFirstName());
         holder.date.setText(currentEvent.getDate());
+        holder.lastNameText.setText(currentEvent.getLastName());
+        holder.entertainmentItemsText.setText(currentEvent.getEntertainmentItems());
+        holder.durationText.setText(currentEvent.getDuration());
+        holder.estAttendeesText.setText(currentEvent.getEstAttendees());
+        holder.hallNameText.setText(currentEvent.getHallName());
+        holder.startTimeText.setText(currentEvent.getStartTime());
+        holder.eventNameText.setText(currentEvent.getEventName());
+        holder.foodTypeText.setText(currentEvent.getFoodType());
+        holder.mealText.setText(currentEvent.getMeal());
+        holder.mealFormalityText.setText(currentEvent.getMealFormality());
+        holder.statusText.setText(currentEvent.getStatus());
+
+
+
 
 
     }
