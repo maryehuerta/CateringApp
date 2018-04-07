@@ -9,24 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SelectedEventScreenActivity">
 
-            <!-- <activity android:name=".RegistrationScreenActivity"> -->
-            <!-- <activity android:name=".HallList"> -->
-            <!-- <activity android:name=".UserHomeScreenActivity"> -->
-            <!-- <activity android:name=".StaffHomeScreenActivity"> -->
-            <!-- <activity android:name=".CatererHomeScreenActivity"> -->
-            <!-- <activity android:name=".ApplicationScreenActivity"> -->
-            <!-- <activity android:name=".LoginScreenActivity"> -->
+
+        <!-- <activity android:name=".SelectedEventScreenActivity"> -->
+        <activity android:name=".UserRequestedEventList">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".SelectedUserEventDetails" />
-        <activity android:name=".UserRequestedEvents" />
-        <activity android:name=".UserRequestedEventDetails"></activity>
+        <!-- <activity android:name=".UserRequestedEvents" /> -->
+        <activity android:name=".UserRequestedEventDetails" />
+
+
     </application>
 
 </manifest>

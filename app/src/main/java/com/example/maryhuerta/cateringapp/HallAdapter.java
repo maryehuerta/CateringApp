@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.ListIterator;
 import java.util.Vector;
 
@@ -54,7 +56,6 @@ public class HallAdapter extends RecyclerView.Adapter<HallAdapter.ViewHolder>{
             TextViewHall = (TextView) itemView.findViewById(R.id.HallText);
             TextViewCapacity = (TextView) itemView.findViewById(R.id.CapacityText);
             TextViewTime = (TextView) itemView.findViewById(R.id.TimeText);
-
         }
     }
 }

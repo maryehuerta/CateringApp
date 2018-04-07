@@ -4,24 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.maryhuerta.cateringapp.UserRequestedEvents">
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context="com.example.maryhuerta.cateringapp.UserRequestedEventList"
+    tools:layout_editor_absoluteX="10dp"
+    tools:layout_editor_absoluteY="0dp">
+
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/UserRequestedEventsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="USER REQUESTED EVENTS"
         android:textColor="@android:color/background_dark"
         android:textSize="30sp"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
-        android:layout_width="365dp"
-        android:layout_height="381dp"
+        android:id="@+id/UserRequestedEventsRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/UserRequestedEventsTextView"
+        android:layout_marginTop="65dp"
         android:scrollbars="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="65dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@android:layout/simple_selectable_list_item" />
+
 
 </android.support.constraint.ConstraintLayout>
