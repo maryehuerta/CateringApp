@@ -38,10 +38,10 @@ public class UserRequestedEventList extends AppCompatActivity implements Recycle
         eventRecyclerView.setHasFixedSize(true);
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        UserRequestedEventItem item = new UserRequestedEventItem("hello", "JOhn", "10/10/16", "10:00am", "2hr", "KC", "100", "Wedding", "Itailian", "dinner", "formal", "regular", "Beach Ball", "non reserved");
+        UserRequestedEventItem item = new UserRequestedEventItem("Brown", "Larry", "10/10/17", "11:00am", "2hr", "Arlington", "4", "Wedding", "Itailian", "dinner", "formal", "regular", "None", "reserved");
 
-        eventList.add(new UserRequestedEventItem("john", "yo", "10/10/16", "10:00am", "2hr", "KC", "100", "Wedding", "Itailian", "dinner", "formal", "regular", "Beach Ball", "non reserved"));
-        eventList.add(new UserRequestedEventItem("Smith", "JOhn", "10/10/18", "11:00am", "2hr", "NH", "200", "Wedding", "Itailian", "dinner", "formal", "regular", "Beach Ball", "non reserved"));
+        eventList.add(new UserRequestedEventItem("Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "Graduation", "American", "Brunch", "Casual", "regular", "Beach Ball", "non reserved"));
+        eventList.add(new UserRequestedEventItem("Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Wedding", "Itailian", "dinner", "formal", "regular", "Beach Ball", "non reserved"));
         eventList.add(item);
         Log.d("event list", eventList.toString());
         adapter = new UserRequestedEventsAdapter(eventList, this, this);

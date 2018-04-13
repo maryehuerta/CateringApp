@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class UserRequestedEventDetails extends AppCompatActivity {
@@ -20,8 +21,22 @@ public class UserRequestedEventDetails extends AppCompatActivity {
         UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventList.ITEM);
         if (item != null){
             Log.d("LOL", item.getFirstName());
-            TextView textView = findViewById(R.id.textView26);
-            textView.setText(item.getFirstName());
+            TextView lastNameTextView = findViewById(R.id.lastNameTextView);
+            TextView firstNameTextView = findViewById(R.id.firstNameTextView);
+            TextView eventDateTextView = findViewById(R.id.eventDateTextView);
+            TextView durationTextView = findViewById(R.id.durationTextView);
+            TextView hallNameTextView = findViewById(R.id.hallNameTextView);
+            TextView eventNameTextView = findViewById(R.id.eventNameTextView);
+
+
+            lastNameTextView.setText(item.getLastName());
+            firstNameTextView.setText(item.getFirstName());
+            eventDateTextView.setText(item.getStartTime());
+            durationTextView.setText(item.getDuration());
+            hallNameTextView.setText(item.getHallName());
+            eventNameTextView.setText(item.getEventName());
+
+
         }
     }
 }
