@@ -1,10 +1,8 @@
 package com.example.maryhuerta.cateringapp;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class UserRequestedEventDetails extends AppCompatActivity {
@@ -15,12 +13,12 @@ public class UserRequestedEventDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_requested_event_details);
+        setContentView(R.layout.user_requested_event_details);
 
         Bundle data = getIntent().getExtras();
         UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventList.ITEM);
         if (item != null){
-            Log.d("LOL", item.getFirstName());
+            Log.d("UserDetails", item.getFirstName());
             TextView lastNameTextView = findViewById(R.id.lastNameTextView);
             TextView firstNameTextView = findViewById(R.id.firstNameTextView);
             TextView eventDateTextView = findViewById(R.id.eventDateTextView);
