@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.maryhuerta.cateringapp.UserRequestedEventDetails">
-
+    tools:context="com.example.maryhuerta.cateringapp.CatererSelectedEventScreenActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,18 +80,26 @@
             tools:layout_editor_absoluteY="303dp" />
 
         <Button
-            android:id="@+id/modifySelectedEventButton"
+            android:id="@+id/AddResourcesButton"
             android:layout_width="368dp"
             android:layout_height="wrap_content"
-            android:text="Modify Selected Event"
+            android:text="Add Resources"
             tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="351dp" />
+            tools:layout_editor_absoluteY="303dp" />
+
+        <Button
+            android:id="@+id/ViewAvailableStaffButton"
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:text="View Available Staff"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="303dp" />
 
         <Button
             android:id="@+id/CancelEventButton"
             android:layout_width="368dp"
             android:layout_height="wrap_content"
-            android:text="Cancel Selected Event"
+            android:text="Cancel Selected Caterer Event"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="399dp" />
 

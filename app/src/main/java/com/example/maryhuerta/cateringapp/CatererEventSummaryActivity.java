@@ -51,7 +51,7 @@ public class CatererEventSummaryActivity extends AppCompatActivity implements Re
         //Makes a toast of the item's position in the list
         Toast.makeText(this, String.valueOf(position), Toast.LENGTH_SHORT).show();
         //Create an intent
-        Intent intent = new Intent(this, UserRequestedEventDetails.class);
+        Intent intent = new Intent(this, CatererSelectedEventScreenActivity.class);
         UserRequestedEventItem item = adapter.getItem(position);
         intent.putExtra(ITEM, item);
         startActivityForResult(intent, SHOW_DETAIL);
