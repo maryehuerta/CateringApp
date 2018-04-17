@@ -6,35 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.example.maryhuerta.cateringapp.UserEventSummaryScreenActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="USER EVENT SUMMARY"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="30sp"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="31dp" />
 
-    <Button
-        android:id="@+id/searchEvent"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/UserRequestedEventsRecyclerView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Search"
-        tools:layout_editor_absoluteX="267dp"
-        tools:layout_editor_absoluteY="447dp" />
+        android:layout_marginTop="10dp"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@android:layout/simple_selectable_list_item" />
 
-    <DatePicker
-        android:id="@+id/datePicker2"
-        android:layout_width="331dp"
-        android:layout_height="342dp"
-        android:clickable="true"
-        android:dayOfWeekBackground="@color/colorPrimary"
-        android:headerBackground="@color/colorPrimary"
-        tools:calendarTextColor="@color/colorPrimary"
-        tools:calendarViewShown="false"
-        tools:endYear="2020"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="84dp" />
 
 </android.support.constraint.ConstraintLayout>
