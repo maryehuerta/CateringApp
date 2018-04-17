@@ -11,7 +11,9 @@
         android:theme="@style/AppTheme">
 
         <!-- <activity android:name=".SelectedEventScreenActivity"> -->
-        <activity android:name=".CatererEventSummaryActivity">
+
+        <activity android:name=".RegistrationScreenActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +23,10 @@
         <activity android:name=".SelectedUserEventDetails" />
         <!-- <activity android:name=".UserRequestedEvents" /> -->
         <activity android:name=".UserRequestedEventDetails" />
+        <activity android:name=".CatererEventSummaryActivity"/>
+        <activity android:name=".StaffHomeScreenActivity" />
         <activity android:name=".UserRequestedEventsActivity"></activity>
+
     </application>
 
 </manifest>
