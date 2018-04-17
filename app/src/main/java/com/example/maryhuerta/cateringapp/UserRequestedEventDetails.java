@@ -16,7 +16,7 @@ public class UserRequestedEventDetails extends AppCompatActivity {
         setContentView(R.layout.user_requested_event_details);
 
         Bundle data = getIntent().getExtras();
-        UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventList.ITEM);
+        UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
         if (item != null){
             Log.d("UserDetails", item.getFirstName());
             TextView lastNameTextView = findViewById(R.id.lastNameTextView);

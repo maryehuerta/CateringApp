@@ -4,11 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:orientation="vertical"
-    tools:context="com.example.maryhuerta.cateringapp.UserRequestedEventsActivity"
-    tools:layout_editor_absoluteX="10dp"
-    tools:layout_editor_absoluteY="0dp">
+    tools:context="com.example.maryhuerta.cateringapp.CatererEventSummaryActivity">
 
 
     <android.support.v7.widget.RecyclerView
@@ -24,3 +20,6 @@
 
 
 </android.support.constraint.ConstraintLayout>
+
+
+

@@ -2,7 +2,6 @@ package com.example.maryhuerta.cateringapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,24 +9,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Vector;
 
-/**
- * Created by MaryHuerta on 3/25/2018.
- */
-
-public class UserRequestedEventList extends AppCompatActivity implements RecyclerViewClickListener {
-
+public class CatererEventSummaryActivity extends AppCompatActivity implements RecyclerViewClickListener {
     public static final String ITEM = "ITEM";
     public final int SHOW_DETAIL = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_requested_events);
+        setContentView(R.layout.activity_caterer_event_summary);
+
+        // Called in onCreate function gives random test data to work with
         populateuserRequestedEventsTest();
     }
+
 
     private RecyclerView eventRecyclerView;
     private UserRequestedEventsAdapter adapter;
@@ -38,6 +34,7 @@ public class UserRequestedEventList extends AppCompatActivity implements Recycle
         eventRecyclerView.setHasFixedSize(true);
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //Same data as User
         UserRequestedEventItem item = new UserRequestedEventItem("Brown", "Larry", "10/10/17", "11:00am", "2hr", "Arlington", "4", "Wedding", "Itailian", "dinner", "formal", "regular", "None", "reserved");
 
         eventList.add(new UserRequestedEventItem("Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "Graduation", "American", "Brunch", "Casual", "regular", "Beach Ball", "non reserved"));
@@ -48,10 +45,12 @@ public class UserRequestedEventList extends AppCompatActivity implements Recycle
         eventRecyclerView.setAdapter(adapter);
 
     }
-
+    //When an Item in the list is clicked this function is triggered
     @Override
     public void recyclerViewListClicked(View v, int position) {
+        //Makes a toast of the item's position in the list
         Toast.makeText(this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+        //Create an intent
         Intent intent = new Intent(this, UserRequestedEventDetails.class);
         UserRequestedEventItem item = adapter.getItem(position);
         intent.putExtra(ITEM, item);

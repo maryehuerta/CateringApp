@@ -80,8 +80,6 @@ public class UserRequestedEventsAdapter extends RecyclerView.Adapter<UserRequest
                 mealText, mealFormalityText, drinkTypeText,
                 entertainmentItemsText, statusText;
 
-
-
         public ViewHolder(View itemView) {
             super(itemView);
             durationText = itemView.findViewById(R.id.durationText);
