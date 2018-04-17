@@ -1,3 +1,4 @@
+/*I WAS HERE DESTROYING STUFF*/
 package com.example.maryhuerta.cateringapp;
 
 import android.support.v7.app.AppCompatActivity;
