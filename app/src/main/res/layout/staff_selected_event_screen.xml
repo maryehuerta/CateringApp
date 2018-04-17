@@ -1,101 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:orientation="vertical" >
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="60sp"
-        android:layout_height="30sp"
-        android:layout_gravity="right"
-        android:text="Logout"
-        android:textSize="8sp" />
-    <LinearLayout
+    tools:context="com.example.maryhuerta.cateringapp.StaffSelectedEventSummary"
+    tools:layout_editor_absoluteY="81dp">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:id="@+id/linearLayout2">
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="60sp"
+            android:layout_height="30sp"
+            android:layout_gravity="right"
+            android:text="Logout"
+            android:textSize="8sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:id="@+id/linearLayout2">
 
 
-        <TextView
-            android:id="@+id/LastName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Last Name" />
+            <TextView
+                android:id="@+id/LastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Last Name" />
 
-        <TextView
-            android:id="@+id/FirstName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="First Name" />
+            <TextView
+                android:id="@+id/FirstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Name" />
 
-        <TextView
-            android:id="@+id/Date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date" />
+            <TextView
+                android:id="@+id/Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date" />
 
-        <TextView
-            android:id="@+id/StartTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Start Time" />
-        <TextView
-            android:id="@+id/duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Duration" />
-        <TextView
-            android:id="@+id/HallName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hall Name" />
-        <TextView
-            android:id="@+id/estAttendees"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="est. Attendees" />
-        <TextView
-            android:id="@+id/EventName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Event Name" />
+            <TextView
+                android:id="@+id/StartTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Time" />
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duration" />
+            <TextView
+                android:id="@+id/HallName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hall Name" />
+            <TextView
+                android:id="@+id/estAttendees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="est. Attendees" />
+            <TextView
+                android:id="@+id/EventName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Event Name" />
 
-        <TextView
-            android:id="@+id/FoodType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Food Type" />
+            <TextView
+                android:id="@+id/FoodType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Food Type" />
 
-        <TextView
-            android:id="@+id/Meal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Meal" />
+            <TextView
+                android:id="@+id/Meal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meal" />
 
-        <TextView
-            android:id="@+id/MealFormality"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MealFormality" />
+            <TextView
+                android:id="@+id/MealFormality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MealFormality" />
 
-        <TextView
-            android:id="@+id/DrinkType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Drink Type" />
+            <TextView
+                android:id="@+id/DrinkType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drink Type" />
 
-        <TextView
-            android:id="@+id/EntertainmentItems"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Entertainment Items" />
+            <TextView
+                android:id="@+id/EntertainmentItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entertainment Items" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
+</android.support.constraint.ConstraintLayout>
 
-</LinearLayout>

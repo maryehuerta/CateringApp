@@ -19,10 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".StaffEventSummaryActivity"/>
         <activity android:name=".CatererEventSummaryActivity"/>
         <activity android:name=".SelectedUserEventDetails" />
         <!-- <activity android:name=".UserRequestedEvents" /> -->
         <activity android:name=".UserRequestedEventDetails" />
+        <activity android:name=".StaffSelectedEventSummary"/>
         <activity android:name=".StaffHomeScreenActivity" />
         <activity android:name=".UserRequestedEventsActivity" />
         <activity android:name=".CatererSelectedEventScreenActivity"/>
