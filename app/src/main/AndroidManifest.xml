@@ -12,7 +12,7 @@
 
         <!-- <activity android:name=".SelectedEventScreenActivity"> -->
 
-        <activity android:name=".AvailableStaffActivity">
+        <activity android:name=".RegistrationScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +30,7 @@
         <activity android:name=".UserRequestedEventsActivity" />
         <activity android:name=".CatererSelectedEventScreenActivity" />
         <activity android:name=".UserSelectedEventActivity" />
-        <activity android:name=".RegistrationScreenActivity"></activity>
+        <activity android:name=".AvailableStaffActivity"></activity>
     </application>
 
 </manifest>
