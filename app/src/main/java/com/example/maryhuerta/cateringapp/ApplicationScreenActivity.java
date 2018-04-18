@@ -1,5 +1,6 @@
 package com.example.maryhuerta.cateringapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,13 +18,17 @@ public class ApplicationScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.application_screen);
 
+    }
 
-        Button LoginBtn = (Button) findViewById(R.id.ApplicationLoginBtn);
-        LoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Logout Successful", Toast.LENGTH_LONG).show();
-            }
-        });
+    public void loginButtonClicked(View view) {
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void RegisterButtonClicked(View view) {
+        Intent intent = new Intent(this, RegistrationScreenActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
