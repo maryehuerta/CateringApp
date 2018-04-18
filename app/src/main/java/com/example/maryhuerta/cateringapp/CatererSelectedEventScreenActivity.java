@@ -14,7 +14,7 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
 
 
         Bundle data = getIntent().getExtras();
-        UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
+        HallAdapter.UserRequestedEventItem item = (HallAdapter.UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
         if (item != null) {
             Log.d("UserDetails", item.getFirstName());
             TextView lastNameTextView = findViewById(R.id.lastNameTextView);

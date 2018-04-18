@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,7 +26,7 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
 
     private RecyclerView eventRecyclerView;
     private UserRequestedEventsAdapter adapter;
-    ArrayList<UserRequestedEventItem> eventList = new ArrayList<>();
+    ArrayList<HallAdapter.UserRequestedEventItem> eventList = new ArrayList<>();
 
     public void populateuserRequestedEventsTest() {
         eventRecyclerView = (RecyclerView) findViewById(R.id.UserRequestedEventsRecyclerView);
@@ -35,10 +34,10 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //Same data as User
-        UserRequestedEventItem item = new UserRequestedEventItem("Brown", "Larry", "10/10/17", "11:00am", "2hr", "Arlington", "4", "Wedding", "Itailian", "dinner", "formal", "regular", "None", "reserved");
+        HallAdapter.UserRequestedEventItem item = new HallAdapter.UserRequestedEventItem("Brown", "Larry", "10/10/17", "11:00am", "2hr", "Arlington", "4", "Wedding", "Itailian", "dinner", "formal", "regular", "None", "reserved");
 
-        eventList.add(new UserRequestedEventItem("Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "Graduation", "American", "Brunch", "Casual", "regular", "Beach Ball", "non reserved"));
-        eventList.add(new UserRequestedEventItem("Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Wedding", "Itailian", "dinner", "formal", "regular", "Beach Ball", "non reserved"));
+        eventList.add(new HallAdapter.UserRequestedEventItem("Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "Graduation", "American", "Brunch", "Casual", "regular", "Beach Ball", "non reserved"));
+        eventList.add(new HallAdapter.UserRequestedEventItem("Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Wedding", "Itailian", "dinner", "formal", "regular", "Beach Ball", "non reserved"));
         eventList.add(item);
         Log.d("event list", eventList.toString());
         adapter = new UserRequestedEventsAdapter(eventList, this, this);
@@ -51,7 +50,7 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
     public void recyclerViewListClicked(View v, int position) {
         //Create an intent
         Intent intent = new Intent(this, UserSelectedEventActivity.class);
-        UserRequestedEventItem item = adapter.getItem(position);
+        HallAdapter.UserRequestedEventItem item = adapter.getItem(position);
         intent.putExtra(ITEM, item);
         startActivityForResult(intent, SHOW_DETAIL);
     }

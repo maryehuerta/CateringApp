@@ -1,19 +1,13 @@
 package com.example.maryhuerta.cateringapp;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
-import java.util.Vector;
 
 /**
  * Created by Mary on 3/30/2018.
@@ -21,11 +15,11 @@ import java.util.Vector;
 
 public class UserRequestedEventsAdapter extends RecyclerView.Adapter<UserRequestedEventsAdapter.ViewHolder>{
 
-    public ArrayList <UserRequestedEventItem> eventList;
+    public ArrayList <HallAdapter.UserRequestedEventItem> eventList;
     private static RecyclerViewClickListener itemListener;
     private Context context;
 
-    public UserRequestedEventsAdapter(ArrayList<UserRequestedEventItem> eventList, Context context, RecyclerViewClickListener listener) {
+    public UserRequestedEventsAdapter(ArrayList<HallAdapter.UserRequestedEventItem> eventList, Context context, RecyclerViewClickListener listener) {
         this.eventList = eventList;
         this.context = context;
         itemListener = listener;
@@ -39,7 +33,7 @@ public class UserRequestedEventsAdapter extends RecyclerView.Adapter<UserRequest
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        UserRequestedEventItem currentEvent = eventList.get(position);
+        HallAdapter.UserRequestedEventItem currentEvent = eventList.get(position);
 
         holder.drinkTypeText.setText(currentEvent.getDrinkType());
         holder.entertainmentItemsText.setText(currentEvent.getEntertainmentItems());
@@ -68,7 +62,7 @@ public class UserRequestedEventsAdapter extends RecyclerView.Adapter<UserRequest
         return eventList.size();
     }
 
-    public UserRequestedEventItem getItem(int position){
+    public HallAdapter.UserRequestedEventItem getItem(int position){
         return eventList.get(position);
     }
 

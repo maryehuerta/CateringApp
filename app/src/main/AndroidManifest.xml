@@ -12,7 +12,7 @@
 
         <!-- <activity android:name=".SelectedEventScreenActivity"> -->
 
-        <activity android:name=".RegistrationScreenActivity">
+        <activity android:name=".AvailableStaffActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,12 +24,13 @@
         <activity android:name=".CatererEventSummaryActivity" />
         <activity android:name=".SelectedUserEventDetails" />
         <!-- <activity android:name=".UserRequestedEvents" /> -->
-        <activity android:name=".UserRequestedEventDetails" />
+        <activity android:name=".CatererSelectedUserRequestActivity" />
         <activity android:name=".StaffSelectedEventSummary" />
         <activity android:name=".StaffHomeScreenActivity" />
         <activity android:name=".UserRequestedEventsActivity" />
         <activity android:name=".CatererSelectedEventScreenActivity" />
-        <activity android:name=".UserSelectedEventActivity"></activity>
+        <activity android:name=".UserSelectedEventActivity" />
+        <activity android:name=".RegistrationScreenActivity"></activity>
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-public class UserRequestedEventDetails extends AppCompatActivity {
+public class CatererSelectedUserRequestActivity extends AppCompatActivity {
 
     // https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
     // TODO: return results/actions to be taken to parent
@@ -16,7 +16,7 @@ public class UserRequestedEventDetails extends AppCompatActivity {
         setContentView(R.layout.user_requested_event_details);
 
         Bundle data = getIntent().getExtras();
-        UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
+        HallAdapter.UserRequestedEventItem item = (HallAdapter.UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
         if (item != null){
             Log.d("UserDetails", item.getFirstName());
             TextView lastNameTextView = findViewById(R.id.lastNameTextView);
