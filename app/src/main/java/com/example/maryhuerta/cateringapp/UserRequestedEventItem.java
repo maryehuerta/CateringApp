@@ -149,13 +149,13 @@ public class UserRequestedEventItem implements Parcelable {
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
 
         @Override
-        public HallAdapter.UserRequestedEventItem createFromParcel(Parcel parcel) {
-            return new HallAdapter.UserRequestedEventItem(parcel);
+        public UserRequestedEventItem createFromParcel(Parcel parcel) {
+            return new UserRequestedEventItem(parcel);
         }
 
         @Override
-        public HallAdapter.UserRequestedEventItem[] newArray(int size) {
-            return new HallAdapter.UserRequestedEventItem[size];
+        public UserRequestedEventItem[] newArray(int size) {
+            return new UserRequestedEventItem[size];
         }
     };
 }

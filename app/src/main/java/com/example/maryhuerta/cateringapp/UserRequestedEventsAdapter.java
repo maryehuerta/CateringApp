@@ -15,11 +15,11 @@ import java.util.ArrayList;
 
 public class UserRequestedEventsAdapter extends RecyclerView.Adapter<UserRequestedEventsAdapter.ViewHolder>{
 
-    public ArrayList <HallAdapter.UserRequestedEventItem> eventList;
+    public ArrayList <UserRequestedEventItem> eventList;
     private static RecyclerViewClickListener itemListener;
     private Context context;
 
-    public UserRequestedEventsAdapter(ArrayList<HallAdapter.UserRequestedEventItem> eventList, Context context, RecyclerViewClickListener listener) {
+    public UserRequestedEventsAdapter(ArrayList<UserRequestedEventItem> eventList, Context context, RecyclerViewClickListener listener) {
         this.eventList = eventList;
         this.context = context;
         itemListener = listener;
@@ -33,7 +33,7 @@ public class UserRequestedEventsAdapter extends RecyclerView.Adapter<UserRequest
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        HallAdapter.UserRequestedEventItem currentEvent = eventList.get(position);
+        UserRequestedEventItem currentEvent = eventList.get(position);
 
         holder.drinkTypeText.setText(currentEvent.getDrinkType());
         holder.entertainmentItemsText.setText(currentEvent.getEntertainmentItems());
@@ -62,7 +62,7 @@ public class UserRequestedEventsAdapter extends RecyclerView.Adapter<UserRequest
         return eventList.size();
     }
 
-    public HallAdapter.UserRequestedEventItem getItem(int position){
+    public UserRequestedEventItem getItem(int position){
         return eventList.get(position);
     }
 
