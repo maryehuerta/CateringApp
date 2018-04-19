@@ -31,9 +31,9 @@
         <activity android:name=".CatererSelectedEventScreenActivity" />
         <activity android:name=".UserSelectedEventActivity" />
         <activity android:name=".RegistrationScreenActivity" />
-        <activity android:name=".LoginScreenActivity"/>
-
-        <activity android:name=".AvailableStaffActivity"></activity>
+        <activity android:name=".LoginScreenActivity" />
+        <activity android:name=".AvailableStaffActivity" />
+        <activity android:name=".UserRequestEventScreenActivity"></activity>
     </application>
 
 </manifest>
