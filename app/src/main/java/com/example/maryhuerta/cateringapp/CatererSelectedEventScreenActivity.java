@@ -1,8 +1,10 @@
 package com.example.maryhuerta.cateringapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class CatererSelectedEventScreenActivity extends AppCompatActivity {
@@ -33,5 +35,11 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
             eventNameTextView.setText(item.getEventName());
 
         }
+    }
+
+
+    public void ViewAvailableStaffButtonClicked(View view) {
+        Intent intent = new Intent(this, AvailableStaffActivity.class);
+        startActivity(intent);
     }
 }

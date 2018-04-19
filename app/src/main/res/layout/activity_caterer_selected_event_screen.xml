@@ -92,6 +92,7 @@
             android:layout_width="368dp"
             android:layout_height="wrap_content"
             android:text="View Available Staff"
+            android:onClick="ViewAvailableStaffButtonClicked"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="303dp" />
 

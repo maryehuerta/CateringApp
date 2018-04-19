@@ -21,14 +21,14 @@ public class ApplicationScreenActivity extends AppCompatActivity {
     }
 
     public void loginButtonClicked(View view) {
+
         Intent intent = new Intent(this, LoginScreenActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void RegisterButtonClicked(View view) {
         Intent intent = new Intent(this, RegistrationScreenActivity.class);
         startActivity(intent);
-        finish();
+
     }
 }
