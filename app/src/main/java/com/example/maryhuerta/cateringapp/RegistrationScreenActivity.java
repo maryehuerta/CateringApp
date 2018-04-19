@@ -1,5 +1,6 @@
 package com.example.maryhuerta.cateringapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,7 +27,14 @@ public class RegistrationScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_screen);
         RegisterBtn = (Button) findViewById(R.id.RegistrationRegisterBtn);
-
+/*
+        RegisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Registration Successful! ", Toast.LENGTH_LONG).show();
+            }
+        });
+*/
     }
 
 
@@ -49,7 +57,13 @@ public class RegistrationScreenActivity extends AppCompatActivity {
         int IutaID = Integer.parseInt(SutaID);
         String SphoneNum = phoneNum.getText().toString();
         int IphoneNum = Integer.parseInt(SphoneNum);
-
-
+        //RegisterButtonClicked(view);
     }
+    /*
+    public void RegisterButtonClicked(View view) {
+
+        Intent intent = new Intent(this, ApplicationScreenActivity.class);
+        startActivity(intent);
+    }
+    */
 }

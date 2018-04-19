@@ -17,6 +17,7 @@
             android:layout_width="60sp"
             android:layout_height="30sp"
             android:layout_gravity="right"
+            android:onClick="LogoutButtonClicked"
             android:text="Logout"
             android:textSize="8sp" />
 
@@ -34,12 +35,13 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="ViewCatererEventSummaryButtonClicked"
             android:text="VIEW CATERER EVENT SUMMARY" />
 
         <Button
             android:id="@+id/ApplicationRegisterBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="VIE USER REQUESTS SUMMARY" />
+            android:text="VIEW USER REQUESTS SUMMARY" />
     </LinearLayout>
 </ScrollView>

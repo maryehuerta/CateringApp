@@ -1,6 +1,7 @@
 package com.example.maryhuerta.cateringapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,6 +42,11 @@ public class SelectedEventScreenActivity extends AppCompatActivity {
                 builder.create().show();
             }
         });
+    }
+    public void ViewAvailableHallsButtonClicked(View view) {
+
+        Intent intent = new Intent(this, HallList.class);
+        startActivity(intent);
     }
 }
 
