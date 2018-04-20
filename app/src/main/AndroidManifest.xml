@@ -12,7 +12,7 @@
 
         <!-- <activity android:name=".SelectedEventScreenActivity"> -->
 
-        <activity android:name=".ApplicationScreenActivity">
+        <activity android:name=".LoginScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,9 +29,11 @@
         <activity android:name=".StaffHomeScreenActivity" />
         <activity android:name=".UserEventSummaryScreenActivity" />
         <activity android:name=".CatererSelectedEventScreenActivity" />
+        <activity android:name=".CatererHomeScreenActivity"/>
+        <activity android:name=".UserHomeScreenActivity"/>
         <activity android:name=".UserSelectedEventActivity" />
         <activity android:name=".RegistrationScreenActivity" />
-        <activity android:name=".LoginScreenActivity" />
+        <activity android:name=".ApplicationScreenActivity" />
         <activity android:name=".AvailableStaffActivity" />
         <activity android:name=".UserRequestEventScreenActivity" />
         <activity android:name=".CatererAddResourcesScreenActivity"></activity>
