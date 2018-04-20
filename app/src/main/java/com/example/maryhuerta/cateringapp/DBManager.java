@@ -7,6 +7,7 @@ package com.example.maryhuerta.cateringapp;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -18,8 +19,9 @@ public class DBManager extends SQLiteOpenHelper {
 
     private static final int Db_VERSION = 1;
     private static final String DB_NAME = "users_db";
-    private static final String TABLE_NAME = "users_data";
 
+    //strings for usermodel
+    private static final String TABLE_NAME = "users_data";
     private static final String KEY_ID = "user_id";
     private static final String KEY_FNAME = "user_fname";
     private static final String KEY_LNAME = "user_lname";
@@ -33,7 +35,20 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String KEY_STATE = "user_state";
     private static final String KEY_USERTYPE = "user_type";
 
-    //now i need to add a add
+    //strings for event
+    private static final String TABLE_NAME1 = "event_data";
+    private static final String EVENT_NAME = "event_name";
+    private static final String EVENT_FNAME = "event_fname";
+    private static final String EVENT_LNAME = "event_lname";
+    private static final String EVENT_DATE = "event_date";
+    private static final String EVENT_DURATION = "event_duration";
+    private static final String EVENT_HALLNAME = "event_hallName";
+    private static final String EVENT_ATTENDEES = "event_attendees";
+    private static final String EVENT_FOODTYPE = "event_foodType";
+    private static final String EVENT_FORMALITY = "event_formality";
+    private static final String EVENT_DRINKTYPE = "event_drinkType";
+    private static final String EVENT_RESERVED = "event_reserved";
+    private static final String EVENT_SPECIALITEMS = "event_specialItems";
 
     public DBManager(Context context) {
         super(context, DB_NAME, null, Db_VERSION);
@@ -44,12 +59,18 @@ public class DBManager extends SQLiteOpenHelper {
         String CREATE_TABLE_Q = "CREATE TABLE " + TABLE_NAME + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + KEY_FNAME + " TEXT," + KEY_LNAME + " TEXT," + KEY_EMAIL + " TEXT," + KEY_PASS + " TEXT," + KEY_USERNAME + " TEXT,"
                 + KEY_PHONENUMBER + " TEXT," + KEY_STREETADDRESS + " TEXT," + KEY_CITY + " TEXT," + KEY_ZIP + " TEXT," + KEY_STATE + " TEXT," + KEY_USERTYPE + " TEXT )";
-        sqLiteDatabase.execSQL(CREATE_TABLE_Q);
+        String CREATE_TABLE_R = "CREATE TABLE " + TABLE_NAME1 + "(" + EVENT_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+                + EVENT_FNAME + " TEXT," + EVENT_LNAME + " TEXT," + EVENT_DATE + " TEXT," + EVENT_DURATION + " TEXT," + EVENT_HALLNAME + " TEXT,"
+                + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_DRINKTYPE + " TEXT,"
+                + EVENT_RESERVED + " TEXT," + EVENT_SPECIALITEMS + " TEXT )";
+                sqLiteDatabase.execSQL(CREATE_TABLE_Q);
+                sqLiteDatabase.execSQL(CREATE_TABLE_R);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
         onCreate(sqLiteDatabase);
     }
 
@@ -71,6 +92,13 @@ public class DBManager extends SQLiteOpenHelper {
 
         db.insert(TABLE_NAME, null, values);
         db.close();
+    }
+
+    public void addNewEvent(EventModel event){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(EVENT_NAME, event.getEventName());
+        values.put(EVENT_NAME, event.getEventName());
     }
 
     public UserModel retrieveUser(String username, String password) {

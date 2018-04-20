@@ -25,7 +25,7 @@ public class StaffHomeScreenActivity extends AppCompatActivity {
         }
 
         text = findViewById(R.id.bleh);
-        text.setText("(delete later) welcome, " + userModel.getUsertype());
+        text.setText("(delete later) welcome, " + userModel.getId());
     }
 
     public void ViewStaffEventSummaryButtonClicked(View view) {
