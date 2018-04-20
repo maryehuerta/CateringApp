@@ -33,7 +33,8 @@
         <activity android:name=".RegistrationScreenActivity" />
         <activity android:name=".LoginScreenActivity" />
         <activity android:name=".AvailableStaffActivity" />
-        <activity android:name=".UserRequestEventScreenActivity"></activity>
+        <activity android:name=".UserRequestEventScreenActivity" />
+        <activity android:name=".CatererAddResourcesScreenActivity"></activity>
     </application>
 
 </manifest>

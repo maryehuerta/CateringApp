@@ -25,8 +25,8 @@ public class UserHomeScreenActivity extends AppCompatActivity {
 
     public void RequestEventButtonClicked(View view) {
 
-        //Intent intent = new Intent(this, .class); NOT SURE WHERE IT SHOULD GO
-        //startActivity(intent);
+        Intent intent = new Intent(this, UserRequestEventScreenActivity.class);
+        startActivity(intent);
     }
 
 
