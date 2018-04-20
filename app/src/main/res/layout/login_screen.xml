@@ -5,7 +5,7 @@
     tools:context="com.example.maryhuerta.cateringapp.LoginScreenActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<!-- ignore -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,6 +37,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Login" />
+        <Button
+            android:id="@+id/RegisterButton"
+            android:onClick="RegisterClick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
