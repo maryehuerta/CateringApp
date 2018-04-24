@@ -98,8 +98,20 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EVENT_NAME, event.getEventName());
-        values.put(EVENT_NAME, event.getEventName());
-    }
+        values.put(EVENT_FNAME, event.getFirstName());
+        values.put(EVENT_LNAME, event.getLastName());
+        values.put(EVENT_DATE, event.getDate());
+        values.put(EVENT_DURATION, event.getDuration());
+        values.put(EVENT_HALLNAME, event.getHallName());
+        values.put(EVENT_ATTENDEES, event.getAttendees());
+        values.put(EVENT_FOODTYPE, event.getFoodType());
+        values.put(EVENT_FORMALITY, event.getFormality());
+        values.put(EVENT_DRINKTYPE, event.getDrinkType());
+        values.put(EVENT_RESERVED, event.getReserved());
+        values.put(EVENT_SPECIALITEMS, event.getSpecialItems());
+        db.insert(TABLE_NAME1,null,values);
+        db.close();
+}
 
     public UserModel retrieveUser(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();

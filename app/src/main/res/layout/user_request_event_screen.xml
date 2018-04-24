@@ -21,6 +21,9 @@
     meal formality,
     drink type,
     entertainment items.
+    EditText eventName, attendees, timeOfEvent, duration, dateOfEvent, specialItems;
+    RadioGroup formality, foodType, drinkType;
+    Button requestEvent;
 
 
     Status is set to unreserved until the Caterer approves the event (Creates a Catered Event Plan).-->
