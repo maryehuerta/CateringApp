@@ -8,8 +8,27 @@ import java.io.Serializable;
 
 public class UserModel implements Serializable {
 
+    public UserModel(String utaID, String userFName, String userLName, String userEmail, String userPassword, String username, String phoneNum, String streetAddress, String city, String zipcode, String state, String usertype) {
+        this.utaID = utaID;
+        this.userFName = userFName;
+        this.userLName = userLName;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.username = username;
+        this.phoneNum = phoneNum;
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.zipcode = zipcode;
+        this.state = state;
+        this.usertype = usertype;
+    }
+    public UserModel(){
+
+    }
+
     private String utaID;
     private String userFName;
+
     private String userLName;
     private String userEmail;
     private String userPassword;
