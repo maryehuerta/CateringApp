@@ -11,6 +11,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.Vector;
+
 /**
  * Created by mayur on 4/11/2018.
  */
@@ -75,7 +77,7 @@ public class DBManager extends SQLiteOpenHelper {
         String CREATE_TABLE_Q = "CREATE TABLE " + TABLE_NAME + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + KEY_FNAME + " TEXT," + KEY_LNAME + " TEXT," + KEY_EMAIL + " TEXT," + KEY_PASS + " TEXT," + KEY_USERNAME + " TEXT,"
                 + KEY_PHONENUMBER + " TEXT," + KEY_STREETADDRESS + " TEXT," + KEY_CITY + " TEXT," + KEY_ZIP + " TEXT," + KEY_STATE + " TEXT," + KEY_USERTYPE + " TEXT )";
-        String CREATE_TABLE_R = "CREATE TABLE " + TABLE_NAME1 + "(" + EVENT_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+        String CREATE_TABLE_R = "CREATE TABLE " + TABLE_NAME1 + "(" + EVENT_NAME + " TEXT PRIMARY KEY NOT NULL,"
                 + EVENT_FNAME + " TEXT," + EVENT_LNAME + " TEXT," + EVENT_DATE + " TEXT," + EVENT_TIMEOFEVENT + " TEXT," + EVENT_DURATION + " TEXT," + EVENT_HALLNAME + " TEXT,"
                 + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_MEALTYPE + " TEXT,"
                 + EVENT_RESERVED + " TEXT," + EVENT_SPECIALITEMS + " TEXT )";
@@ -190,5 +192,32 @@ public class DBManager extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME1 + " WHERE " + EVENT_FNAME + " = \""
         + firstName + "\";",null);
         return res;
+    }
+    public Vector<EventModel> getAllEvents(){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Vector<EventModel> eventList = new Vector<>();
+        String query = "SELECT * from " + TABLE_NAME1;
+        Cursor cursor = db.rawQuery(query,null);
+
+        while (cursor.moveToNext()){
+            EventModel event = new EventModel();
+            event.setEventName(cursor.getString(cursor.getColumnIndex(EVENT_NAME)));
+            event.setFirstName(cursor.getString(cursor.getColumnIndex(EVENT_FNAME)));
+            event.setLastName(cursor.getString(cursor.getColumnIndex(EVENT_LNAME)));
+            event.setDate(cursor.getString(cursor.getColumnIndex(EVENT_DATE)));
+            event.setDuration(cursor.getString(cursor.getColumnIndex(EVENT_DURATION)));
+            event.setTimeOfEvent(cursor.getString(cursor.getColumnIndex(EVENT_TIMEOFEVENT)));
+            event.setHallName(cursor.getString(cursor.getColumnIndex(EVENT_HALLNAME)));
+            event.setAttendees(cursor.getString(cursor.getColumnIndex(EVENT_ATTENDEES)));
+            event.setFoodType(cursor.getString(cursor.getColumnIndex(EVENT_FOODTYPE)));
+            event.setFormality(cursor.getString(cursor.getColumnIndex(EVENT_FORMALITY)));
+            event.setMealType(cursor.getString(cursor.getColumnIndex(EVENT_MEALTYPE)));
+            event.setReserved(cursor.getString(cursor.getColumnIndex(EVENT_RESERVED)));
+            event.setSpecialItems(cursor.getString(cursor.getColumnIndex(EVENT_SPECIALITEMS)));
+            eventList.add(event);
+        }
+        System.out.println("SIZE: " + eventList.size());
+        return eventList;
     }
 }
