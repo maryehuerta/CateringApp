@@ -10,22 +10,99 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class UserRequestEventScreenActivity extends AppCompatActivity {
-    EditText eventName, attendees, timeOfEvent, duration, dateOfEvent, specialItems;
-    RadioGroup formality, foodType, drinkType;
+    EditText eventName, firstName, lastName, attendees, timeOfEvent, duration, dateOfEvent, specialItems;
+    RadioGroup formality, foodType, mealType;
+    Button createEventButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_request_event_screen);
-        eventName = (EditText) findViewById(R.id.editText10);
-        attendees = (EditText) findViewById(R.id.editText12);
-        timeOfEvent = (EditText) findViewById(R.id.editText7);
-        //duration = (EditText) findViewById(R.id.
-        Button RequestBtn = (Button) findViewById(R.id.RequestBtn);
-        RequestBtn.setOnClickListener(new View.OnClickListener() {
+        eventName = (EditText) findViewById(R.id.editText1);
+        firstName = (EditText) findViewById(R.id.editText1_1);
+        lastName = (EditText) findViewById(R.id.editText1_2);
+        dateOfEvent = (EditText) findViewById(R.id.editText6);
+        duration = (EditText) findViewById(R.id.editText5);
+        timeOfEvent = (EditText) findViewById(R.id.editText3);
+        //hallname
+        attendees = (EditText) findViewById(R.id.editText2);
+        foodType = (RadioGroup) findViewById(R.id.radioGroup2);
+        formality = (RadioGroup) findViewById(R.id.radioGroup);
+        mealType = (RadioGroup) findViewById(R.id.radioGroup1);
+        //reserved
+        specialItems = (EditText) findViewById(R.id.editText8);
+        createEventButton = (Button) findViewById(R.id.RequestBtn);
+
+
+        createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Request Recorded!", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), UserHomeScreenActivity.class);
+                EventModel event = new EventModel();
+                event.setHallName("None");
+                event.setReserved("No");
+                event.setEventName(eventName.getText().toString());
+                event.setFirstName(firstName.getText().toString());
+                event.setLastName(lastName.getText().toString());
+                event.setDate(dateOfEvent.getText().toString());
+                event.setDuration(duration.getText().toString());
+                event.setTimeOfEvent(timeOfEvent.getText().toString());
+                event.setAttendees(attendees.getText().toString());
+                event.setSpecialItems(specialItems.getText().toString());
+                int bleh = foodType.getCheckedRadioButtonId();
+                switch(bleh)
+                {
+                    case R.id.American:
+                        event.setFoodType("American");
+                        break;
+                    case R.id.Chinese:
+                        event.setFoodType("Chinese");
+                        break;
+                    case R.id.French:
+                        event.setFoodType("French");
+                        break;
+                    case R.id.radioButton13:
+                        event.setFoodType("Greek");
+                        break;
+                    case R.id.radioButton14:
+                        event.setFoodType("Indian");
+                        break;
+                    case R.id.radioButton15:
+                        event.setFoodType("Japanese");
+                        break;
+                    case R.id.radioButton16:
+                        event.setFoodType("Mexican");
+                        break;
+                    case R.id.radioButton17:
+                        event.setFoodType("Pizza");
+                        break;
+                }
+                int bleh1 = mealType.getCheckedRadioButtonId();
+                switch(bleh1)
+                {
+                    case R.id.breakfast:
+                        event.setMealType("Breakfast");
+                        break;
+                    case R.id.lunch:
+                        event.setMealType("Lunch");
+                        break;
+                    case R.id.supper:
+                        event.setMealType("Supper");
+                        break;
+                }
+                int bleh2 = formality.getCheckedRadioButtonId();
+                switch(bleh2)
+                {
+                    case R.id.formal:
+                        event.setFormality("Formal");
+                        break;
+                    case R.id.informal:
+                        event.setFormality("Informal");
+                        break;
+                }
+
+                DBManager handler = new DBManager(UserRequestEventScreenActivity.this);
+                handler.addNewEvent(event);
+                Toast.makeText(UserRequestEventScreenActivity.this  , "Request Recorded!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(UserRequestEventScreenActivity.this  , UserHomeScreenActivity.class);
                 startActivity(intent);
             }
         });

@@ -40,6 +40,9 @@ public class RegistrationScreenActivity extends AppCompatActivity {
         state = (EditText) findViewById(R.id.in_state2);
         usertype = (RadioGroup) findViewById(R.id.radioGroup1);
         RegisterBtn = (Button) findViewById(R.id.RegistrationRegisterBtn);
+
+
+
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

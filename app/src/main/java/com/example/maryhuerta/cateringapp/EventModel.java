@@ -13,14 +13,23 @@ public class EventModel implements Serializable {
     private String firstName;
     private String lastName;
     private String date;
+    private String timeOfEvent;
     private String duration;
     private String hallName;
     private String attendees;
     private String foodType;
     private String formality;
-    private String drinkType;
+    private String mealType;
     private String reserved;
     private String specialItems;
+
+    public String getTimeOfEvent() {
+        return timeOfEvent;
+    }
+
+    public void setTimeOfEvent(String timeOfEvent) {
+        this.timeOfEvent = timeOfEvent;
+    }
 
     public String getEventName() {
         return eventName;
@@ -90,12 +99,12 @@ public class EventModel implements Serializable {
     public void setFormality(String address) {
         this.formality = address;
     }
-    public String getDrinkType() {
-        return drinkType;
+    public String getMealType() {
+        return mealType;
     }
 
-    public void setDrinkType(String address) {
-        this.drinkType = address;
+    public void setMealType(String address) {
+        this.mealType = address;
     }
     public String getReserved() {
         return reserved;

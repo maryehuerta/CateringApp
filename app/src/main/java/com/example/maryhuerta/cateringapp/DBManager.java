@@ -35,18 +35,34 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String KEY_STATE = "user_state";
     private static final String KEY_USERTYPE = "user_type";
 
+    /*
+    private String eventName;
+    private String firstName;
+    private String lastName;
+    private String date;
+    private String timeOfEvent;
+    private String duration;
+    private String hallName;
+    private String attendees;
+    private String foodType;
+    private String formality;
+    private String mealType;
+    private String reserved;
+    private String specialItems;
+     */
     //strings for event
     private static final String TABLE_NAME1 = "event_data";
     private static final String EVENT_NAME = "event_name";
     private static final String EVENT_FNAME = "event_fname";
     private static final String EVENT_LNAME = "event_lname";
     private static final String EVENT_DATE = "event_date";
+    private static final String EVENT_TIMEOFEVENT = "timeOfEvent";
     private static final String EVENT_DURATION = "event_duration";
     private static final String EVENT_HALLNAME = "event_hallName";
     private static final String EVENT_ATTENDEES = "event_attendees";
     private static final String EVENT_FOODTYPE = "event_foodType";
     private static final String EVENT_FORMALITY = "event_formality";
-    private static final String EVENT_DRINKTYPE = "event_drinkType";
+    private static final String EVENT_MEALTYPE = "event_mealType";
     private static final String EVENT_RESERVED = "event_reserved";
     private static final String EVENT_SPECIALITEMS = "event_specialItems";
 
@@ -60,8 +76,8 @@ public class DBManager extends SQLiteOpenHelper {
                 + KEY_FNAME + " TEXT," + KEY_LNAME + " TEXT," + KEY_EMAIL + " TEXT," + KEY_PASS + " TEXT," + KEY_USERNAME + " TEXT,"
                 + KEY_PHONENUMBER + " TEXT," + KEY_STREETADDRESS + " TEXT," + KEY_CITY + " TEXT," + KEY_ZIP + " TEXT," + KEY_STATE + " TEXT," + KEY_USERTYPE + " TEXT )";
         String CREATE_TABLE_R = "CREATE TABLE " + TABLE_NAME1 + "(" + EVENT_NAME + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-                + EVENT_FNAME + " TEXT," + EVENT_LNAME + " TEXT," + EVENT_DATE + " TEXT," + EVENT_DURATION + " TEXT," + EVENT_HALLNAME + " TEXT,"
-                + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_DRINKTYPE + " TEXT,"
+                + EVENT_FNAME + " TEXT," + EVENT_LNAME + " TEXT," + EVENT_DATE + " TEXT," + EVENT_TIMEOFEVENT + " TEXT," + EVENT_DURATION + " TEXT," + EVENT_HALLNAME + " TEXT,"
+                + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_MEALTYPE + " TEXT,"
                 + EVENT_RESERVED + " TEXT," + EVENT_SPECIALITEMS + " TEXT )";
                 sqLiteDatabase.execSQL(CREATE_TABLE_Q);
                 sqLiteDatabase.execSQL(CREATE_TABLE_R);
@@ -101,12 +117,13 @@ public class DBManager extends SQLiteOpenHelper {
         values.put(EVENT_FNAME, event.getFirstName());
         values.put(EVENT_LNAME, event.getLastName());
         values.put(EVENT_DATE, event.getDate());
+        values.put(EVENT_TIMEOFEVENT, event.getTimeOfEvent());
         values.put(EVENT_DURATION, event.getDuration());
         values.put(EVENT_HALLNAME, event.getHallName());
         values.put(EVENT_ATTENDEES, event.getAttendees());
         values.put(EVENT_FOODTYPE, event.getFoodType());
         values.put(EVENT_FORMALITY, event.getFormality());
-        values.put(EVENT_DRINKTYPE, event.getDrinkType());
+        values.put(EVENT_MEALTYPE, event.getMealType());
         values.put(EVENT_RESERVED, event.getReserved());
         values.put(EVENT_SPECIALITEMS, event.getSpecialItems());
         db.insert(TABLE_NAME1,null,values);
@@ -133,9 +150,45 @@ public class DBManager extends SQLiteOpenHelper {
             model.setState(cursor.getString(cursor.getColumnIndex(KEY_STATE)));
             model.setZipcode(cursor.getString(cursor.getColumnIndex(KEY_ZIP)));
             model.setUsertype(cursor.getString(cursor.getColumnIndex(KEY_USERTYPE)));
-        } else {
+        }
+        else {
             model = null;
         }
         return model;
+    }
+
+    public EventModel retrieveEvent(String firstName){
+        //not working right now, trying to debug will try again after work
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * from " + TABLE_NAME1 + " WHERE " + EVENT_FNAME + " = \""
+                + firstName + "\";";
+        Cursor cursor = db.rawQuery(query,null);
+
+        EventModel event = new EventModel();
+        if (cursor.moveToFirst()) {
+            event.setEventName(cursor.getString(cursor.getColumnIndex(EVENT_NAME)));
+            event.setFirstName(cursor.getString(cursor.getColumnIndex(EVENT_FNAME)));
+            event.setLastName(cursor.getString(cursor.getColumnIndex(EVENT_LNAME)));
+            event.setDate(cursor.getString(cursor.getColumnIndex(EVENT_DATE)));
+            event.setDuration(cursor.getString(cursor.getColumnIndex(EVENT_DURATION)));
+            event.setTimeOfEvent(cursor.getString(cursor.getColumnIndex(EVENT_TIMEOFEVENT)));
+            event.setHallName(cursor.getString(cursor.getColumnIndex(EVENT_HALLNAME)));
+            event.setAttendees(cursor.getString(cursor.getColumnIndex(EVENT_ATTENDEES)));
+            event.setFoodType(cursor.getString(cursor.getColumnIndex(EVENT_FOODTYPE)));
+            event.setFormality(cursor.getString(cursor.getColumnIndex(EVENT_FORMALITY)));
+            event.setMealType(cursor.getString(cursor.getColumnIndex(EVENT_MEALTYPE)));
+            event.setReserved(cursor.getString(cursor.getColumnIndex(EVENT_RESERVED)));
+            event.setSpecialItems(cursor.getString(cursor.getColumnIndex(EVENT_SPECIALITEMS)));
+        }
+        else
+            event = null;
+        return event;
+    }
+    public Cursor retrieveAllEventsByFullName(String firstName)
+    {//tried doing this not working i think
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME1 + " WHERE " + EVENT_FNAME + " = \""
+        + firstName + "\";",null);
+        return res;
     }
 }

@@ -1,26 +1,39 @@
 package com.example.maryhuerta.cateringapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class UserEventSummaryScreenActivity extends AppCompatActivity implements RecyclerViewClickListener {
     public static final String ITEM = "ITEM";
     public final int SHOW_DETAIL = 1;
-
+    TextView deleteLater;
+    UserModel user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_event_summary_screen);
 
         // Called in onCreate function gives random test data to work with
-        populateuserRequestedEventsTest();
+        //populateuserRequestedEventsTest();
+
+        DBManager handler = new DBManager(UserEventSummaryScreenActivity.this);
+        deleteLater = (TextView) findViewById(R.id.textView);
+        if (getIntent().hasExtra("USER")) {
+            user = (UserModel) getIntent().getSerializableExtra("USER");
+        }
+        //not working
+        //EventModel eventDeleteLater = handler.retrieveEvent(user.getUserFName());
+        //deleteLater.setText(eventDeleteLater.getEventName());
+
     }
 
 

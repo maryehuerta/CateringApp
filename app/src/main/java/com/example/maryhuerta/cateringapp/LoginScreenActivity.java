@@ -32,9 +32,9 @@ public class LoginScreenActivity extends AppCompatActivity {
 
                     DBManager handler = new DBManager(LoginScreenActivity.this);
                     UserModel user = handler.retrieveUser(username.getText().toString(), password.getText().toString());
-                    String bleh = user.getUsertype();
                     if (user != null) {
                         Intent intent;
+                        String bleh = user.getUsertype();
                         if(bleh.compareTo("Caterer") == 0) {
                             intent = new Intent(LoginScreenActivity.this, CatererHomeScreenActivity.class);
                             //Toast.makeText(LoginScreenActivity.this, "Registration CATERER", Toast.LENGTH_LONG).show();
