@@ -39,8 +39,9 @@
             android:text="VIEW CATERER EVENT SUMMARY" />
 
         <Button
-            android:id="@+id/ApplicationRegisterBtn"
+            android:id="@+id/ViewUserRequestsSummaryButton"
             android:layout_width="match_parent"
+            android:onClick="ViewUserRequestsSummaryButtonClicked"
             android:layout_height="wrap_content"
             android:text="VIEW USER REQUESTS SUMMARY" />
     </LinearLayout>

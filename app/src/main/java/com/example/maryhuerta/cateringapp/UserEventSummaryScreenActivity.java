@@ -24,14 +24,6 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
 
         // Called in onCreate function gives random test data to work with
         populateuserRequestedEventsTest();
-//        DBManager handler = new DBManager(UserEventSummaryScreenActivity.this);
-//        deleteLater = (TextView) findViewById(R.id.textView);
-//        if (getIntent().hasExtra("USER")) {
-//            user = (UserModel) getIntent().getSerializableExtra("USER");
-//        }
-        //not working
-        //EventModel eventDeleteLater = handler.retrieveEvent(user.getUserFName());
-        //deleteLater.setText(eventDeleteLater.getEventName());
 
     }
 
@@ -45,17 +37,12 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
         eventRecyclerView.setHasFixedSize(true);
         eventRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //Same data as User
-        UserRequestedEventItem item = new UserRequestedEventItem("Brown", "Larry", "10/10/17", "11:00am", "2hr", "Arlington", "4", "Wedding", "Itailian", "dinner", "formal", "regular", "None", "reserved");
-
+        // Pulls from DB Manager
         DBManager handler = new DBManager(UserEventSummaryScreenActivity.this);
         eventList.clear();
         for (EventModel model: handler.getAllEvents()){
             eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), "DrinkType", model.getSpecialItems(), model.getReserved()));
         }
-//        eventList.add(new UserRequestedEventItem("Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "Graduation", "American", "Brunch", "Casual", "regular", "Beach Ball", "non reserved"));
-//        eventList.add(new UserRequestedEventItem("Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Wedding", "Itailian", "dinner", "formal", "regular", "Beach Ball", "non reserved"));
-//        eventList.add(item);
         Log.d("event list", eventList.toString());
         adapter = new UserRequestedEventsAdapter(eventList, this, this);
         eventRecyclerView.setAdapter(adapter);

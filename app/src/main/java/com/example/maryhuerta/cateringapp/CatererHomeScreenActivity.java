@@ -22,4 +22,10 @@ public class CatererHomeScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CatererEventSummaryActivity.class);
         startActivity(intent);
     }
+
+    public void ViewUserRequestsSummaryButtonClicked(View view) {
+
+        Intent intent = new Intent(this, UserRequestedEventsActivity.class);
+        startActivity(intent);
+    }
 }
