@@ -37,21 +37,6 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String KEY_STATE = "user_state";
     private static final String KEY_USERTYPE = "user_type";
 
-    /*
-    private String eventName;
-    private String firstName;
-    private String lastName;
-    private String date;
-    private String timeOfEvent;
-    private String duration;
-    private String hallName;
-    private String attendees;
-    private String foodType;
-    private String formality;
-    private String mealType;
-    private String reserved;
-    private String specialItems;
-     */
     //strings for event
     private static final String TABLE_NAME1 = "event_data";
     private static final String EVENT_NAME = "event_name";
@@ -68,6 +53,13 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String EVENT_RESERVED = "event_reserved";
     private static final String EVENT_SPECIALITEMS = "event_specialItems";
 
+    //strings for Hall
+    private static final String TABLE_HALL = "hall_data";
+    private static final String HALL_NAME = "hall_name";
+    private static final String HALL_CAPACITY = "hall_capacity";
+    private static final String HALL_BUILDING = "hall_building";
+    private static final String HALL_FLOOR = "hall_floor";
+
     public DBManager(Context context) {
         super(context, DB_NAME, null, Db_VERSION);
     }
@@ -81,14 +73,19 @@ public class DBManager extends SQLiteOpenHelper {
                 + EVENT_FNAME + " TEXT," + EVENT_LNAME + " TEXT," + EVENT_DATE + " TEXT," + EVENT_TIMEOFEVENT + " TEXT," + EVENT_DURATION + " TEXT," + EVENT_HALLNAME + " TEXT,"
                 + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_MEALTYPE + " TEXT,"
                 + EVENT_RESERVED + " TEXT," + EVENT_SPECIALITEMS + " TEXT )";
+        String CREATE_TABLE_H = "CREATE TABLE " + TABLE_HALL + "(" + HALL_NAME + " TEXT PRIMARY KEY NOT NULL,"
+                + HALL_CAPACITY + " TEXT," + HALL_BUILDING + " TEXT," + HALL_FLOOR + " TEXT )";
+
                 sqLiteDatabase.execSQL(CREATE_TABLE_Q);
                 sqLiteDatabase.execSQL(CREATE_TABLE_R);
+                sqLiteDatabase.execSQL(CREATE_TABLE_H);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_HALL);
         onCreate(sqLiteDatabase);
     }
 
@@ -96,7 +93,41 @@ public class DBManager extends SQLiteOpenHelper {
     public void onDowngrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_HALL);
+
         onCreate(sqLiteDatabase);
+    }
+
+    public Vector<HallModel> getAllHalls(){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Vector<HallModel> hallList = new Vector<>();
+        String query = "SELECT * from " + TABLE_HALL;
+        Cursor cursor = db.rawQuery(query,null);
+
+        while (cursor.moveToNext()){
+            EventModel hall = new EventModel();
+            hall.setHallName(cursor.getString(cursor.getColumnIndex(HALL_NAME)));
+            hall.setHallCapacity(cursor.getString(cursor.getColumnIndex(HALL_CAPACITY)));
+            hall.setHallBuiling(cursor.getString(cursor.getColumnIndex(HALL_BUILDING)));
+            hall.setHallFloor(cursor.getString(cursor.getColumnIndex(HALL_FLOOR)));
+
+            hallList.add(hall);
+        }
+
+        return hallList;
+    }
+
+    public void addNewHall(HallModel hall) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(HALL_NAME, hall.getHallName());
+        values.put(HALL_BUILDING, hall.getHallBuiling());
+        values.put(HALL_CAPACITY, hall.getHallCapacity());
+        values.put(HALL_FLOOR, hall.getHallFloor());
+
+        db.insert(TABLE_HALL, null, values);
+        db.close();
     }
 
     public void addNewUser(UserModel user){
@@ -227,4 +258,5 @@ public class DBManager extends SQLiteOpenHelper {
         System.out.println("SIZE: " + eventList.size());
         return eventList;
     }
+
 }
