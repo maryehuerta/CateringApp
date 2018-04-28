@@ -9,6 +9,7 @@ import android.os.Parcelable;
 
 public class AvailableStaffItem implements Parcelable {
 
+    private String ID;
     private String LastName;
     private String FirstName;
     private String Date;
@@ -16,7 +17,8 @@ public class AvailableStaffItem implements Parcelable {
     private String Status;
 
 
-    public AvailableStaffItem(String lastName, String firstName, String date, String time, String status) {
+    public AvailableStaffItem(String id, String lastName, String firstName, String date, String time, String status) {
+        ID = id;
         LastName = lastName;
         FirstName = firstName;
         Date = date;
@@ -37,6 +39,10 @@ public class AvailableStaffItem implements Parcelable {
 
     public java.lang.String getDate() {
         return Date;
+    }
+
+    public java.lang.String getID() {
+        return ID;
     }
 
     public java.lang.String getStartTime() {
