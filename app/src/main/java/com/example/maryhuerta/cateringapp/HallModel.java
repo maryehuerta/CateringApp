@@ -16,6 +16,9 @@ public class HallModel implements Serializable {
         this.hallFloor = hallFloor;
     }
 
+    public HallModel( ) {
+    }
+
     private String hallName;
     private String hallCapacity;
     private String hallBuiling;

@@ -114,11 +114,10 @@ public class DBManager extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         while (cursor.moveToNext()){
-            EventModel hall = new EventModel();
+            HallModel hall = new HallModel();
             hall.setHallName(cursor.getString(cursor.getColumnIndex(HALL_NAME)));
             hall.setHallCapacity(cursor.getString(cursor.getColumnIndex(HALL_CAPACITY)));
             hall.setHallBuiling(cursor.getString(cursor.getColumnIndex(HALL_BUILDING)));
-            hall.setHallFloor(cursor.getString(cursor.getColumnIndex(HALL_FLOOR)));
 
             hallList.add(hall);
         }
