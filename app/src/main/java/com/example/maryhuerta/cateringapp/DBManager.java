@@ -77,7 +77,7 @@ public class DBManager extends SQLiteOpenHelper {
                 + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_MEALTYPE + " TEXT,"
                 + EVENT_RESERVED + " TEXT," + EVENT_SPECIALITEMS + " TEXT )";
         String CREATE_TABLE_H = "CREATE TABLE " + TABLE_HALL + "(" + HALL_NAME + " TEXT PRIMARY KEY NOT NULL,"
-                + HALL_CAPACITY + " TEXT," + HALL_BUILDING + " TEXT," + HALL_FLOOR + " TEXT )";
+                + HALL_CAPACITY + " INTEGER)";
 
         String CREATE_TABLE_S = "CREATE TABLE " + TABLE_STAFF + "(" + EVENT_NAME + " TEXT," + KEY_ID + " INTEGER )";
 
@@ -106,6 +106,12 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
+    public Vector<HallItem> getReservedHalls(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Vector<HallModel> hallList = new Vector<>();
+        String query = "SELECT " + EVENT_DURATION + ", " + EVENT_TIMEOFEVENT + ", " + EVENT_DATE + " from " + TABLE_HALL WHERE;
+    }
+
     public Vector<HallModel> getAllHalls(){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -114,11 +120,11 @@ public class DBManager extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query,null);
 
         while (cursor.moveToNext()){
-            EventModel hall = new EventModel();
+            HallModel hall = new HallModel();
             hall.setHallName(cursor.getString(cursor.getColumnIndex(HALL_NAME)));
             hall.setHallCapacity(cursor.getString(cursor.getColumnIndex(HALL_CAPACITY)));
-            hall.setHallBuiling(cursor.getString(cursor.getColumnIndex(HALL_BUILDING)));
-            hall.setHallFloor(cursor.getString(cursor.getColumnIndex(HALL_FLOOR)));
+            //hall.setHallBuiling(cursor.getString(cursor.getColumnIndex(HALL_BUILDING)));
+            //hall.setHallFloor(cursor.getString(cursor.getColumnIndex(HALL_FLOOR)));
 
             hallList.add(hall);
         }
@@ -130,9 +136,9 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(HALL_NAME, hall.getHallName());
-        values.put(HALL_BUILDING, hall.getHallBuiling());
+        //values.put(HALL_BUILDING, hall.getHallBuiling());
         values.put(HALL_CAPACITY, hall.getHallCapacity());
-        values.put(HALL_FLOOR, hall.getHallFloor());
+        //values.put(HALL_FLOOR, hall.getHallFloor());
 
         db.insert(TABLE_HALL, null, values);
         db.close();

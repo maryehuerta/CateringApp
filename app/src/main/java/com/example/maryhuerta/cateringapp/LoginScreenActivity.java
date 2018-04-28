@@ -35,10 +35,22 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         //Test Events
 
-        //handler.addNewEvent(new EventModel("OkParty", "Cam", "Hastings", "12/19/2018", "8:00", "2hr", "KC", "300", "Chinese",  "none", "Dinner", "no","Beach Ball"));
-        //handler.addNewEvent(new EventModel("GreatParty", "Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "American", "Brunch", "Casual", "no", "asd"));
-        //handler.addNewEvent(new EventModel("SUPREMEPARTY", "Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Itailian", "dinner", "formal", "no", "Balloons"));
+        handler.addNewEvent(new EventModel("OkParty", "Cam", "Hastings", "12/19/2018", "800", "2hr", "KC1", "300", "Chinese",  "none", "Dinner", "no","Beach Ball"));
+        handler.addNewEvent(new EventModel("GreatParty", "Hastings", "Cam", "1/1/18", "1200", "3hr", "KC2", "111", "American", "Brunch", "Casual", "no", "asd"));
+        handler.addNewEvent(new EventModel("SUPREMEPARTY", "Smith", "John", "12/10/17", "1400", "2hr", "KC3", "200", "Itailian", "dinner", "formal", "no", "Balloons"));
 
+        //Halls
+        handler.addNewHall(new HallModel("KC1", 100));
+        handler.addNewHall(new HallModel("KC2", 200));
+        handler.addNewHall(new HallModel("KC3", 300));
+        handler.addNewHall(new HallModel("KC4", 400));
+        handler.addNewHall(new HallModel("KC5", 500));
+        handler.addNewHall(new HallModel("KC6", 600));
+        handler.addNewHall(new HallModel("KC7", 700));
+        //this.hallName = hallName;
+        //this.hallCapacity = hallCapacity;
+        //this.hallBuiling = hallBuiling;
+        //this.hallFloor = hallFlo
 
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
