@@ -58,6 +58,7 @@ public class AvailableStaffActivity extends AppCompatActivity implements Recycle
     //When an Item in the list is clicked this function is triggered
     @Override
     public void recyclerViewListClicked(View v, int position) {
+        Toast.makeText(this, String.valueOf("Stored in database!"), Toast.LENGTH_SHORT).show();
         handler.AddStaffToEvent(eventList.get(position).getID(), UserEvent.getEventName());
         finish();
         //Create an intent
