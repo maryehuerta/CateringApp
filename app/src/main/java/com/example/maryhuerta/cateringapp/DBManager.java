@@ -121,6 +121,15 @@ public class DBManager extends SQLiteOpenHelper {
 
     }
 
+    public void addResources(String eventName, String FoodVenue, String MealTypeText, String DrinkTypeText, String entertainmentItemsText) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE event_data SET event_specialItems=\"" + entertainmentItemsText + "\"," +
+                " event_foodType=\"" + FoodVenue + "\", " +
+                "event_mealType=\"" + MealTypeText + "\" WHERE event_name=\"" + eventName + "\"");
+
+
+    }
+
     public void addNewUser(UserModel user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

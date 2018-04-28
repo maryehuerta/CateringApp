@@ -40,41 +40,42 @@
                 android:text="ADD RESOURCES"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-            <CheckBox
-                android:id="@+id/checkBox"
+            <EditText
+
+            android:id="@+id/FoodVenueText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="56dp"
-                android:text="Add Food Venue" />
+                android:hint="Add Food Venue" />
 
-            <CheckBox
-                android:id="@+id/checkBox2"
+            <EditText
+                android:id="@+id/mealTypeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/checkBox"
-                android:text="Meal Type (For Given Food Venue)" />
+                android:layout_below="@+id/FoodVenueText"
+                android:hint="Meal Type (For Given Food Venue)" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
+            <EditText
+                android:id="@+id/drinkTypeText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/checkBox2"
-                android:text="Drinks" />
+                android:layout_below="@+id/mealTypeText"
+                android:hint="Drinks" />
 
-            <CheckBox
-                android:id="@+id/checkBox4"
+            <EditText
+                android:id="@+id/EntertainmentItemsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/checkBox3"
+                android:layout_below="@+id/drinkTypeText"
                 android:layout_centerHorizontal="true"
-                android:text="Entertainment Items" />
+                android:hint="Entertainment Items" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/DoneButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"

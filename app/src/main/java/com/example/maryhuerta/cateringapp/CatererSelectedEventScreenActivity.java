@@ -14,6 +14,8 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
 
     String eventName = null;
     public static final String ITEM = "ITEM";
+    public static final String EVENT_NAME = "EVENT_NAME";
+
     public final int SHOW_DETAIL = 1;
     UserRequestedEventItem item;
 
@@ -69,6 +71,13 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
     }
 
 
+    public void AddResourcesButtonClicked(View view) {
+        Intent intent = new Intent(this, CatererAddResourcesScreenActivity.class);
+        intent.putExtra(EVENT_NAME, eventName);
+        startActivityForResult(intent, SHOW_DETAIL);
+
+    }
+
 
 
     public void LogoutButtonClicked(View view) {
@@ -77,4 +86,16 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == SHOW_DETAIL) {
+            // Make sure the request was successful
+            finish();
+        }
+
+    }
 }
+
