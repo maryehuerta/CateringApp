@@ -9,21 +9,18 @@ import java.io.Serializable;
 
 public class HallModel implements Serializable {
 
-    public HallModel(String hallName, int hallCapacity) {
+    public HallModel(String hallName, String hallCapacity) {
         this.hallName = hallName;
         this.hallCapacity = hallCapacity;
         //this.hallBuiling = hallBuiling;
         //this.hallFloor = hallFloor;
-    }
-    public HallModel(){
-
     }
 
     public HallModel( ) {
     }
 
     private String hallName;
-    private int hallCapacity;
+    private String hallCapacity;
     //private String hallBuiling;
     //private String hallFloor;
 
@@ -31,7 +28,7 @@ public class HallModel implements Serializable {
         return hallName;
     }
 
-    public int getHallCapacity() {
+    public String getHallCapacity() {
         return hallCapacity;
     }
 
@@ -47,7 +44,7 @@ public class HallModel implements Serializable {
         this.hallName = hallName;
     }
 
-    public void setHallCapacity(int hallCapacity) {
+    public void setHallCapacity(String hallCapacity) {
         this.hallCapacity = hallCapacity;
     }
 

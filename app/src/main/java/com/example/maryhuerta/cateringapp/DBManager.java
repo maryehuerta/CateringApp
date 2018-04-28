@@ -77,9 +77,9 @@ public class DBManager extends SQLiteOpenHelper {
                 + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_MEALTYPE + " TEXT,"
                 + EVENT_RESERVED + " TEXT," + EVENT_SPECIALITEMS + " TEXT )";
         String CREATE_TABLE_H = "CREATE TABLE " + TABLE_HALL + "(" + HALL_NAME + " TEXT PRIMARY KEY NOT NULL,"
-                + HALL_CAPACITY + " INTEGER)";
+                + HALL_CAPACITY + " TEXT)";
 
-        String CREATE_TABLE_S = "CREATE TABLE " + TABLE_STAFF + "(" + EVENT_NAME + " TEXT," + KEY_ID + " INTEGER )";
+        String CREATE_TABLE_S = "CREATE TABLE " + TABLE_STAFF + "(" + EVENT_NAME + " TEXT," + KEY_ID + " TEXT )";
 
                 sqLiteDatabase.execSQL(CREATE_TABLE_Q);
                 sqLiteDatabase.execSQL(CREATE_TABLE_R);
@@ -106,10 +106,37 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public Vector<HallItem> getReservedHalls(){
+    public Vector<EventModel> getReservedHalls(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Vector<HallModel> hallList = new Vector<>();
-        String query = "SELECT " + EVENT_DURATION + ", " + EVENT_TIMEOFEVENT + ", " + EVENT_DATE + " from " + TABLE_HALL WHERE;
+        Vector<EventModel> ReservedList = new Vector<>();
+        String query = "SELECT " + EVENT_DATE + ", " + EVENT_DURATION + ", " + EVENT_TIMEOFEVENT + ", " + " EVENT_HALLNAME " + " from " + TABLE_NAME1 + " WHERE "
+                + EVENT_RESERVED + "='yes'";
+        Cursor cursor = db.rawQuery(query,null);
+
+        System.out.println(query);
+
+        while (cursor.moveToNext()){
+            String dateP = cursor.getString(cursor.getColumnIndex(EVENT_DATE));
+            int hours = Integer.parseInt(cursor.getString(cursor.getColumnIndex(EVENT_DURATION)));
+            int StartTime = Integer.parseInt(cursor.getString(cursor.getColumnIndex(EVENT_TIMEOFEVENT)));
+            String Hallname = cursor.getString(cursor.getColumnIndex(EVENT_HALLNAME));
+
+            String [] date = dateP.split("/");
+            int year = Integer.parseInt(date[2]);
+            int month = Integer.parseInt(date[0]);
+            int day = Integer.parseInt(date[1]);
+            long intDate = 1000000*year + 10000*month + 100*day + StartTime;
+            long maxDate = intDate + hours;
+            while (maxDate >= intDate){
+                EventModel event = new EventModel();
+                event.setDate(String.valueOf(intDate));
+                event.setHallName(Hallname);
+                ReservedList.add(event);
+                intDate++;
+            }
+        }
+        System.out.println("HERERE: "+ ReservedList.size());
+        return ReservedList;
     }
 
     public Vector<HallModel> getAllHalls(){
