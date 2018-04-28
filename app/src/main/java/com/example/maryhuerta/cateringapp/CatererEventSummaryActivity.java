@@ -44,10 +44,7 @@ public class CatererEventSummaryActivity extends AppCompatActivity implements Re
 
             }
         }
-        /*UserRequestedEventItem item = new UserRequestedEventItem("Brown", "Larry", "10/10/17", "11:00am", "2hr", "Arlington", "4", "Wedding", "Itailian", "dinner", "formal", "regular", "None", "reserved");
-        eventList.add(new UserRequestedEventItem("Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "Graduation", "American", "Brunch", "Casual", "regular", "Beach Ball", "non reserved"));
-        eventList.add(new UserRequestedEventItem("Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Wedding", "Itailian", "dinner", "formal", "regular", "Beach Ball", "non reserved"));
-        eventList.add(item);*/
+
         Log.d("event list", eventList.toString());
         adapter = new UserRequestedEventsAdapter(eventList, this, this);
         eventRecyclerView.setAdapter(adapter);
