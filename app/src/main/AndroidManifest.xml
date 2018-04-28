@@ -27,19 +27,13 @@
         <activity android:name=".StaffEventSummaryActivity" />
         <activity android:name=".StaffSelectedEventSummary" />
         <activity android:name=".StaffHomeScreenActivity" />
-
-
-
-
         <activity android:name=".UserEventSummaryListActivity" />
         <activity android:name=".UserEventSummaryScreenActivity" />
         <activity android:name=".UserHomeScreenActivity"/>
         <activity android:name=".UserRequestEventScreenActivity" />
         <!--<activity android:name=".UserRequestedEvents" />-->
         <activity android:name=".UserRequestedEventsActivity" />
-        <!--<activity android:name=".UserSelectedEventActivity" />-->
-
-
+        <activity android:name=".UserSelectedEventActivity" />
         <activity android:name=".CatererEventSummaryActivity" />
         <activity android:name=".CatererSelectedEventScreenActivity" />
         <activity android:name=".CatererAddResourcesScreenActivity"/>

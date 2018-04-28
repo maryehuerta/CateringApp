@@ -58,19 +58,14 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
         intent.putExtra(ITEM, item);
         startActivityForResult(intent, SHOW_DETAIL);
     }
-//
-//    public void LogoutButtonClicked(View view) {
-//
-//        Intent intent = new Intent(this, LoginScreenActivity.class);
-//        startActivity(intent);
-//    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
         if (requestCode == SHOW_DETAIL) {
-            // Make sure the request was successful
+            populateuserRequestedEventsTest();
+
+
             if (resultCode == RESULT_OK) {
 
             } else {
@@ -78,5 +73,12 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
             }
         }
     }
+
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+    }
+
 }
 

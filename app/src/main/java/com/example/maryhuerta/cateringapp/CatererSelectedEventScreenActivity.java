@@ -5,10 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CatererSelectedEventScreenActivity extends AppCompatActivity {
+    Button CancelSelectedCatererEventButton;
 
+    String eventName = null;
     public static final String ITEM = "ITEM";
     public final int SHOW_DETAIL = 1;
     UserRequestedEventItem item;
@@ -30,6 +34,7 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
             TextView hallNameTextView = findViewById(R.id.hallNameTextView);
             TextView eventNameTextView = findViewById(R.id.eventNameTextView);
 
+            eventName = item.getEventName();
 
             lastNameTextView.setText(item.getLastName());
             firstNameTextView.setText(item.getFirstName());
@@ -39,6 +44,20 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
             eventNameTextView.setText(item.getEventName());
 
         }
+        CancelSelectedCatererEventButton = (Button) findViewById(R.id.CancelEventButton);
+
+
+        CancelSelectedCatererEventButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DBManager handler = new DBManager(CatererSelectedEventScreenActivity.this);
+                handler.cancelSelectedCatererEvent(eventName);
+                Toast.makeText(CatererSelectedEventScreenActivity.this  , "Caterer Event Cancelled!", Toast.LENGTH_LONG).show();
+                finish();
+
+
+            }
+        });
     }
 
 
@@ -48,6 +67,9 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
         startActivityForResult(intent, SHOW_DETAIL);
 
     }
+
+
+
 
     public void LogoutButtonClicked(View view) {
 
