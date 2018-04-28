@@ -58,6 +58,12 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
         intent.putExtra(ITEM, item);
         startActivityForResult(intent, SHOW_DETAIL);
     }
+//
+//    public void LogoutButtonClicked(View view) {
+//
+//        Intent intent = new Intent(this, LoginScreenActivity.class);
+//        startActivity(intent);
+//    }
 
 
     @Override

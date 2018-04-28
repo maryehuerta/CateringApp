@@ -103,7 +103,7 @@ public class DBManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
         onCreate(sqLiteDatabase);
     }
-    
+
     public void approveSelectedUserrequest(String eventName){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("UPDATE event_data SET event_reserved='yes' WHERE event_name=\"" + eventName + "\"");

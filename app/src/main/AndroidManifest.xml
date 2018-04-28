@@ -11,32 +11,47 @@
         android:theme="@style/AppTheme">
 
         <!-- <activity android:name=".SelectedEventScreenActivity"> -->
-
-        <activity android:name=".LoginScreenActivity">
+        <activity android:name=".LoginScreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StaffEventSummaryActivity" />
-        <activity android:name=".CatererEventSummaryActivity" />
-        <activity android:name=".UserRequestedEventsActivity" />
+        <!--<activity android:name=".LoginScreenActivity" />-->
+
+
+
         <activity android:name=".SelectedUserEventDetails" />
-        <!-- <activity android:name=".UserRequestedEvents" /> -->
-        <activity android:name=".CatererSelectedUserRequestActivity" />
+
+        <activity android:name=".StaffEventSummaryActivity" />
         <activity android:name=".StaffSelectedEventSummary" />
         <activity android:name=".StaffHomeScreenActivity" />
+
+
+
+
+        <activity android:name=".UserEventSummaryListActivity" />
         <activity android:name=".UserEventSummaryScreenActivity" />
-        <activity android:name=".CatererSelectedEventScreenActivity" />
-        <activity android:name=".CatererHomeScreenActivity"/>
         <activity android:name=".UserHomeScreenActivity"/>
-        <activity android:name=".UserSelectedEventActivity" />
+        <activity android:name=".UserRequestEventScreenActivity" />
+        <!--<activity android:name=".UserRequestedEvents" />-->
+        <activity android:name=".UserRequestedEventsActivity" />
+        <!--<activity android:name=".UserSelectedEventActivity" />-->
+
+
+        <activity android:name=".CatererEventSummaryActivity" />
+        <activity android:name=".CatererSelectedEventScreenActivity" />
+        <activity android:name=".CatererAddResourcesScreenActivity"/>
+        <activity android:name=".CatererHomeScreenActivity"/>
+        <activity android:name=".CatererSelectedUserRequestActivity" />
+
+
         <activity android:name=".RegistrationScreenActivity" />
         <activity android:name=".ApplicationScreenActivity" />
         <activity android:name=".AvailableStaffActivity" />
-        <activity android:name=".UserRequestEventScreenActivity" />
-        <activity android:name=".CatererAddResourcesScreenActivity"></activity>
+
+
     </application>
 
 </manifest>

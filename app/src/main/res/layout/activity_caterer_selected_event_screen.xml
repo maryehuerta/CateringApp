@@ -14,6 +14,17 @@
         android:id="@+id/childRequestedItem"
         android:padding="8dp">
 
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="60sp"
+            android:layout_height="30sp"
+            android:layout_gravity="right"
+            android:onClick="LogoutButtonClicked"
+            android:text="Logout"
+            android:textSize="8sp" />
+
+
         <TextView
             android:id="@+id/screenTitleTextView"
             android:layout_width="368dp"

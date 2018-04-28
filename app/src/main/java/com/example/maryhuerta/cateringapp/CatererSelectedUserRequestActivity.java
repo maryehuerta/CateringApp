@@ -68,7 +68,17 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
 
                 finish();
 
+
             }
         });
+
+
+
+    }
+
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
     }
 }

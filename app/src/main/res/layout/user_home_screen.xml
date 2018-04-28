@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:padding="8dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
@@ -25,11 +26,11 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="60sp"
             android:text="USER HOME"
             android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textSize="30sp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="60sp" />
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/button2"

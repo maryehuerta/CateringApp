@@ -46,5 +46,13 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AvailableStaffActivity.class);
         intent.putExtra(ITEM, item);
         startActivityForResult(intent, SHOW_DETAIL);
+
+    }
+
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+
     }
 }

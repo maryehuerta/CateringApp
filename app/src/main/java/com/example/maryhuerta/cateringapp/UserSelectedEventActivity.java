@@ -1,8 +1,10 @@
 package com.example.maryhuerta.cateringapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class UserSelectedEventActivity extends AppCompatActivity {
@@ -34,4 +36,11 @@ public class UserSelectedEventActivity extends AppCompatActivity {
 
         }
     }
+
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+    }
+
 }
