@@ -14,6 +14,17 @@
         android:id="@+id/childRequestedItem"
         android:padding="8dp">
 
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="60sp"
+            android:layout_height="30sp"
+            android:layout_gravity="right"
+            android:onClick="LogoutButtonClicked"
+            android:text="Logout"
+            android:textSize="8sp" />
+
+
         <TextView
             android:id="@+id/screenTitleTextView"
             android:layout_width="368dp"
@@ -72,14 +83,6 @@
             tools:layout_editor_absoluteY="285dp" />
 
         <Button
-            android:id="@+id/backButton"
-            android:layout_width="368dp"
-            android:layout_height="wrap_content"
-            android:text="RETURN TO REQUEST LIST"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="303dp" />
-
-        <Button
             android:id="@+id/AddResourcesButton"
             android:layout_width="368dp"
             android:layout_height="wrap_content"
@@ -97,20 +100,20 @@
             tools:layout_editor_absoluteY="303dp" />
 
         <Button
-            android:id="@+id/CancelEventButton"
-            android:layout_width="368dp"
-            android:layout_height="wrap_content"
-            android:text="Cancel Selected Caterer Event"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="399dp" />
-
-        <Button
             android:id="@+id/ViewAvailableHallsButton"
             android:layout_width="368dp"
             android:layout_height="wrap_content"
             android:text="View Available Halls"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="447dp" />
+
+        <Button
+            android:id="@+id/CancelEventButton"
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel Selected Caterer Event"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="399dp" />
 
     </LinearLayout>
 

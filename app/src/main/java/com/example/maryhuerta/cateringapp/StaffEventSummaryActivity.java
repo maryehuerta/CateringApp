@@ -67,4 +67,10 @@ public class StaffEventSummaryActivity extends AppCompatActivity implements Recy
             }
         }
     }
+
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+    }
 }

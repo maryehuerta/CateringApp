@@ -15,11 +15,11 @@ import java.util.ArrayList;
 
 public class AvailableStaffAdapter extends RecyclerView.Adapter<AvailableStaffAdapter.ViewHolder>{
 
-    public ArrayList <HallAdapter.AvailableStaffItem> eventList;
+    public ArrayList <AvailableStaffItem> eventList;
     private static RecyclerViewClickListener itemListener;
     private Context context;
 
-    public AvailableStaffAdapter(ArrayList<HallAdapter.AvailableStaffItem> eventList, Context context, RecyclerViewClickListener listener) {
+    public AvailableStaffAdapter(ArrayList<AvailableStaffItem> eventList, Context context, RecyclerViewClickListener listener) {
         this.eventList = eventList;
         this.context = context;
         itemListener = listener;
@@ -34,13 +34,12 @@ public class AvailableStaffAdapter extends RecyclerView.Adapter<AvailableStaffAd
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        HallAdapter.AvailableStaffItem currentEvent = eventList.get(position);
-
+        AvailableStaffItem currentEvent = eventList.get(position);
 
         holder.firstNameText.setText(currentEvent.getFirstName());
         holder.dateText.setText(currentEvent.getDate());
         holder.lastNameText.setText(currentEvent.getLastName());
-        holder.timeText.setText(currentEvent.getTime());
+        holder.timeText.setText(currentEvent.getStartTime());
         holder.statusText.setText(currentEvent.getStatus());
 
     }
@@ -50,7 +49,7 @@ public class AvailableStaffAdapter extends RecyclerView.Adapter<AvailableStaffAd
         return eventList.size();
     }
 
-    public HallAdapter.AvailableStaffItem getItem(int position){
+    public AvailableStaffItem getItem(int position){
         return eventList.get(position);
     }
 

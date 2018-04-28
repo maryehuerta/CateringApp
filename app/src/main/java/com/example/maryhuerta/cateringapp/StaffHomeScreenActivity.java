@@ -32,8 +32,8 @@ public class StaffHomeScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(this, StaffEventSummaryActivity.class);
         startActivity(intent);
     }
-
     public void LogoutButtonClicked(View view) {
+//    public void LogoutButtonClickedStaffHome(View view) {
 
         Intent intent = new Intent(this, LoginScreenActivity.class);
         startActivity(intent);

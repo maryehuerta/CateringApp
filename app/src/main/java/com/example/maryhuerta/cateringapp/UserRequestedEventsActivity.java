@@ -72,4 +72,12 @@ public class UserRequestedEventsActivity extends AppCompatActivity implements Re
             }
         }
     }
+
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+    }
+
+
 }

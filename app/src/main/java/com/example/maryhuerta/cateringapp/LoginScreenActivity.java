@@ -30,11 +30,13 @@ public class LoginScreenActivity extends AppCompatActivity {
         handler.addNewUser(new UserModel("1001200000", "User", "Last", "original@gmail.com", "123", "UserTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "User"));
         handler.addNewUser(new UserModel("1001200001", "Caterer", "Last", "original@gmail.com", "123", "CatererTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Caterer"));
         handler.addNewUser(new UserModel("1001200002", "Staff", "Last", "original@gmail.com", "123", "StaffTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
+        handler.addNewUser(new UserModel("1001200003", "Staff 2", "Last", "original@gmail.com", "123", "StaffTest2", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
+        handler.addNewUser(new UserModel("1001200004", "Staff 3", "Last", "original@gmail.com", "123", "StaffTest3", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
 
         //Test Events
         //handler.addNewEvent(new EventModel("OkParty", "Cam", "Hastings", "12/19/2018", "8:00", "2hr", "KC", "300", "Chinese",  "none", "Dinner", "no","Beach Ball"));
         //handler.addNewEvent(new EventModel("GreatParty", "Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "American", "Brunch", "Casual", "no", "asd"));
-        //handler.addNewEvent(new EventModel("SUPREMEPARTY", "Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Itailian", "dinner", "formal", "Beach Ball", "non reserved"));
+        //handler.addNewEvent(new EventModel("SUPREMEPARTY", "Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Itailian", "dinner", "formal", "no", "Balloons"));
 
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -59,6 +59,12 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
         startActivityForResult(intent, SHOW_DETAIL);
     }
 
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

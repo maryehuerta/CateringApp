@@ -1,8 +1,10 @@
 package com.example.maryhuerta.cateringapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 public class CatererSelectedUserRequestActivity extends AppCompatActivity {
@@ -36,5 +38,22 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
 
 
         }
+    }
+
+<<<<<<< HEAD
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+=======
+
+    public void ApproveSelectedUserRequestButtonClicked(View view) {
+        // TODO: Approved the event in the DBManager call from this function
+    }
+
+
+    public void CreateCateredEventPlanButtonClicked(View view) {
+        // TODO: Create Catered Event Plan in DBManager Call from this function
+>>>>>>> a8f79f6bb66926f4f76bfffab33917c5d66e5069
     }
 }
