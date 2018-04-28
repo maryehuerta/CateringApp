@@ -37,14 +37,6 @@
             android:layout_height="wrap_content"
             android:onClick="ViewStaffEventSummaryButtonClicked"
             android:text="VIEW STAFF EVENT SUMMARY" />
-        <!--DELETE TEXTBOX LATER-->
-        <TextView
-            android:id="@+id/bleh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="bleh"
-            android:layout_gravity="center"
-            android:layout_marginTop="60sp"
-            />
+
     </LinearLayout>
 </ScrollView>

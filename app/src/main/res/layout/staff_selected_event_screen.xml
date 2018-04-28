@@ -17,9 +17,10 @@
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/LogoutButton"
             android:layout_width="60sp"
             android:layout_height="30sp"
+            android:onClick="LogoutButtonClicked"
             android:layout_gravity="right"
             android:text="Logout"
             android:textSize="8sp" />
