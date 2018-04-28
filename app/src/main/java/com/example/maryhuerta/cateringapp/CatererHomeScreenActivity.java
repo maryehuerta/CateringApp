@@ -28,4 +28,10 @@ public class CatererHomeScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(this, UserRequestedEventsActivity.class);
         startActivity(intent);
     }
+
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+    }
 }

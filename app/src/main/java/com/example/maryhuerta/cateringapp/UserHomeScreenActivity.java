@@ -29,5 +29,11 @@ public class UserHomeScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+    }
+
 
 }

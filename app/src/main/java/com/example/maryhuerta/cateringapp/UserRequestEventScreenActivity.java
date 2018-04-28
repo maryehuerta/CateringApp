@@ -108,6 +108,12 @@ public class UserRequestEventScreenActivity extends AppCompatActivity {
         });
     }
 
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+    }
+
 /* If toast doesn't stay on screen, we can use this for the request button instead
     public void RequestBtnClicked(View view) {
 

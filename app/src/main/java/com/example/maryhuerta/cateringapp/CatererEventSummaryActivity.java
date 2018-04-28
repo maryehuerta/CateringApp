@@ -38,12 +38,13 @@ public class CatererEventSummaryActivity extends AppCompatActivity implements Re
         DBManager handler = new DBManager(CatererEventSummaryActivity.this);
         eventList.clear();
         for (EventModel model: handler.getAllEvents()){
-            eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), "DrinkType", model.getSpecialItems(), model.getReserved()));
+            if ( model.getReserved().toLowerCase().equals("yes")){
+
+                eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), "DrinkType", model.getSpecialItems(), model.getReserved()));
+
+            }
         }
-        /*UserRequestedEventItem item = new UserRequestedEventItem("Brown", "Larry", "10/10/17", "11:00am", "2hr", "Arlington", "4", "Wedding", "Itailian", "dinner", "formal", "regular", "None", "reserved");
-        eventList.add(new UserRequestedEventItem("Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "Graduation", "American", "Brunch", "Casual", "regular", "Beach Ball", "non reserved"));
-        eventList.add(new UserRequestedEventItem("Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Wedding", "Itailian", "dinner", "formal", "regular", "Beach Ball", "non reserved"));
-        eventList.add(item);*/
+
         Log.d("event list", eventList.toString());
         adapter = new UserRequestedEventsAdapter(eventList, this, this);
         eventRecyclerView.setAdapter(adapter);
@@ -66,6 +67,8 @@ public class CatererEventSummaryActivity extends AppCompatActivity implements Re
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
         if (requestCode == SHOW_DETAIL) {
+            populateuserRequestedEventsTest();
+
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
 
@@ -73,5 +76,11 @@ public class CatererEventSummaryActivity extends AppCompatActivity implements Re
                 // the request was cancelled/unsuccessful
             }
         }
+    }
+
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
     }
 }

@@ -19,7 +19,7 @@ import java.util.Vector;
 
 public class DBManager extends SQLiteOpenHelper {
 
-    private static final int Db_VERSION = 1;
+    private static final int Db_VERSION = 3;
     private static final String DB_NAME = "users_db";
 
     //strings for usermodel
@@ -38,6 +38,9 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String KEY_USERTYPE = "user_type";
 
     //strings for event
+
+    private static final String TABLE_STAFF = "staff_data";
+
     private static final String TABLE_NAME1 = "event_data";
     private static final String EVENT_NAME = "event_name";
     private static final String EVENT_FNAME = "event_fname";
@@ -76,9 +79,14 @@ public class DBManager extends SQLiteOpenHelper {
         String CREATE_TABLE_H = "CREATE TABLE " + TABLE_HALL + "(" + HALL_NAME + " TEXT PRIMARY KEY NOT NULL,"
                 + HALL_CAPACITY + " TEXT," + HALL_BUILDING + " TEXT," + HALL_FLOOR + " TEXT )";
 
+        String CREATE_TABLE_S = "CREATE TABLE " + TABLE_STAFF + "(" + EVENT_NAME + " TEXT," + KEY_ID + " INTEGER )";
+
                 sqLiteDatabase.execSQL(CREATE_TABLE_Q);
                 sqLiteDatabase.execSQL(CREATE_TABLE_R);
                 sqLiteDatabase.execSQL(CREATE_TABLE_H);
+                sqLiteDatabase.execSQL(CREATE_TABLE_S);
+
+
     }
 
     @Override
@@ -130,6 +138,32 @@ public class DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void approveSelectedUserrequest(String eventName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE event_data SET event_reserved='yes' WHERE event_name=\"" + eventName + "\"");
+    }
+
+
+    public void cancelSelectedCatererEvent(String eventName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE event_data SET event_reserved='no' WHERE event_name=\"" + eventName + "\"");
+    }
+
+    public void cancelSelectedUserEvent(String eventName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM event_data WHERE event_name=\"" + eventName + "\"");
+
+    }
+
+    public void addResources(String eventName, String FoodVenue, String MealTypeText, String DrinkTypeText, String entertainmentItemsText) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE event_data SET event_specialItems=\"" + entertainmentItemsText + "\"," +
+                " event_foodType=\"" + FoodVenue + "\", " +
+                "event_mealType=\"" + MealTypeText + "\" WHERE event_name=\"" + eventName + "\"");
+
+
+    }
+
     public void addNewUser(UserModel user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -150,7 +184,17 @@ public class DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void addNewEvent(EventModel event){
+    public void AddStaffToEvent(String StaffID, String EventName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(EVENT_NAME, EventName);
+        values.put(KEY_ID, StaffID);
+        db.insert(TABLE_STAFF, null, values);
+        db.close();
+    }
+
+    public void addNewEvent(EventModel event) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EVENT_NAME, event.getEventName());
@@ -166,9 +210,9 @@ public class DBManager extends SQLiteOpenHelper {
         values.put(EVENT_MEALTYPE, event.getMealType());
         values.put(EVENT_RESERVED, event.getReserved());
         values.put(EVENT_SPECIALITEMS, event.getSpecialItems());
-        db.insert(TABLE_NAME1,null,values);
+        db.insert(TABLE_NAME1, null, values);
         db.close();
-}
+    }
 
     public UserModel retrieveUser(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -190,19 +234,18 @@ public class DBManager extends SQLiteOpenHelper {
             model.setState(cursor.getString(cursor.getColumnIndex(KEY_STATE)));
             model.setZipcode(cursor.getString(cursor.getColumnIndex(KEY_ZIP)));
             model.setUsertype(cursor.getString(cursor.getColumnIndex(KEY_USERTYPE)));
-        }
-        else {
+        } else {
             model = null;
         }
         return model;
     }
 
-    public EventModel retrieveEvent(String firstName){
+    public EventModel retrieveEvent(String firstName) {
         //not working right now, trying to debug will try again after work
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * from " + TABLE_NAME1 + " WHERE " + EVENT_FNAME + " = \""
                 + firstName + "\";";
-        Cursor cursor = db.rawQuery(query,null);
+        Cursor cursor = db.rawQuery(query, null);
 
         EventModel event = new EventModel();
         if (cursor.moveToFirst()) {
@@ -219,24 +262,24 @@ public class DBManager extends SQLiteOpenHelper {
             event.setMealType(cursor.getString(cursor.getColumnIndex(EVENT_MEALTYPE)));
             event.setReserved(cursor.getString(cursor.getColumnIndex(EVENT_RESERVED)));
             event.setSpecialItems(cursor.getString(cursor.getColumnIndex(EVENT_SPECIALITEMS)));
-        }
-        else
+        } else
             event = null;
         return event;
     }
-    public Cursor retrieveAllEventsByFullName(String firstName)
-    {//tried doing this not working i think
+
+    public Cursor retrieveAllEventsByFullName(String firstName) {//tried doing this not working i think
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME1 + " WHERE " + EVENT_FNAME + " = \""
-        + firstName + "\";",null);
+                + firstName + "\";", null);
         return res;
     }
-    public Vector<EventModel> getAllEvents(){
+
+    public Vector<EventModel> getAllEvents() {
 
         SQLiteDatabase db = this.getWritableDatabase();
         Vector<EventModel> eventList = new Vector<>();
         String query = "SELECT * from " + TABLE_NAME1;
-        Cursor cursor = db.rawQuery(query,null);
+        Cursor cursor = db.rawQuery(query, null);
 
         while (cursor.moveToNext()){
             EventModel event = new EventModel();
@@ -255,8 +298,31 @@ public class DBManager extends SQLiteOpenHelper {
             event.setSpecialItems(cursor.getString(cursor.getColumnIndex(EVENT_SPECIALITEMS)));
             eventList.add(event);
         }
-        System.out.println("SIZE: " + eventList.size());
         return eventList;
     }
 
+    public Vector<UserModel> getAllStaff() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Vector<UserModel> StaffList = new Vector<>();
+        String query = "SELECT * from " + TABLE_NAME + " WHERE " + KEY_USERTYPE + "='Staff';";
+        Cursor cursor = db.rawQuery(query, null);
+
+        while (cursor.moveToNext()) {
+            UserModel model = new UserModel();
+            model.setId(cursor.getString(cursor.getColumnIndex(KEY_ID)));
+            model.setUserFName(cursor.getString(cursor.getColumnIndex(KEY_FNAME)));
+            model.setUserLName(cursor.getString(cursor.getColumnIndex(KEY_LNAME)));
+            model.setUserEmail(cursor.getString(cursor.getColumnIndex(KEY_EMAIL)));
+            model.setUserPassword(cursor.getString(cursor.getColumnIndex(KEY_PASS)));
+            model.setStreetAddress(cursor.getString(cursor.getColumnIndex(KEY_STREETADDRESS)));
+            model.setCity(cursor.getString(cursor.getColumnIndex(KEY_CITY)));
+            model.setState(cursor.getString(cursor.getColumnIndex(KEY_STATE)));
+            model.setZipcode(cursor.getString(cursor.getColumnIndex(KEY_ZIP)));
+            model.setUsertype(cursor.getString(cursor.getColumnIndex(KEY_USERTYPE)));
+            StaffList.add(model);
+        }
+        return StaffList;
+
+    }
 }

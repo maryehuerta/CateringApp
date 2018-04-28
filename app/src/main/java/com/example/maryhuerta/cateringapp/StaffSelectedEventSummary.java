@@ -58,4 +58,6 @@ public class StaffSelectedEventSummary extends AppCompatActivity {
         Intent intent = new Intent(this, LoginScreenActivity.class);
         startActivity(intent);
     }
+
+
 }

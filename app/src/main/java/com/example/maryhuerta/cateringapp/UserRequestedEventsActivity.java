@@ -41,7 +41,10 @@ public class UserRequestedEventsActivity extends AppCompatActivity implements Re
         DBManager handler = new DBManager(UserRequestedEventsActivity.this);
         eventList.clear();
         for (EventModel model: handler.getAllEvents()){
-            eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), "DrinkType", model.getSpecialItems(), model.getReserved()));
+//            if ( model.getReserved().toLowerCase() == "no"){
+                eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), "DrinkType", model.getSpecialItems(), model.getReserved()));
+
+//            }
         }
         adapter = new UserRequestedEventsAdapter(eventList, this, this);
         eventRecyclerView.setAdapter(adapter);
@@ -65,11 +68,20 @@ public class UserRequestedEventsActivity extends AppCompatActivity implements Re
         // Check which request we're responding to
         if (requestCode == SHOW_DETAIL) {
             // Make sure the request was successful
-            if (resultCode == RESULT_OK) {
-
-            }else{
-                // the request was cancelled/unsuccessful
-            }
+            populateuserRequestedEventsTest();
+//            if (resultCode == RESULT_OK) {
+//                populateuserRequestedEventsTest();
+//            }else{
+//                // the request was cancelled/unsuccessful
+//            }
         }
     }
+
+    public void LogoutButtonClicked(View view) {
+
+        Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+    }
+
+
 }
