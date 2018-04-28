@@ -5,9 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CatererSelectedUserRequestActivity extends AppCompatActivity {
+
+    Button ApprovedSelectedUserRequestButton;
+    Button CreateCateredEventPlanButton;
+    String eventName = null;
 
     // https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
     // TODO: return results/actions to be taken to parent
@@ -29,6 +35,7 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
             TextView eventNameTextView = findViewById(R.id.eventNameTextView);
 
 
+            eventName = item.getEventName();
             lastNameTextView.setText(item.getLastName());
             firstNameTextView.setText(item.getFirstName());
             eventDateTextView.setText(item.getStartTime());
@@ -38,15 +45,30 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
 
 
         }
-    }
+        ApprovedSelectedUserRequestButton = (Button) findViewById(R.id.ApproveSelectedUserRequestButton);
+        CreateCateredEventPlanButton = (Button) findViewById(R.id.CreateCateredEventPlanButton);
 
+        ApprovedSelectedUserRequestButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DBManager handler = new DBManager(CatererSelectedUserRequestActivity.this);
+                handler.approveSelectedUserrequest(eventName);
+                Toast.makeText(CatererSelectedUserRequestActivity.this  , "Request Approved!", Toast.LENGTH_LONG).show();
+                finish();
 
-    public void ApproveSelectedUserRequestButtonClicked(View view) {
-        // TODO: Approved the event in the DBManager call from this function
-    }
+            }
+        });
 
+        CreateCateredEventPlanButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DBManager handler = new DBManager(CatererSelectedUserRequestActivity.this);
+                handler.approveSelectedUserrequest(eventName);
+                Toast.makeText(CatererSelectedUserRequestActivity.this  , "Caterer Event Created!", Toast.LENGTH_LONG).show();
 
-    public void CreateCateredEventPlanButtonClicked(View view) {
-        // TODO: Create Catered Event Plan in DBManager Call from this function
+                finish();
+
+            }
+        });
     }
 }

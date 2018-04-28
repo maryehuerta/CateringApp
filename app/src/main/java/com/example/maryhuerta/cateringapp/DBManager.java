@@ -19,7 +19,7 @@ import java.util.Vector;
 
 public class DBManager extends SQLiteOpenHelper {
 
-    private static final int Db_VERSION = 1;
+    private static final int Db_VERSION = 2;
     private static final String DB_NAME = "users_db";
 
     //strings for usermodel
@@ -97,6 +97,11 @@ public class DBManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
         onCreate(sqLiteDatabase);
+    }
+
+    public void approveSelectedUserrequest(String eventName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE event_data SET event_reserved='yes' WHERE event_name=\"" + eventName + "\"");
     }
 
     public void addNewUser(UserModel user){

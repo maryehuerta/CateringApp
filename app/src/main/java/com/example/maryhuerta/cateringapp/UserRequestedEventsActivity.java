@@ -65,11 +65,12 @@ public class UserRequestedEventsActivity extends AppCompatActivity implements Re
         // Check which request we're responding to
         if (requestCode == SHOW_DETAIL) {
             // Make sure the request was successful
-            if (resultCode == RESULT_OK) {
-
-            }else{
-                // the request was cancelled/unsuccessful
-            }
+            populateuserRequestedEventsTest();
+//            if (resultCode == RESULT_OK) {
+//                populateuserRequestedEventsTest();
+//            }else{
+//                // the request was cancelled/unsuccessful
+//            }
         }
     }
 }
