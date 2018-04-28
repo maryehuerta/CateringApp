@@ -49,7 +49,7 @@ public class UserSelectedEventActivity extends AppCompatActivity {
             public void onClick(View view) {
                 DBManager handler = new DBManager(UserSelectedEventActivity.this);
                 handler.cancelSelectedUserEvent(eventName);
-                Toast.makeText(UserSelectedEventActivity.this  , "Caterer Event Cancelled!", Toast.LENGTH_LONG).show();
+                Toast.makeText(UserSelectedEventActivity.this  , "User Event Cancelled!", Toast.LENGTH_LONG).show();
                 finish();
 
             }

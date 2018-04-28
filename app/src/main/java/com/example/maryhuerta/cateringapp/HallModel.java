@@ -19,6 +19,9 @@ public class HallModel implements Serializable {
 
     }
 
+    public HallModel( ) {
+    }
+
     private String hallName;
     private int hallCapacity;
     //private String hallBuiling;
