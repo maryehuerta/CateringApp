@@ -92,6 +92,13 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
+    @Override
+    public void onDowngrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
+        onCreate(sqLiteDatabase);
+    }
+
     public void addNewUser(UserModel user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
