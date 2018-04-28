@@ -32,9 +32,9 @@ public class LoginScreenActivity extends AppCompatActivity {
         handler.addNewUser(new UserModel("1001200002", "Staff", "Last", "original@gmail.com", "123", "StaffTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
 
         //Test Events
-//        handler.addNewEvent(new EventModel("OkParty", "Cam", "Hastings", "12/19/2018", "8:00", "2hr", "KC", "300", "Chinese",  "none", "Dinner", "no","Beach Ball"));
-//        handler.addNewEvent(new EventModel("GreatParty", "Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "American", "Brunch", "Casual", "no", "asd"));
-//        handler.addNewEvent(new EventModel("SUPREMEPARTY", "Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Itailian", "dinner", "formal", "Beach Ball", "non reserved"));
+        handler.addNewEvent(new EventModel("OkParty", "Cam", "Hastings", "12/19/2018", "8:00", "2hr", "KC", "300", "Chinese",  "none", "Dinner", "no","Beach Ball"));
+        handler.addNewEvent(new EventModel("GreatParty", "Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "American", "Brunch", "Casual", "no", "asd"));
+        handler.addNewEvent(new EventModel("SUPREMEPARTY", "Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Itailian", "dinner", "formal", "Beach Ball", "non reserved"));
 
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

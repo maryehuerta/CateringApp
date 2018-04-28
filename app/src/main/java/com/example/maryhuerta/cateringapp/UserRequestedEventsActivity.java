@@ -41,7 +41,10 @@ public class UserRequestedEventsActivity extends AppCompatActivity implements Re
         DBManager handler = new DBManager(UserRequestedEventsActivity.this);
         eventList.clear();
         for (EventModel model: handler.getAllEvents()){
-            eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), "DrinkType", model.getSpecialItems(), model.getReserved()));
+//            if ( model.getReserved().toLowerCase() == "no"){
+                eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), "DrinkType", model.getSpecialItems(), model.getReserved()));
+
+//            }
         }
         adapter = new UserRequestedEventsAdapter(eventList, this, this);
         eventRecyclerView.setAdapter(adapter);
