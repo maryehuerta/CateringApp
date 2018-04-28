@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 public class CatererSelectedEventScreenActivity extends AppCompatActivity {
 
+    public static final String ITEM = "ITEM";
+    public final int SHOW_DETAIL = 1;
+    UserRequestedEventItem item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +20,7 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
 
 
         Bundle data = getIntent().getExtras();
-        UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
+        item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
         if (item != null) {
             Log.d("UserDetails", item.getFirstName());
             TextView lastNameTextView = findViewById(R.id.lastNameTextView);
@@ -40,6 +44,7 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
 
     public void ViewAvailableStaffButtonClicked(View view) {
         Intent intent = new Intent(this, AvailableStaffActivity.class);
-        startActivity(intent);
+        intent.putExtra(ITEM, item);
+        startActivityForResult(intent, SHOW_DETAIL);
     }
 }
