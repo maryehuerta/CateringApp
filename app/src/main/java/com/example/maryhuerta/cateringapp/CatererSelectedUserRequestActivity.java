@@ -73,12 +73,12 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     public void LogoutButtonClicked(View view) {
 
         Intent intent = new Intent(this, LoginScreenActivity.class);
         startActivity(intent);
+
     }
 }
