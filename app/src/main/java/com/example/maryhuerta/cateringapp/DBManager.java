@@ -115,6 +115,12 @@ public class DBManager extends SQLiteOpenHelper {
         db.execSQL("UPDATE event_data SET event_reserved='no' WHERE event_name=\"" + eventName + "\"");
     }
 
+    public void cancelSelectedUserEvent(String eventName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM event_data WHERE event_name=\"" + eventName + "\"");
+
+    }
+
     public void addNewUser(UserModel user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
