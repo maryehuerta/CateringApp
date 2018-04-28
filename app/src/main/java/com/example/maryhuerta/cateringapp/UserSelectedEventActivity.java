@@ -22,19 +22,35 @@ public class UserSelectedEventActivity extends AppCompatActivity {
         UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
         if (item != null) {
             Log.d("UserDetails", item.getFirstName());
-            TextView lastNameTextView = findViewById(R.id.lastNameTextView);
-            TextView firstNameTextView = findViewById(R.id.firstNameTextView);
-            TextView eventDateTextView = findViewById(R.id.eventDateTextView);
-            TextView durationTextView = findViewById(R.id.durationTextView);
-            TextView hallNameTextView = findViewById(R.id.hallNameTextView);
-            TextView eventNameTextView = findViewById(R.id.eventNameTextView);
+            TextView lastNameTextView = findViewById(R.id.LastName);
+            TextView firstNameTextView = findViewById(R.id.FirstName);
+            TextView eventDateTextView = findViewById(R.id.Date);
+            TextView durationTextView = findViewById(R.id.duration);
+            TextView hallNameTextView = findViewById(R.id.HallName);
+            TextView eventNameTextView = findViewById(R.id.EventName);
+//            TextView dateTextView = findViewById(R.id.date);
+            TextView startTimeTextView = findViewById(R.id.StartTime);
+            TextView attendeesTextView = findViewById(R.id.estAttendees);
+            TextView foodTypeTextView = findViewById(R.id.FoodType);
+            TextView MealTextView = findViewById(R.id.Meal);
+            TextView MealFormailtyTextView = findViewById(R.id.MealFormality);
+            TextView DrinkTypeTextView = findViewById(R.id.DrinkType);
+            TextView EntertainmentItemsTextView = findViewById(R.id.EntertainmentItems);
+
 
             eventName = item.getEventName();
 
-
+//            dateTextView.setText(item.getDate());
+            startTimeTextView.setText(item.getStartTime());
+            attendeesTextView.setText(item.getEstAttendees());
+            foodTypeTextView.setText(item.getFoodType());
+            MealTextView.setText(item.getMeal());
+            MealFormailtyTextView.setText(item.getMealFormality());
+            DrinkTypeTextView.setText("Non-Alcoholic");
+            EntertainmentItemsTextView.setText(item.getEntertainmentItems());
             lastNameTextView.setText(item.getLastName());
             firstNameTextView.setText(item.getFirstName());
-            eventDateTextView.setText(item.getStartTime());
+            eventDateTextView.setText(item.getDate());
             durationTextView.setText(item.getDuration());
             hallNameTextView.setText(item.getHallName());
             eventNameTextView.setText(item.getEventName());

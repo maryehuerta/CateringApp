@@ -26,61 +26,79 @@
 
 
         <TextView
-            android:id="@+id/screenTitleTextView"
-            android:layout_width="368dp"
+            android:id="@+id/LastName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Selected Event"
-            android:textAlignment="center"
-            android:textSize="25dp" />
+            android:layout_weight="1"
+            android:text="Last Name" />
 
         <TextView
-            android:id="@+id/lastNameTextView"
-            android:layout_width="368dp"
-            android:layout_height="20dp"
-            android:text="Last name"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="42dp" />
+            android:id="@+id/FirstName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Name" />
 
         <TextView
-            android:id="@+id/firstNameTextView"
-            android:layout_width="368dp"
+            android:id="@+id/Date"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="First name"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="84dp" />
-
+            android:text="Date" />
 
         <TextView
-            android:id="@+id/eventDateTextView"
-            android:layout_width="368dp"
+            android:id="@+id/StartTime"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Event date"
-            tools:layout_editor_absoluteX="12dp"
-            tools:layout_editor_absoluteY="134dp" />
+            android:text="Start Time" />
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration" />
+        <TextView
+            android:id="@+id/HallName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hall Name" />
+        <TextView
+            android:id="@+id/estAttendees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="est. Attendees" />
+        <TextView
+            android:id="@+id/EventName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Event Name" />
 
         <TextView
-            android:id="@+id/durationTextView"
-            android:layout_width="368dp"
+            android:id="@+id/FoodType"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Duration"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="182dp" />
+            android:text="Food Type" />
 
         <TextView
-            android:id="@+id/hallNameTextView"
-            android:layout_width="368dp"
+            android:id="@+id/Meal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hall name"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="235dp" />
+            android:text="Meal" />
 
         <TextView
-            android:id="@+id/eventNameTextView"
-            android:layout_width="368dp"
+            android:id="@+id/MealFormality"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Event name"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="285dp" />
+            android:text="MealFormality" />
+
+        <TextView
+            android:id="@+id/DrinkType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Drink Type" />
+
+        <TextView
+            android:id="@+id/EntertainmentItems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entertainment Items" />
 
         <Button
             android:id="@+id/AddResourcesButton"
