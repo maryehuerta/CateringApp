@@ -6,22 +6,22 @@ package com.example.maryhuerta.cateringapp;
 
 public class HallItem {
 
-    private String Hall;
-    private String Capactiy;
+    private String HallName;
+    private String HallCapacity;
     private String Time;
 
     public HallItem(String hall, String capactiy, String time) {
-        Hall = hall;
-        Capactiy = capactiy;
+        HallName = hall;
+        HallCapacity = capactiy;
         Time = time;
     }
 
-    public String getHall() {
-        return Hall;
+    public String getHallName() {
+        return HallName;
     }
 
-    public String getCapactiy() {
-        return Capactiy;
+    public String getHallCapacity() {
+        return HallCapacity;
     }
 
     public String getTime() {

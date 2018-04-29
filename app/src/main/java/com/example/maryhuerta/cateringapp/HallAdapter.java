@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -17,12 +18,15 @@ import java.util.Vector;
 
 public class HallAdapter extends RecyclerView.Adapter<HallAdapter.ViewHolder>{
 
-    Vector <HallItem> hallList;
+    ArrayList<HallItem> hallList;
     private Context context;
+    private RecyclerViewClickListener itemListener;
 
-    public HallAdapter(Vector<HallItem> hallList, Context context) {
+
+    public HallAdapter(ArrayList<HallItem> hallList, Context context, RecyclerViewClickListener listener) {
         this.hallList = hallList;
         this.context = context;
+        itemListener = listener;
     }
 
     @Override
@@ -35,9 +39,13 @@ public class HallAdapter extends RecyclerView.Adapter<HallAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position) {
         HallItem currentHall = hallList.get(position);
 
-        holder.TextViewHall.setText(currentHall.getHall());
-        holder.TextViewCapacity.setText(currentHall.getCapactiy());
-        holder.TextViewTime.setText(currentHall.getTime());
+        holder.TextViewHall.setText(currentHall.getHallName());
+        holder.TextViewCapacity.setText(currentHall.getHallCapacity());
+        // holder.TextViewTime.setText(currentHall.getTime());
+    }
+
+    public HallItem getItem(int position){
+        return hallList.get(position);
     }
 
     @Override
@@ -45,7 +53,8 @@ public class HallAdapter extends RecyclerView.Adapter<HallAdapter.ViewHolder>{
         return hallList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView TextViewHall, TextViewCapacity, TextViewTime;
 
@@ -55,6 +64,14 @@ public class HallAdapter extends RecyclerView.Adapter<HallAdapter.ViewHolder>{
             TextViewHall = (TextView) itemView.findViewById(R.id.HallText);
             TextViewCapacity = (TextView) itemView.findViewById(R.id.CapacityText);
             TextViewTime = (TextView) itemView.findViewById(R.id.TimeText);
+
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            itemListener.recyclerViewListClicked(view, this.getAdapterPosition());
         }
     }
 

@@ -19,7 +19,7 @@ import java.util.Vector;
  * Created by jimmy on 3/25/2018.
  */
 
-public class HallList extends AppCompatActivity implements RecyclerViewClickListener{
+public class HallList extends AppCompatActivity implements RecyclerViewClickListener {
 
     UserRequestedEventItem item;
     int year,month,day;
@@ -31,7 +31,7 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
         super.onCreate(savedInstanceState);
         Bundle data = getIntent().getExtras();
         setContentView(R.layout.available_halls);
-        hallList = new Vector<>();
+        hallList = new ArrayList<>();
 
         item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
         monthText = (EditText) findViewById(R.id.MonthEditText);
@@ -45,8 +45,8 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
     }
 
     private RecyclerView HallRecyclerView;
-    private RecyclerView.Adapter adapter;
-    Vector<HallItem> hallList;
+    private HallAdapter adapter;
+    ArrayList<HallItem> hallList;
 
     public void populateHallsTest() {
         HallRecyclerView = (RecyclerView) findViewById(R.id.HallRecyclerView);
@@ -55,12 +55,12 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
 
 
         DBManager handler = new DBManager(HallList.this);
-        Vector <EventModel> ReservedEvents = handler.getReservedEvents();
-        Vector <HallModel> AllHalls = handler.getAllHalls();
+        ArrayList <EventModel> ReservedEvents = handler.getReservedEvents();
+        ArrayList <HallModel> AllHalls = handler.getAllHalls();
 
-        hallList.add(new HallItem("Name", "Capacity", "TimeSlot"));
+        // hallList.add(new HallItem("Name", "Capacity", "TimeSlot"));
 
-
+        // hallList.add(new HallItem(AllHalls.get(1).getHallName(), AllHalls.get(1).getHallCapacity(), String.valueOf(100)));
 
 
         for (int i=0; i<24;i++){
@@ -79,7 +79,7 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
 
             }
 
-        adapter = new HallAdapter(hallList, this);
+        adapter = new HallAdapter(hallList, this, this);
         HallRecyclerView.setAdapter(adapter);
 
     }
@@ -104,13 +104,18 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
         populateHallsTest();
     }
 
+
+
     @Override
     public void recyclerViewListClicked(View v, int position) {
         System.out.println("here--------------------");
-        DBManager handler = new DBManager(HallList.this);
-        if (position>0){
+        Toast.makeText(this  , "Clickable!", Toast.LENGTH_LONG).show();
+        HallItem item = adapter.getItem(position);
+        DBManager handler = new DBManager(getApplicationContext());
+        if (position > 0){
             String newDate = String.valueOf(month) + "/" + String.valueOf(day) + "/" + String.valueOf(year);
-            handler.updateEventHall(item.getEventName(), hallList.get(position).getHall(), newDate);
+            // TODO: Add the event name to the class
+            //handler.updateEventHall("", hallList.get(position).getHall(), newDate);
             finish();
         }
     }

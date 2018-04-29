@@ -94,6 +94,14 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
     }
 
 
+    public void ViewAvailableHallsButtonClicked(View view) {
+        Intent intent = new Intent(this, HallList.class);
+        intent.putExtra(EVENT_NAME, eventName);
+        startActivityForResult(intent, SHOW_DETAIL);
+
+    }
+
+
 
     public void LogoutButtonClicked(View view) {
 

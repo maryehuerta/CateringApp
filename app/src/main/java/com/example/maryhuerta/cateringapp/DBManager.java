@@ -11,6 +11,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -19,7 +20,7 @@ import java.util.Vector;
 
 public class DBManager extends SQLiteOpenHelper {
 
-    private static final int Db_VERSION = 4;
+    private static final int Db_VERSION = 5;
     private static final String DB_NAME = "users_db";
 
     //strings for usermodel
@@ -94,6 +95,8 @@ public class DBManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_HALL);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_STAFF);
+
         onCreate(sqLiteDatabase);
     }
 
@@ -102,13 +105,15 @@ public class DBManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_HALL);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_STAFF);
+
 
         onCreate(sqLiteDatabase);
     }
 
-    public Vector<EventModel> getReservedEvents(){
+    public ArrayList<EventModel> getReservedEvents(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Vector<EventModel> ReservedList = new Vector<>();
+        ArrayList<EventModel> ReservedList = new ArrayList<>();
         String query = "SELECT " + EVENT_DATE + ", " + EVENT_DURATION + ", " + EVENT_TIMEOFEVENT + ", " + " EVENT_HALLNAME " + " from " + TABLE_NAME1 + " WHERE "
                 + EVENT_RESERVED + "='yes'";
         Cursor cursor = db.rawQuery(query,null);
@@ -136,10 +141,10 @@ public class DBManager extends SQLiteOpenHelper {
         return ReservedList;
     }
 
-    public Vector<HallModel> getAllHalls(){
+    public ArrayList<HallModel> getAllHalls(){
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Vector<HallModel> hallList = new Vector<>();
+        ArrayList<HallModel> hallList = new ArrayList<>();
         String query = "SELECT * from " + TABLE_HALL;
         Cursor cursor = db.rawQuery(query,null);
 
