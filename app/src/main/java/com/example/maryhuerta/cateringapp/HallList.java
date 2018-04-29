@@ -1,5 +1,6 @@
 package com.example.maryhuerta.cateringapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,9 +26,13 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
     int year,month,day;
     EditText monthText, yearText, dayText;
     long FilterDate;
+    Intent intent = getIntent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        final String event_name = intent.getStringExtra("EVENT_NAME");
+
         super.onCreate(savedInstanceState);
         Bundle data = getIntent().getExtras();
         setContentView(R.layout.available_halls);
@@ -108,14 +113,15 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
 
     @Override
     public void recyclerViewListClicked(View v, int position) {
-        System.out.println("here--------------------");
-        Toast.makeText(this  , "Clickable!", Toast.LENGTH_LONG).show();
+        Intent intent = getIntent();
+        final String event_name = intent.getStringExtra("EVENT_NAME");
+        Toast.makeText(this  , "Hall Added!", Toast.LENGTH_LONG).show();
         HallItem item = adapter.getItem(position);
         DBManager handler = new DBManager(getApplicationContext());
         if (position > 0){
             String newDate = String.valueOf(month) + "/" + String.valueOf(day) + "/" + String.valueOf(year);
             // TODO: Add the event name to the class
-            //handler.updateEventHall("", hallList.get(position).getHall(), newDate);
+            handler.updateEventHall(event_name, hallList.get(position).getHallName(), newDate);
             finish();
         }
     }

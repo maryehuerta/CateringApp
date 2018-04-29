@@ -116,6 +116,7 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
         // Check which request we're responding to
         if (requestCode == SHOW_DETAIL) {
             // Make sure the request was successful
+            
             finish();
         }
 
