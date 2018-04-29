@@ -31,6 +31,7 @@
         <activity android:name=".UserEventSummaryScreenActivity" />
         <activity android:name=".UserHomeScreenActivity"/>
         <activity android:name=".UserRequestEventScreenActivity" />
+        <activity android:name=".HallList" />
         <!--<activity android:name=".UserRequestedEvents" />-->
         <activity android:name=".UserRequestedEventsActivity" />
         <activity android:name=".UserSelectedEventActivity" />

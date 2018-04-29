@@ -35,10 +35,22 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         //Test Events
 
-        //handler.addNewEvent(new EventModel("OkParty", "Cam", "Hastings", "12/19/2018", "8:00", "2hr", "KC", "300", "Chinese",  "none", "Dinner", "no","Beach Ball"));
-        //handler.addNewEvent(new EventModel("GreatParty", "Hastings", "Cam", "1/1/18", "5:00pm", "3hr", "KC", "111", "American", "Brunch", "Casual", "no", "asd"));
-        //handler.addNewEvent(new EventModel("SUPREMEPARTY", "Smith", "John", "12/10/17", "11:00am", "2hr", "NH", "200", "Itailian", "dinner", "formal", "no", "Balloons"));
+        handler.addNewEvent(new EventModel("OkParty", "Cam", "Hastings", "12/19/18", "0", "2", "KC", "20", "Chinese",  "none", "Dinner", "yes","Beach Ball"));
+        handler.addNewEvent(new EventModel("GreatParty", "Hastings", "Cam", "1/1/18", "12", "3", "Shard", "50", "American", "Brunch", "Casual", "yes", "asd"));
+        handler.addNewEvent(new EventModel("SUPREMEPARTY", "Smith", "John", "12/10/17", "14", "2", "Arlington", "100", "Itailian", "dinner", "formal", "yes", "Balloons"));
 
+        //Halls
+
+        handler.addNewHall(new HallModel("KC", "25"));
+        handler.addNewHall(new HallModel("Shard", "25"));
+        handler.addNewHall(new HallModel("Arlington", "50"));
+        handler.addNewHall(new HallModel("Liberty", "75"));
+        handler.addNewHall(new HallModel("Maverick", "100"));
+
+        //this.hallName = hallName;
+        //this.hallCapacity = hallCapacity;
+        //this.hallBuiling = hallBuiling;
+        //this.hallFloor = hallFlo
 
         LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
