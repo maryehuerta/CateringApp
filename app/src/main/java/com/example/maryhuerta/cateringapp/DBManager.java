@@ -113,8 +113,6 @@ public class DBManager extends SQLiteOpenHelper {
                 + EVENT_RESERVED + "='yes'";
         Cursor cursor = db.rawQuery(query,null);
 
-        System.out.println(query);
-
         while (cursor.moveToNext()){
             String dateP = cursor.getString(cursor.getColumnIndex(EVENT_DATE));
             int hours = Integer.parseInt(cursor.getString(cursor.getColumnIndex(EVENT_DURATION)));
@@ -135,7 +133,6 @@ public class DBManager extends SQLiteOpenHelper {
                 intDate++;
             }
         }
-        System.out.println("HERERE: "+ ReservedList.size());
         return ReservedList;
     }
 

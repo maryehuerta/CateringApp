@@ -6,20 +6,39 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Vector;
 
 /**
  * Created by jimmy on 3/25/2018.
  */
 
-public class HallList extends AppCompatActivity {
+public class HallList extends AppCompatActivity implements RecyclerViewClickListener{
+
+    UserRequestedEventItem item;
+    EditText monthText, yearText, dayText;
+    long FilterDate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle data = getIntent().getExtras();
         setContentView(R.layout.available_halls);
+
+        item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
+        monthText = (EditText) findViewById(R.id.MonthEditText);
+        yearText = (EditText) findViewById(R.id.YearEditText);
+        dayText = (EditText) findViewById(R.id.DayEditText);
+        String [] date = new SimpleDateFormat("MM/dd/yy", Locale.getDefault()).format(new Date()).split("/");
+        monthText.setText(date[0]);
+        dayText.setText(date[1]);
+        yearText.setText(date[2]);
         populateHallsTest();
     }
 
@@ -40,10 +59,7 @@ public class HallList extends AppCompatActivity {
 
         hallList.add(new HallItem("Name", "Capacity", "TimeSlot"));
 
-        int year = 18;
-        int month = 12;
-        int day = 19;
-        long today = 1000000*year + 10000*month + 100*day;
+
 
 
         for (int i=0; i<24;i++){
@@ -51,7 +67,7 @@ public class HallList extends AppCompatActivity {
                 boolean print = true;
                     for (int k=0;k<ReservedEvents.size();k++){
                         //System.out.println(ReservedEvents.get(k).getDate() + "  --  " + String.valueOf(today+i));
-                        if (ReservedEvents.get(k).getDate().equals(String.valueOf(today+i)) && AllHalls.get(j).getHallName().equals(ReservedEvents.get(k).getHallName())){
+                        if (ReservedEvents.get(k).getDate().equals(String.valueOf(FilterDate+i)) && AllHalls.get(j).getHallName().equals(ReservedEvents.get(k).getHallName())){
                             print = false;
                         }
                     }
@@ -62,28 +78,22 @@ public class HallList extends AppCompatActivity {
 
             }
 
-            /*String date = ReservedEvents.get(i).getDate();
-            String [] dateP = date.split("/");
-            int year = Integer.parseInt(dateP[2]);
-            int month = Integer.parseInt(dateP[0]);
-            int day = Integer.parseInt(dateP[1]);
-            long intDate = 1000000*year + 10000*month + 100*day;
-            long intDateMax = intDate + Integer.parseInt(ReservedEvents.get(i).getDuration());
-            while (intDate < intDateMax){*/
-
-
-        /*for (int i = 0; i < 10; i++) {
-            hallList.add(new HallItem("Hall: " + i, "Capacity: " + i * 100, "10:00"));
-        }
-        for (int i = 0; i < 10; i++) {
-            hallList.add(new HallItem("Hall: " + i, "Capacity: " + i * 100, "10:30"));
-        }
-        for (int i = 0; i < 10; i++) {
-            hallList.add(new HallItem("Hall: " + i, "Capacity: " + i * 100, "11:00"));
-        }*/
-
         adapter = new HallAdapter(hallList, this);
         HallRecyclerView.setAdapter(adapter);
+
+    }
+
+    public void FilterList(View view){
+        hallList.clear();
+        int year = Integer.parseInt(yearText.getText().toString());
+        int month = Integer.parseInt(monthText.getText().toString());
+        int day = Integer.parseInt(dayText.getText().toString());
+        FilterDate = 1000000*year + 10000*month + 100*day;
+        populateHallsTest();
+    }
+
+    @Override
+    public void recyclerViewListClicked(View v, int position) {
 
     }
 }

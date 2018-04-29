@@ -11,15 +11,19 @@ import android.widget.Toast;
 
 
 public class UserSelectedEventActivity extends AppCompatActivity {
+    public static final String ITEM = "ITEM";
     String eventName = null;
     Button cancelSelectedUserEventButton;
+    UserRequestedEventItem item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_selected_event);
 
         Bundle data = getIntent().getExtras();
-        UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
+        item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
+
         if (item != null) {
             Log.d("UserDetails", item.getFirstName());
             TextView lastNameTextView = findViewById(R.id.LastName);
@@ -57,9 +61,8 @@ public class UserSelectedEventActivity extends AppCompatActivity {
 
         }
 
+
         cancelSelectedUserEventButton = (Button) findViewById(R.id.CancelEventButton);
-
-
         cancelSelectedUserEventButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +78,12 @@ public class UserSelectedEventActivity extends AppCompatActivity {
     public void LogoutButtonClicked(View view) {
 
         Intent intent = new Intent(this, LoginScreenActivity.class);
+        startActivity(intent);
+    }
+
+    public void  ViewHallsButtonClicked(View view){
+        Intent intent = new Intent(this, HallList.class);
+        intent.putExtra(ITEM, item);
         startActivity(intent);
     }
 
