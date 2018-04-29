@@ -180,7 +180,9 @@ public class DBManager extends SQLiteOpenHelper {
 
     public void updateEventHall(String eventName, String HallName, String newDate){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("UPDATE event_data SET " + EVENT_HALLNAME + "='" + HallName + "', " + EVENT_DATE + "='" + newDate + "' " + " WHERE event_name=\"" + eventName + "\"");
+        String Query = "UPDATE event_data SET " + EVENT_HALLNAME + "='" + HallName + "', " + EVENT_DATE + "='" + newDate + "' " + " WHERE event_name=\"" + eventName + "\"";
+        db.execSQL(Query);
+        db.close();
     }
 
 

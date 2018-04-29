@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 
 public class UserSelectedEventActivity extends AppCompatActivity {
-    public static final String ITEM = "ITEM";
+    public static final String EVENT_NAME = "EVENT_NAME";
     String eventName = null;
     Button cancelSelectedUserEventButton;
     UserRequestedEventItem item;
@@ -83,7 +83,7 @@ public class UserSelectedEventActivity extends AppCompatActivity {
 
     public void  ViewHallsButtonClicked(View view){
         Intent intent = new Intent(this, HallList.class);
-        intent.putExtra(ITEM, item);
+        intent.putExtra(EVENT_NAME, eventName);
         startActivity(intent);
     }
 

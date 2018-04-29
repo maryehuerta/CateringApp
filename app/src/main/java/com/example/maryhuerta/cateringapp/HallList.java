@@ -22,7 +22,6 @@ import java.util.Vector;
 
 public class HallList extends AppCompatActivity implements RecyclerViewClickListener {
 
-    UserRequestedEventItem item;
     int year,month,day;
     EditText monthText, yearText, dayText;
     long FilterDate;
@@ -38,7 +37,6 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
         setContentView(R.layout.available_halls);
         hallList = new ArrayList<>();
 
-        item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
         monthText = (EditText) findViewById(R.id.MonthEditText);
         yearText = (EditText) findViewById(R.id.YearEditText);
         dayText = (EditText) findViewById(R.id.DayEditText);
@@ -63,7 +61,7 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
         ArrayList <EventModel> ReservedEvents = handler.getReservedEvents();
         ArrayList <HallModel> AllHalls = handler.getAllHalls();
 
-        // hallList.add(new HallItem("Name", "Capacity", "TimeSlot"));
+        hallList.add(new HallItem("Name", "Capacity", "TimeSlot"));
 
         // hallList.add(new HallItem(AllHalls.get(1).getHallName(), AllHalls.get(1).getHallCapacity(), String.valueOf(100)));
 
@@ -110,7 +108,6 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
     }
 
 
-
     @Override
     public void recyclerViewListClicked(View v, int position) {
         Intent intent = getIntent();
@@ -121,8 +118,14 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
         if (position > 0){
             String newDate = String.valueOf(month) + "/" + String.valueOf(day) + "/" + String.valueOf(year);
             // TODO: Add the event name to the class
-            handler.updateEventHall(event_name, hallList.get(position).getHallName(), newDate);
+            handler.updateEventHall(event_name, item.getHallName(), newDate);
             finish();
         }
+    }
+
+    public void LogoutButtonClicked(View view) {
+        finishAffinity();
+        Intent newIntent = new Intent(getApplicationContext(), LoginScreenActivity.class);
+        startActivity(newIntent);
     }
 }

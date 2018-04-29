@@ -22,8 +22,9 @@ public class ApplicationScreenActivity extends AppCompatActivity {
 
     public void loginButtonClicked(View view) {
 
-        Intent intent = new Intent(this, LoginScreenActivity.class);
-        startActivity(intent);
+        finishAffinity();
+        Intent newIntent = new Intent(getApplicationContext(), LoginScreenActivity.class);
+        startActivity(newIntent);
     }
 
     public void RegisterButtonClicked(View view) {

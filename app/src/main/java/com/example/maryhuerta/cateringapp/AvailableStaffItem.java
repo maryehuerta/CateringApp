@@ -86,13 +86,13 @@ public class AvailableStaffItem implements Parcelable {
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
 
         @Override
-        public HallAdapter.AvailableStaffItem createFromParcel(Parcel parcel) {
-            return new HallAdapter.AvailableStaffItem(parcel);
+        public AvailableStaffItem createFromParcel(Parcel parcel) {
+            return new AvailableStaffItem(parcel);
         }
 
         @Override
-        public HallAdapter.AvailableStaffItem[] newArray(int size) {
-            return new HallAdapter.AvailableStaffItem[size];
+        public AvailableStaffItem[] newArray(int size) {
+            return new AvailableStaffItem[size];
         }
     };
 }

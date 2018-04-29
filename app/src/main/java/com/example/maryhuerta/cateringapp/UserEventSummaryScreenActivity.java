@@ -78,6 +78,7 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
 
         Intent intent = new Intent(this, LoginScreenActivity.class);
         startActivity(intent);
+        this.finish();
     }
 
 }

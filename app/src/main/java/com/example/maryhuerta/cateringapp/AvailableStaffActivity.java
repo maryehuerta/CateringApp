@@ -42,13 +42,6 @@ public class AvailableStaffActivity extends AppCompatActivity implements Recycle
             eventList.add(new AvailableStaffItem( staff.getId(), staff.getUserFName(), staff.getUserLName(), "10:30", "1:30", "working"));
         }
 
-        /*AvailableStaffItem item = new AvailableStaffItem("Brown", "Larry","10/10/18", "1:00pm", "working");
-        eventList.add(new AvailableStaffItem("Jenkins", "John","10/10/18", "1:30pm", "working"));
-        eventList.add(new AvailableStaffItem("Huerta", "Mary","10/10/18", "1:30pm", "free"));
-        eventList.add(new AvailableStaffItem("Holmes", "Chris","10/10/18", "1:30pm", "working"));
-        eventList.add(new AvailableStaffItem("Swanson", "Abligale","10/10/18", "1:30pm", "working"));
-        eventList.add(item);*/
-
         Log.d("event list", eventList.toString());
         adapter = new AvailableStaffAdapter(eventList, this, this);
         eventRecyclerView.setAdapter(adapter);
