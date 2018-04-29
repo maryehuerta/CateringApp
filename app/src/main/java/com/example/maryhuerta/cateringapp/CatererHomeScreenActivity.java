@@ -25,8 +25,7 @@ public class CatererHomeScreenActivity extends AppCompatActivity {
 
     public void ViewUserRequestsSummaryButtonClicked(View view) {
 
-        //Intent intent = new Intent(this, UserRequestedEventsActivity.class);
-        Intent intent = new Intent(this, HallList.class);
+        Intent intent = new Intent(this, UserRequestedEventsActivity.class);
         startActivity(intent);
     }
 

@@ -34,9 +34,8 @@ public class HallList extends AppCompatActivity {
 
         hallList = new Vector<>();
 
-
         DBManager handler = new DBManager(HallList.this);
-        Vector <EventModel> ReservedEvents = handler.getReservedHalls();
+        Vector <EventModel> ReservedEvents = handler.getReservedEvents();
         Vector <HallModel> AllHalls = handler.getAllHalls();
 
         hallList.add(new HallItem("Name", "Capacity", "TimeSlot"));
@@ -45,16 +44,14 @@ public class HallList extends AppCompatActivity {
         int month = 12;
         int day = 19;
         long today = 1000000*year + 10000*month + 100*day;
-        System.out.println("TODAY: " + today);
 
 
-        for (int i=0; i<2;i++){
+        for (int i=0; i<24;i++){
             for (int j=0; j<AllHalls.size();j++){
                 boolean print = true;
                     for (int k=0;k<ReservedEvents.size();k++){
                         //System.out.println(ReservedEvents.get(k).getDate() + "  --  " + String.valueOf(today+i));
-                        if (ReservedEvents.get(k).getDate().equals(String.valueOf(today+i)) && AllHalls.get(j).getHallName().equals(ReservedEvents.get(k).getEventName())){
-                            System.out.println("HERE - " + today+i);
+                        if (ReservedEvents.get(k).getDate().equals(String.valueOf(today+i)) && AllHalls.get(j).getHallName().equals(ReservedEvents.get(k).getHallName())){
                             print = false;
                         }
                     }

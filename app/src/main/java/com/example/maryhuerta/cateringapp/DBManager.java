@@ -106,7 +106,7 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public Vector<EventModel> getReservedHalls(){
+    public Vector<EventModel> getReservedEvents(){
         SQLiteDatabase db = this.getWritableDatabase();
         Vector<EventModel> ReservedList = new Vector<>();
         String query = "SELECT " + EVENT_DATE + ", " + EVENT_DURATION + ", " + EVENT_TIMEOFEVENT + ", " + " EVENT_HALLNAME " + " from " + TABLE_NAME1 + " WHERE "
@@ -127,7 +127,7 @@ public class DBManager extends SQLiteOpenHelper {
             int day = Integer.parseInt(date[1]);
             long intDate = 1000000*year + 10000*month + 100*day + StartTime;
             long maxDate = intDate + hours;
-            while (maxDate >= intDate){
+            while (maxDate > intDate){
                 EventModel event = new EventModel();
                 event.setDate(String.valueOf(intDate));
                 event.setHallName(Hallname);
