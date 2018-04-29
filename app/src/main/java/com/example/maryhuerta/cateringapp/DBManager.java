@@ -173,6 +173,11 @@ public class DBManager extends SQLiteOpenHelper {
         db.execSQL("UPDATE event_data SET event_reserved='yes' WHERE event_name=\"" + eventName + "\"");
     }
 
+    public void updateEventHall(String eventName, String HallName, String newDate){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE event_data SET " + EVENT_HALLNAME + "='" + HallName + "', " + EVENT_DATE + "='" + newDate + "' " + " WHERE event_name=\"" + eventName + "\"");
+    }
+
 
     public void cancelSelectedCatererEvent(String eventName){
         SQLiteDatabase db = this.getWritableDatabase();

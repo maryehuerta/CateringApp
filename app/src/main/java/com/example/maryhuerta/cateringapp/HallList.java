@@ -22,6 +22,7 @@ import java.util.Vector;
 public class HallList extends AppCompatActivity implements RecyclerViewClickListener{
 
     UserRequestedEventItem item;
+    int year,month,day;
     EditText monthText, yearText, dayText;
     long FilterDate;
 
@@ -30,6 +31,7 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
         super.onCreate(savedInstanceState);
         Bundle data = getIntent().getExtras();
         setContentView(R.layout.available_halls);
+        hallList = new Vector<>();
 
         item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
         monthText = (EditText) findViewById(R.id.MonthEditText);
@@ -39,7 +41,7 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
         monthText.setText(date[0]);
         dayText.setText(date[1]);
         yearText.setText(date[2]);
-        populateHallsTest();
+        FilterList();
     }
 
     private RecyclerView HallRecyclerView;
@@ -51,7 +53,6 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
         HallRecyclerView.setHasFixedSize(true);
         HallRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        hallList = new Vector<>();
 
         DBManager handler = new DBManager(HallList.this);
         Vector <EventModel> ReservedEvents = handler.getReservedEvents();
@@ -65,8 +66,8 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
         for (int i=0; i<24;i++){
             for (int j=0; j<AllHalls.size();j++){
                 boolean print = true;
+                    //Don't ask
                     for (int k=0;k<ReservedEvents.size();k++){
-                        //System.out.println(ReservedEvents.get(k).getDate() + "  --  " + String.valueOf(today+i));
                         if (ReservedEvents.get(k).getDate().equals(String.valueOf(FilterDate+i)) && AllHalls.get(j).getHallName().equals(ReservedEvents.get(k).getHallName())){
                             print = false;
                         }
@@ -83,17 +84,34 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
 
     }
 
+    //Lazy copy and paste called in onCreate
+    public void FilterList(){
+        hallList.clear();
+        year = Integer.parseInt(yearText.getText().toString());
+        month = Integer.parseInt(monthText.getText().toString());
+        day = Integer.parseInt(dayText.getText().toString());
+        FilterDate = 1000000*year + 10000*month + 100*day;
+        populateHallsTest();
+    }
+
+    //Button callback
     public void FilterList(View view){
         hallList.clear();
-        int year = Integer.parseInt(yearText.getText().toString());
-        int month = Integer.parseInt(monthText.getText().toString());
-        int day = Integer.parseInt(dayText.getText().toString());
+        year = Integer.parseInt(yearText.getText().toString());
+        month = Integer.parseInt(monthText.getText().toString());
+        day = Integer.parseInt(dayText.getText().toString());
         FilterDate = 1000000*year + 10000*month + 100*day;
         populateHallsTest();
     }
 
     @Override
     public void recyclerViewListClicked(View v, int position) {
-
+        System.out.println("here--------------------");
+        DBManager handler = new DBManager(HallList.this);
+        if (position>0){
+            String newDate = String.valueOf(month) + "/" + String.valueOf(day) + "/" + String.valueOf(year);
+            handler.updateEventHall(item.getEventName(), hallList.get(position).getHall(), newDate);
+            finish();
+        }
     }
 }
