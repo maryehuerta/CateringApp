@@ -99,11 +99,31 @@ public class UserRequestEventScreenActivity extends AppCompatActivity {
                         break;
                 }
 
-                DBManager handler = new DBManager(UserRequestEventScreenActivity.this);
-                handler.addNewEvent(event);
-                Toast.makeText(UserRequestEventScreenActivity.this  , "Request Recorded!", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(UserRequestEventScreenActivity.this  , UserHomeScreenActivity.class);
-                startActivity(intent);
+                if (event.getTimeOfEvent().equals("22") ||
+                        event.getTimeOfEvent().equals("23") ||
+                        event.getTimeOfEvent().equals("0") ||
+                        event.getTimeOfEvent().equals("1") ||
+                        event.getTimeOfEvent().equals("2") ||
+                        event.getTimeOfEvent().equals("3") ||
+                        event.getTimeOfEvent().equals("4") ||
+                        event.getTimeOfEvent().equals("5") ||
+                        event.getTimeOfEvent().equals("6") ) {
+
+                    Toast.makeText(UserRequestEventScreenActivity.this  , "Unable to Request: Hall not open at that start time", Toast.LENGTH_LONG).show();
+
+                } else if ( event.getDuration() == "1" ) {
+                    Toast.makeText(UserRequestEventScreenActivity.this  , "Unable to Request: Duration should be minimum 2 hours", Toast.LENGTH_LONG).show();
+
+                } else {
+                    DBManager handler = new DBManager(UserRequestEventScreenActivity.this);
+                    handler.addNewEvent(event);
+                    Toast.makeText(UserRequestEventScreenActivity.this  , "Request Recorded!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(UserRequestEventScreenActivity.this  , UserHomeScreenActivity.class);
+                    startActivity(intent);
+
+                }
+
+
             }
         });
     }
