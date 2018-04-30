@@ -29,9 +29,10 @@ public class LoginScreenActivity extends AppCompatActivity {
         DBManager handler = new DBManager(LoginScreenActivity.this);
         handler.addNewUser(new UserModel("1001200000", "User", "Last", "original@gmail.com", "123", "UserTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "User"));
         handler.addNewUser(new UserModel("1001200001", "Caterer", "Last", "original@gmail.com", "123", "CatererTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Caterer"));
-        handler.addNewUser(new UserModel("1001200002", "Staff", "Last", "original@gmail.com", "123", "StaffTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
-        handler.addNewUser(new UserModel("1001200003", "Staff 2", "Last", "original@gmail.com", "123", "StaffTest2", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
-        handler.addNewUser(new UserModel("1001200004", "Staff 3", "Last", "original@gmail.com", "123", "StaffTest3", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
+        handler.addNewUser(new UserModel("1001200002", "Staff-Harry", "Last", "original@gmail.com", "123", "StaffTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
+        handler.addNewUser(new UserModel("1001200003", "Staff_John", "Last", "original@gmail.com", "123", "StaffTest2", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
+        handler.addNewUser(new UserModel("1001200004", "Staff_Larry", "Last", "original@gmail.com", "123", "StaffTest3", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
+
 
         //Test Events
 

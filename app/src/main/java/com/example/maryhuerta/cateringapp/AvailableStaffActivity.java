@@ -41,6 +41,18 @@ public class AvailableStaffActivity extends AppCompatActivity implements Recycle
         for (UserModel staff : handler.getAllStaff()){
             eventList.add(new AvailableStaffItem( staff.getId(), staff.getUserFName(), staff.getUserLName(), "10:30", "1:30", "working"));
         }
+        for (UserModel staff : handler.getAllStaff()){
+            eventList.add(new AvailableStaffItem( staff.getId(), staff.getUserFName(), staff.getUserLName(), "10:30", "2:00", "not-working"));
+        }
+        for (UserModel staff : handler.getAllStaff()){
+            eventList.add(new AvailableStaffItem( staff.getId(), staff.getUserFName(), staff.getUserLName(), "10:30", "2:30", "not-working"));
+        }
+        for (UserModel staff : handler.getAllStaff()){
+            eventList.add(new AvailableStaffItem( staff.getId(), staff.getUserFName(), staff.getUserLName(), "10:30", "3:00", "not-working"));
+        }
+        for (UserModel staff : handler.getAllStaff()){
+            eventList.add(new AvailableStaffItem( staff.getId(), staff.getUserFName(), staff.getUserLName(), "10:30", "3:30", "not-working"));
+        }
 
         Log.d("event list", eventList.toString());
         adapter = new AvailableStaffAdapter(eventList, this, this);

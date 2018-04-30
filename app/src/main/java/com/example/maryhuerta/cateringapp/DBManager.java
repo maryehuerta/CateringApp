@@ -20,7 +20,7 @@ import java.util.Vector;
 
 public class DBManager extends SQLiteOpenHelper {
 
-    private static final int Db_VERSION = 5;
+    private static final int Db_VERSION = 7;
     private static final String DB_NAME = "users_db";
 
     //strings for usermodel
