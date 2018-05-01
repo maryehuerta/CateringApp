@@ -18,7 +18,7 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
     TextView deleteLater;
     UserModel user;
 
-    String UserID, UserType;
+    String UserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,6 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
         /**/
         String [] UserInfo = getIntent().getStringExtra("USERINFO").split(";");
         UserID= UserInfo[0];
-        UserType = UserInfo[1];
         /**/
 
 
@@ -51,7 +50,7 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
         DBManager handler = new DBManager(UserEventSummaryScreenActivity.this);
         eventList.clear();
         for (EventModel model: handler.getAllEvents()){
-            System.out.println("THE USER IS: "+ UserID);
+           // System.out.println("THE USER IS: "+ UserID);
             if (UserID.equals(model.getUserID())) {
                 eventList.add(new UserRequestedEventItem(model.getLastName(), model.getFirstName(), model.getDate(), model.getTimeOfEvent(), model.getDuration(), model.getHallName(), model.getAttendees(), model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), "DrinkType", model.getSpecialItems(), model.getReserved()));
             }
