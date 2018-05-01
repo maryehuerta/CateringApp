@@ -36,8 +36,8 @@ public class LoginScreenActivity extends AppCompatActivity {
         handler.addNewUser(new UserModel("1001200007", "Staff_Larry", "Last", "original@gmail.com", "123", "StaffTest3", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
 
 
-        handler.addNewEvent(new EventModel("1001200000","NONE","OkParty", "Cam", "Hastings", "12/19/18", "0", "2", "KC", "20", "Chinese",  "formal", "Non-Alocholic","Supper", "no","Beach Ball", "none"));
-        handler.addNewEvent(new EventModel("1001200002","NONE","GreatParty", "Hastings", "Cam", "1/1/18", "12", "3", "Shard", "50", "American", "formal", "Non-Alocholic", "Supper", "no", "asd", "Staff_larry"));
+        handler.addNewEvent(new EventModel("1001200000","1001200003","OkParty", "Cam", "Hastings", "12/19/18", "0", "2", "KC", "24", "Chinese",  "formal", "Non-Alocholic","Supper", "no","Beach Ball", "none"));
+        handler.addNewEvent(new EventModel("1001200002","1001200003","GreatParty", "Hastings", "Cam", "1/1/18", "12", "3", "Shard", "25", "American", "formal", "Non-Alocholic", "Supper", "no", "asd", "Staff_larry"));
         handler.addNewEvent(new EventModel("1001200002","1001200003","SUPREMEPARTY", "Smith", "John", "12/10/17", "14", "2", "Arlington", "100", "Itailian", "informal", "Alcoholic", "Supper", "no", "Balloons", "Staff_larry Staff_harry"));
 
         //Halls

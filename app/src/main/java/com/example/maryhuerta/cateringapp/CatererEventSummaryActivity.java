@@ -55,7 +55,7 @@ public class CatererEventSummaryActivity extends AppCompatActivity implements Re
     @Override
     public void recyclerViewListClicked(View v, int position) {
         //Makes a toast of the item's position in the list
-        Toast.makeText(this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, String.valueOf(position), Toast.LENGTH_SHORT).show();
         //Create an intent
         Intent intent = new Intent(this, CatererSelectedEventScreenActivity.class);
         UserRequestedEventItem item = adapter.getItem(position);
