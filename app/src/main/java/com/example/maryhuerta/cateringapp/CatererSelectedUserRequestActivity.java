@@ -14,7 +14,7 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
     Button ApprovedSelectedUserRequestButton;
     Button CreateCateredEventPlanButton;
     String eventName = null;
-    String UserInfo;
+    String UserID;
     // https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
     // TODO: return results/actions to be taken to parent
 
@@ -25,7 +25,9 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
 
         Bundle data = getIntent().getExtras();
         UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
-        UserInfo = getIntent().getStringExtra("USERINFO");
+        String [] UserInfo = getIntent().getStringExtra("USERINFO").split(";");
+        UserID= UserInfo[0];
+
         if (item != null){
             Log.d("UserDetails", item.getFirstName());
             TextView lastNameTextView = findViewById(R.id.lastNameTextView);
@@ -53,7 +55,7 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DBManager handler = new DBManager(CatererSelectedUserRequestActivity.this);
-                handler.approveSelectedUserrequest(eventName);
+                handler.approveSelectedUserrequest(eventName, UserID);
                 Toast.makeText(CatererSelectedUserRequestActivity.this  , "Request Approved!", Toast.LENGTH_LONG).show();
                 finish();
 
@@ -66,7 +68,7 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DBManager handler = new DBManager(CatererSelectedUserRequestActivity.this);
-                handler.approveSelectedUserrequest(eventName);
+                handler.approveSelectedUserrequest(eventName, UserID);
                 Toast.makeText(CatererSelectedUserRequestActivity.this  , "Caterer Event Created!", Toast.LENGTH_LONG).show();
 
                 finish();

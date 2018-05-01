@@ -60,6 +60,7 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
             durationTextView.setText(item.getDuration());
             hallNameTextView.setText(item.getHallName());
             eventNameTextView.setText(item.getEventName());
+            eventName = item.getEventName();
 
 
 

@@ -205,9 +205,9 @@ public class DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void approveSelectedUserrequest(String eventName){
+    public void approveSelectedUserrequest(String eventName, String CatererID){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("UPDATE event_data SET event_reserved='yes' WHERE event_name=\"" + eventName + "\"");
+        db.execSQL("UPDATE event_data SET event_reserved='yes', event_caterer_id='" + CatererID + "' WHERE event_name=\"" + eventName + "\"");
     }
 
     public void updateEventHall(String eventName, String HallName, String newDate){
@@ -220,7 +220,9 @@ public class DBManager extends SQLiteOpenHelper {
 
     public void cancelSelectedCatererEvent(String eventName){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("UPDATE event_data SET event_reserved='no' WHERE event_name=\"" + eventName + "\"");
+        String query = "UPDATE event_data SET event_reserved='no', event_caterer_id='NO_CATERER_ASSIGNED' WHERE event_name='" + eventName + "'";
+        System.out.println(query);
+        db.execSQL(query);
     }
 
     public void cancelSelectedUserEvent(String eventName){
