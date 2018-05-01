@@ -285,7 +285,7 @@ public class DBManager extends SQLiteOpenHelper {
     public EventModel retrieveEvent(String firstName) {
         //not working right now, trying to debug will try again after work
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * from " + TABLE_NAME1 + " WHERE " + EVENT_FNAME + " = \""
+        String query = "SELECT * from " + TABLE_NAME1 + " WHERE " + EVENT_NAME + " = \""
                 + firstName + "\";";
         Cursor cursor = db.rawQuery(query, null);
 

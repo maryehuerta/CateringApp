@@ -40,7 +40,7 @@ public class UserSelectedEventActivity extends AppCompatActivity {
             TextView MealFormailtyTextView = findViewById(R.id.MealFormality);
             TextView DrinkTypeTextView = findViewById(R.id.DrinkType);
             TextView EntertainmentItemsTextView = findViewById(R.id.EntertainmentItems);
-
+            TextView CostField = findViewById((R.id.CostField));
 
             eventName = item.getEventName();
 
@@ -58,6 +58,51 @@ public class UserSelectedEventActivity extends AppCompatActivity {
             durationTextView.setText(item.getDuration());
             hallNameTextView.setText(item.getHallName());
             eventNameTextView.setText(item.getEventName());
+
+
+            int RoomCost = 0;
+            int RoomRate = 2;
+            if (item.getHallName().equals("Maverick")){
+                RoomCost = 100;
+            }
+            else if (item.getHallName().equals("KC")){
+                RoomCost = 25;
+            }
+            else if (item.getHallName().equals("Arlington")){
+                RoomCost = 50;
+            }
+            else if (item.getHallName().equals("Shard")){
+                RoomCost = 25;
+            }
+            else if (item.getHallName().equals("Liberty")){
+                RoomCost = 75;
+            }
+
+            int MealRate = 0;
+            if (item.getMeal().equals("Breakfast")){
+                MealRate = 8;
+            }
+            else if (item.getMeal().equals("Lunch")){
+                MealRate = 12;
+            }
+            else if (item.getMeal().equals("Supper")){
+                MealRate = 18;
+            }
+
+            int MealCost = MealRate*Integer.parseInt(item.getEstAttendees());
+
+            if (item.getMealFormality().equals("Formal")){
+                MealCost*=1.5;
+            }
+
+            int totalCost = (RoomCost*RoomRate*Integer.parseInt(item.getDuration())) + MealCost;
+
+
+
+            if (item.getDrinkType().equals("Alcoholic")){
+                totalCost+= Integer.parseInt(item.getEstAttendees())*15;
+            }
+            CostField.setText("$ " + totalCost);
 
         }
 

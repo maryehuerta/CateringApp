@@ -43,6 +43,7 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
             TextView MealFormailtyTextView = findViewById(R.id.MealFormality);
             TextView DrinkTypeTextView = findViewById(R.id.DrinkType);
             TextView EntertainmentItemsTextView = findViewById(R.id.EntertainmentItems);
+            TextView CostField = findViewById((R.id.CostField));
 
 
 //            dateTextView.setText(item.getDate());
@@ -59,6 +60,9 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
             durationTextView.setText(item.getDuration());
             hallNameTextView.setText(item.getHallName());
             eventNameTextView.setText(item.getEventName());
+
+
+
 
         }
         CancelSelectedCatererEventButton = (Button) findViewById(R.id.CancelEventButton);
