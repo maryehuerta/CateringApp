@@ -23,9 +23,10 @@ public class UserRequestedEventItem implements Parcelable {
     private String DrinkType;
     private String EntertainmentItems;
     private String Status;
+    private String Staff;
 
 
-    public UserRequestedEventItem(String lastName, String firstName, String date, String startTime, String duration, String hallName, String estAttendees, String eventName, String foodType, String meal, String mealFormality, String drinkType, String entertainmentItems, String status) {
+    public UserRequestedEventItem(String lastName, String firstName, String date, String startTime, String duration, String hallName, String estAttendees, String eventName, String foodType, String meal, String mealFormality, String drinkType, String entertainmentItems, String status, String staff) {
         LastName = lastName;
         FirstName = firstName;
         Date = date;
@@ -40,9 +41,17 @@ public class UserRequestedEventItem implements Parcelable {
         DrinkType = "Non-Alcoholic";
         EntertainmentItems = entertainmentItems;
         Status = status;
+        Staff = staff;
+
     }
 
+    public String getStaff() {
+        return Staff;
+    }
 
+    public void setStaff(String staff) {
+        Staff = staff;
+    }
 
     public String getLastName() {
         return LastName;
@@ -100,9 +109,11 @@ public class UserRequestedEventItem implements Parcelable {
         return Status;
     }
 
+
+
     // https://stackoverflow.com/questions/7181526/how-can-i-make-my-custom-objects-parcelable
     public UserRequestedEventItem(Parcel in){
-        String[] data = new String[14];
+        String[] data = new String[15];
         in.readStringArray(data);
 
         this.LastName = data[0];
@@ -119,6 +130,7 @@ public class UserRequestedEventItem implements Parcelable {
         this.DrinkType = data[11];
         this.EntertainmentItems = data[12];
         this.Status = data[13];
+        this.Staff = data[14];
     }
 
     @Override
@@ -143,6 +155,7 @@ public class UserRequestedEventItem implements Parcelable {
                 this.DrinkType,
                 this.EntertainmentItems,
                 this.Status,
+                this.Staff
         });
     }
 

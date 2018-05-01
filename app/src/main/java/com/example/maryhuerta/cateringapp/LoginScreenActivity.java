@@ -36,9 +36,9 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         //Test Events
 
-        handler.addNewEvent(new EventModel("OkParty", "Cam", "Hastings", "12/19/18", "0", "2", "KC", "20", "Chinese",  "formal", "Non-Alocholic","Supper", "no","Beach Ball"));
-        handler.addNewEvent(new EventModel("GreatParty", "Hastings", "Cam", "1/1/18", "12", "3", "Shard", "50", "American", "formal", "Non-Alocholic", "Supper", "no", "asd"));
-        handler.addNewEvent(new EventModel("SUPREMEPARTY", "Smith", "John", "12/10/17", "14", "2", "Arlington", "100", "Itailian", "informal", "Alcoholic", "Supper", "no", "Balloons"));
+        handler.addNewEvent(new EventModel("OkParty", "Cam", "Hastings", "12/19/18", "0", "2", "KC", "20", "Chinese",  "formal", "Non-Alocholic","Supper", "no","Beach Ball", "none"));
+        handler.addNewEvent(new EventModel("GreatParty", "Hastings", "Cam", "1/1/18", "12", "3", "Shard", "50", "American", "formal", "Non-Alocholic", "Supper", "no", "asd", "Staff_larry"));
+        handler.addNewEvent(new EventModel("SUPREMEPARTY", "Smith", "John", "12/10/17", "14", "2", "Arlington", "100", "Itailian", "informal", "Alcoholic", "Supper", "no", "Balloons", "Staff_larry Staff_harry"));
 
 
         //Halls
