@@ -11,10 +11,12 @@ import android.view.View;
 
 public class CatererHomeScreenActivity extends AppCompatActivity {
 
+    String UserInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.caterer_home_screen);
+        UserInfo = getIntent().getStringExtra("USERINFO");
     }
 
     public void ViewCatererEventSummaryButtonClicked(View view) {
@@ -26,6 +28,7 @@ public class CatererHomeScreenActivity extends AppCompatActivity {
     public void ViewUserRequestsSummaryButtonClicked(View view) {
 
         Intent intent = new Intent(this, UserRequestedEventsActivity.class);
+        intent.putExtra("USERINFO", UserInfo);
         startActivity(intent);
     }
 

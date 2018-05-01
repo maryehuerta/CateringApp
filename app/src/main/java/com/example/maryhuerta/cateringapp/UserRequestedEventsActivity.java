@@ -19,10 +19,15 @@ public class UserRequestedEventsActivity extends AppCompatActivity implements Re
 
     public static final String ITEM = "ITEM";
     public final int SHOW_DETAIL = 1;
+    String UserID, UserType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_requested_events);
+        String [] UserInfo = getIntent().getStringExtra("USERINFO").split(";");
+        UserID= UserInfo[0];
+        UserType = UserInfo[1];
         populateuserRequestedEventsTest();
     }
 
@@ -41,10 +46,10 @@ public class UserRequestedEventsActivity extends AppCompatActivity implements Re
         DBManager handler = new DBManager(UserRequestedEventsActivity.this);
         eventList.clear();
         for (EventModel model: handler.getAllEvents()){
-//            if ( model.getReserved().toLowerCase() == "no"){
+            System.out.println(UserType + " " +  UserID + " " + model.getCatererID());
+           if (UserType.equals("Caterer") && UserID.equals(model.getCatererID())){
                 eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), "DrinkType", model.getSpecialItems(), model.getReserved()));
-
-//            }
+           }
         }
         adapter = new UserRequestedEventsAdapter(eventList, this, this);
         eventRecyclerView.setAdapter(adapter);

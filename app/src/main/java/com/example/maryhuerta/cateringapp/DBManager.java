@@ -44,6 +44,8 @@ public class DBManager extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME1 = "event_data";
     private static final String EVENT_NAME = "event_name";
+    private static final String EVENT_CATERERID = "event_caterer_id";
+    private static final String EVENT_USERID = "event_user_id";
     private static final String EVENT_FNAME = "event_fname";
     private static final String EVENT_LNAME = "event_lname";
     private static final String EVENT_DATE = "event_date";
@@ -73,7 +75,7 @@ public class DBManager extends SQLiteOpenHelper {
         String CREATE_TABLE_Q = "CREATE TABLE " + TABLE_NAME + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + KEY_FNAME + " TEXT," + KEY_LNAME + " TEXT," + KEY_EMAIL + " TEXT," + KEY_PASS + " TEXT," + KEY_USERNAME + " TEXT,"
                 + KEY_PHONENUMBER + " TEXT," + KEY_STREETADDRESS + " TEXT," + KEY_CITY + " TEXT," + KEY_ZIP + " TEXT," + KEY_STATE + " TEXT," + KEY_USERTYPE + " TEXT )";
-        String CREATE_TABLE_R = "CREATE TABLE " + TABLE_NAME1 + "(" + EVENT_NAME + " TEXT PRIMARY KEY NOT NULL,"
+        String CREATE_TABLE_R = "CREATE TABLE " + TABLE_NAME1 + "(" + EVENT_NAME + " TEXT PRIMARY KEY NOT NULL," + EVENT_CATERERID + " TEXT," + EVENT_USERID + " TEXT,"
                 + EVENT_FNAME + " TEXT," + EVENT_LNAME + " TEXT," + EVENT_DATE + " TEXT," + EVENT_TIMEOFEVENT + " TEXT," + EVENT_DURATION + " TEXT," + EVENT_HALLNAME + " TEXT,"
                 + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_MEALTYPE + " TEXT,"
                 + EVENT_RESERVED + " TEXT," + EVENT_SPECIALITEMS + " TEXT )";
@@ -240,6 +242,8 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EVENT_NAME, event.getEventName());
+        values.put(EVENT_CATERERID, event.getCatererID());
+        values.put(EVENT_USERID, event.getUserID());
         values.put(EVENT_FNAME, event.getFirstName());
         values.put(EVENT_LNAME, event.getLastName());
         values.put(EVENT_DATE, event.getDate());
@@ -326,6 +330,8 @@ public class DBManager extends SQLiteOpenHelper {
         while (cursor.moveToNext()){
             EventModel event = new EventModel();
             event.setEventName(cursor.getString(cursor.getColumnIndex(EVENT_NAME)));
+            event.setCatererID(cursor.getString(cursor.getColumnIndex(EVENT_CATERERID)));
+            event.setUserID(cursor.getString(cursor.getColumnIndex(EVENT_USERID)));
             event.setFirstName(cursor.getString(cursor.getColumnIndex(EVENT_FNAME)));
             event.setLastName(cursor.getString(cursor.getColumnIndex(EVENT_LNAME)));
             event.setDate(cursor.getString(cursor.getColumnIndex(EVENT_DATE)));
