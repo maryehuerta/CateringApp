@@ -15,8 +15,6 @@ import java.util.ArrayList;
 public class UserEventSummaryScreenActivity extends AppCompatActivity implements RecyclerViewClickListener {
     public static final String ITEM = "ITEM";
     public final int SHOW_DETAIL = 1;
-    TextView deleteLater;
-    UserModel user;
 
     String UserID;
 
