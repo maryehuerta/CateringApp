@@ -19,15 +19,16 @@ public class CatererHomeScreenActivity extends AppCompatActivity {
         UserInfo = getIntent().getStringExtra("USERINFO");
     }
 
-    public void ViewCatererEventSummaryButtonClicked(View view) {
-
-        Intent intent = new Intent(this, CatererEventSummaryActivity.class);
-        startActivity(intent);
-    }
-
     public void ViewUserRequestsSummaryButtonClicked(View view) {
 
         Intent intent = new Intent(this, UserRequestedEventsActivity.class);
+        intent.putExtra("USERINFO", UserInfo);
+        startActivity(intent);
+    }
+
+    public void ViewCatererEventSummaryButtonClicked (View view) {
+
+        Intent intent = new Intent(this, CatererEventSummaryActivity.class);
         intent.putExtra("USERINFO", UserInfo);
         startActivity(intent);
     }

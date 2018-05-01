@@ -36,13 +36,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="ViewCatererEventSummaryButtonClicked"
-            android:text="VIEW USER REQUEST SUMMARY" />
+            android:text="VIEW CATERER EVENT SUMMARY" />
 
         <Button
             android:id="@+id/ViewUserRequestsSummaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="ViewUserRequestsSummaryButtonClicked"
-            android:text="VIEW CATERER EVENT SUMMARY" />
+            android:text="VIEW USER REQUEST SUMMARY" />
     </LinearLayout>
 </ScrollView>

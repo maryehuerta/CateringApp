@@ -37,9 +37,9 @@ public class LoginScreenActivity extends AppCompatActivity {
 
 
         //Test Events
-        handler.addNewEvent(new EventModel("1001200000","1001200003","OkParty", "Cam", "Hastings", "12/19/18", "0", "2", "KC", "20", "Chinese",  "Formal", "Breakfast", "yes","Beach Ball"));
-        handler.addNewEvent(new EventModel("1001200002","1001200003","GreatParty", "Hastings", "Cam", "1/1/18", "12", "3", "Shard", "50", "American", "Informal", "Lunch", "yes", "asd"));
-        handler.addNewEvent(new EventModel("1001200002", "1001200004","SUPREMEPARTY", "Smith", "John", "12/10/17", "14", "2", "Arlington", "100", "Itailian", "Formal", "Supper", "yes", "Balloons"));
+        handler.addNewEvent(new EventModel("1001200000","1001200003","OkParty", "Cam", "Hastings", "12/19/18", "0", "2", "KC", "20", "Chinese",  "Formal", "Breakfast", "no","Beach Ball"));
+        handler.addNewEvent(new EventModel("1001200002","1001200003","GreatParty", "Hastings", "Cam", "1/1/18", "12", "3", "Shard", "50", "American", "Informal", "Lunch", "no", "asd"));
+        handler.addNewEvent(new EventModel("1001200002", "1001200004","SUPREMEPARTY", "Smith", "John", "12/10/17", "14", "2", "Arlington", "100", "Itailian", "Formal", "Supper", "no", "Balloons"));
 
         //Assigned Staff
         handler.AddStaffToEvent("1001200005","OkParty" );

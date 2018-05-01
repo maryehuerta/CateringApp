@@ -14,7 +14,7 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
     Button ApprovedSelectedUserRequestButton;
     Button CreateCateredEventPlanButton;
     String eventName = null;
-
+    String UserInfo;
     // https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
     // TODO: return results/actions to be taken to parent
 
@@ -25,6 +25,7 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
 
         Bundle data = getIntent().getExtras();
         UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
+        UserInfo = getIntent().getStringExtra("USERINFO");
         if (item != null){
             Log.d("UserDetails", item.getFirstName());
             TextView lastNameTextView = findViewById(R.id.lastNameTextView);
