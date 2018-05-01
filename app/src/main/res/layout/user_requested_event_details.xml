@@ -94,6 +94,7 @@
         <Button
             android:id="@+id/CreateCateredEventPlanButton"
             android:layout_width="368dp"
+            android:text="Create Catered Event Plan"
             android:layout_height="wrap_content"
             android:onClick="CreateCateredEventPlanButtonClicked"
             tools:layout_editor_absoluteX="8dp"
