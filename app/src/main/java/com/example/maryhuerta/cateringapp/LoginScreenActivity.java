@@ -28,21 +28,27 @@ public class LoginScreenActivity extends AppCompatActivity {
         //Test Users
         DBManager handler = new DBManager(LoginScreenActivity.this);
         handler.addNewUser(new UserModel("1001200000", "User", "Last", "original@gmail.com", "123", "UserTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "User"));
-        handler.addNewUser(new UserModel("1001200001", "Caterer", "Last", "original@gmail.com", "123", "CatererTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Caterer"));
-        handler.addNewUser(new UserModel("1001200002", "Staff-Harry", "Last", "original@gmail.com", "123", "StaffTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
-        handler.addNewUser(new UserModel("1001200003", "Staff_John", "Last", "original@gmail.com", "123", "StaffTest2", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
-        handler.addNewUser(new UserModel("1001200004", "Staff_Larry", "Last", "original@gmail.com", "123", "StaffTest3", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
+        handler.addNewUser(new UserModel("1001200002", "User2", "Last", "original@gmail.com", "123", "UserTest2", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "User"));
+        handler.addNewUser(new UserModel("1001200003", "Caterer", "Last", "original@gmail.com", "123", "CatererTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Caterer"));
+        handler.addNewUser(new UserModel("1001200004", "Caterer2", "Last", "original@gmail.com", "123", "CatererTest2", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Caterer"));
+        handler.addNewUser(new UserModel("1001200005", "Staff-Harry", "Last", "original@gmail.com", "123", "StaffTest", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
+        handler.addNewUser(new UserModel("1001200006", "Staff_John", "Last", "original@gmail.com", "123", "StaffTest2", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
+        handler.addNewUser(new UserModel("1001200007", "Staff_Larry", "Last", "original@gmail.com", "123", "StaffTest3", "555-555-5555", " 99 road", "Mountain View",  "7777", "Cali", "Staff"));
 
 
         //Test Events
+        handler.addNewEvent(new EventModel("1001200000","NONE","OkParty", "Cam", "Hastings", "12/19/18", "0", "2", "KC", "20", "Chinese",  "Formal", "Non-Alocholic", "Breakfast", "no","Beach Ball"));
+        handler.addNewEvent(new EventModel("1001200002","NONE","OkParty", "Cam", "Hastings", "12/19/18", "0", "2", "KC", "20", "Chinese",  "Formal", "Non-Alocholic", "Breakfast", "no","Beach Ball"));
+        handler.addNewEvent(new EventModel("1001200002","1001200003","GreatParty", "Hastings", "Cam", "1/1/18", "12", "3", "Shard", "50", "American", "Informal","Alcoholic", "Lunch", "no", "asd"));
+        handler.addNewEvent(new EventModel("1001200002", "1001200004","SUPREMEPARTY", "Smith", "John", "12/10/17", "14", "2", "Arlington", "100", "Itailian", "Formal", "Alcoholic","Supper", "no", "Balloons"));
 
-        handler.addNewEvent(new EventModel("OkParty", "Cam", "Hastings", "12/19/18", "0", "2", "KC", "20", "Chinese",  "formal", "Non-Alocholic","Supper", "no","Beach Ball"));
-        handler.addNewEvent(new EventModel("GreatParty", "Hastings", "Cam", "1/1/18", "12", "3", "Shard", "50", "American", "formal", "Non-Alocholic", "Supper", "no", "asd"));
-        handler.addNewEvent(new EventModel("SUPREMEPARTY", "Smith", "John", "12/10/17", "14", "2", "Arlington", "100", "Itailian", "informal", "Alcoholic", "Supper", "no", "Balloons"));
-
+        //Assigned Staff
+        handler.AddStaffToEvent("1001200005","OkParty" );
+        handler.AddStaffToEvent("1001200006","GreatParty" );
+        handler.AddStaffToEvent("1001200007","GreatParty" );
+        handler.AddStaffToEvent("1001200007","SUPREMEPARTY" );
 
         //Halls
-
         handler.addNewHall(new HallModel("KC", "25"));
         handler.addNewHall(new HallModel("Shard", "25"));
         handler.addNewHall(new HallModel("Arlington", "50"));
@@ -74,7 +80,8 @@ public class LoginScreenActivity extends AppCompatActivity {
                             intent = new Intent(LoginScreenActivity.this, StaffHomeScreenActivity.class);
                             //Toast.makeText(LoginScreenActivity.this, "Registration STAFF", Toast.LENGTH_LONG).show();
                         }
-                            intent.putExtra("USER", user);
+                        String info = user.getId() + ";" + user.getUsertype();
+                        intent.putExtra("USERINFO", info);
                         startActivity(intent);
                         finish();
                     } else {

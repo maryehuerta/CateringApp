@@ -44,6 +44,8 @@ public class DBManager extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME1 = "event_data";
     private static final String EVENT_NAME = "event_name";
+    private static final String EVENT_CATERERID = "event_caterer_id";
+    private static final String EVENT_USERID = "event_user_id";
     private static final String EVENT_FNAME = "event_fname";
     private static final String EVENT_LNAME = "event_lname";
     private static final String EVENT_DATE = "event_date";
@@ -74,7 +76,7 @@ public class DBManager extends SQLiteOpenHelper {
         String CREATE_TABLE_Q = "CREATE TABLE " + TABLE_NAME + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + KEY_FNAME + " TEXT," + KEY_LNAME + " TEXT," + KEY_EMAIL + " TEXT," + KEY_PASS + " TEXT," + KEY_USERNAME + " TEXT,"
                 + KEY_PHONENUMBER + " TEXT," + KEY_STREETADDRESS + " TEXT," + KEY_CITY + " TEXT," + KEY_ZIP + " TEXT," + KEY_STATE + " TEXT," + KEY_USERTYPE + " TEXT )";
-        String CREATE_TABLE_R = "CREATE TABLE " + TABLE_NAME1 + "(" + EVENT_NAME + " TEXT PRIMARY KEY NOT NULL,"
+        String CREATE_TABLE_R = "CREATE TABLE " + TABLE_NAME1 + "(" + EVENT_NAME + " TEXT PRIMARY KEY NOT NULL," + EVENT_CATERERID + " TEXT," + EVENT_USERID + " TEXT,"
                 + EVENT_FNAME + " TEXT," + EVENT_LNAME + " TEXT," + EVENT_DATE + " TEXT," + EVENT_TIMEOFEVENT + " TEXT," + EVENT_DURATION + " TEXT," + EVENT_HALLNAME + " TEXT,"
                 + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_DRINKTYPE + " TEXT," + EVENT_MEALTYPE + " TEXT,"
                 + EVENT_RESERVED + " TEXT," + EVENT_SPECIALITEMS + " TEXT )";
@@ -89,6 +91,36 @@ public class DBManager extends SQLiteOpenHelper {
                 sqLiteDatabase.execSQL(CREATE_TABLE_S);
 
 
+    }
+
+    public Vector<EventModel> getStaffEvents(String ID){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Vector<EventModel> eventList = new Vector<>();
+        String query = "SELECT distinct * from event_data, staff_Data where staff_data.user_id=" + "'" + ID + "'" + " and staff_data.event_name=event_data.event_name";
+        System.out.println(query);
+        Cursor cursor = db.rawQuery(query, null);
+
+        while (cursor.moveToNext()){
+            EventModel event = new EventModel();
+            event.setEventName(cursor.getString(cursor.getColumnIndex(EVENT_NAME)));
+            event.setCatererID(cursor.getString(cursor.getColumnIndex(EVENT_CATERERID)));
+            event.setUserID(cursor.getString(cursor.getColumnIndex(EVENT_USERID)));
+            event.setFirstName(cursor.getString(cursor.getColumnIndex(EVENT_FNAME)));
+            event.setLastName(cursor.getString(cursor.getColumnIndex(EVENT_LNAME)));
+            event.setDate(cursor.getString(cursor.getColumnIndex(EVENT_DATE)));
+            event.setDuration(cursor.getString(cursor.getColumnIndex(EVENT_DURATION)));
+            event.setTimeOfEvent(cursor.getString(cursor.getColumnIndex(EVENT_TIMEOFEVENT)));
+            event.setHallName(cursor.getString(cursor.getColumnIndex(EVENT_HALLNAME)));
+            event.setAttendees(cursor.getString(cursor.getColumnIndex(EVENT_ATTENDEES)));
+            event.setFoodType(cursor.getString(cursor.getColumnIndex(EVENT_FOODTYPE)));
+            event.setFormality(cursor.getString(cursor.getColumnIndex(EVENT_FORMALITY)));
+            event.setMealType(cursor.getString(cursor.getColumnIndex(EVENT_MEALTYPE)));
+            event.setReserved(cursor.getString(cursor.getColumnIndex(EVENT_RESERVED)));
+            event.setSpecialItems(cursor.getString(cursor.getColumnIndex(EVENT_SPECIALITEMS)));
+            eventList.add(event);
+        }
+        return eventList;
     }
 
     @Override
@@ -174,9 +206,9 @@ public class DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void approveSelectedUserrequest(String eventName){
+    public void approveSelectedUserrequest(String eventName, String CatererID){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("UPDATE event_data SET event_reserved='yes' WHERE event_name=\"" + eventName + "\"");
+        db.execSQL("UPDATE event_data SET event_reserved='yes', event_caterer_id='" + CatererID + "' WHERE event_name=\"" + eventName + "\"");
     }
 
     public void updateEventHall(String eventName, String HallName, String newDate){
@@ -189,7 +221,9 @@ public class DBManager extends SQLiteOpenHelper {
 
     public void cancelSelectedCatererEvent(String eventName){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("UPDATE event_data SET event_reserved='no' WHERE event_name=\"" + eventName + "\"");
+        String query = "UPDATE event_data SET event_reserved='no', event_caterer_id='NO_CATERER_ASSIGNED' WHERE event_name='" + eventName + "'";
+        System.out.println(query);
+        db.execSQL(query);
     }
 
     public void cancelSelectedUserEvent(String eventName){
@@ -241,6 +275,8 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(EVENT_NAME, event.getEventName());
+        values.put(EVENT_CATERERID, event.getCatererID());
+        values.put(EVENT_USERID, event.getUserID());
         values.put(EVENT_FNAME, event.getFirstName());
         values.put(EVENT_LNAME, event.getLastName());
         values.put(EVENT_DATE, event.getDate());
@@ -328,6 +364,8 @@ public class DBManager extends SQLiteOpenHelper {
         while (cursor.moveToNext()){
             EventModel event = new EventModel();
             event.setEventName(cursor.getString(cursor.getColumnIndex(EVENT_NAME)));
+            event.setCatererID(cursor.getString(cursor.getColumnIndex(EVENT_CATERERID)));
+            event.setUserID(cursor.getString(cursor.getColumnIndex(EVENT_USERID)));
             event.setFirstName(cursor.getString(cursor.getColumnIndex(EVENT_FNAME)));
             event.setLastName(cursor.getString(cursor.getColumnIndex(EVENT_LNAME)));
             event.setDate(cursor.getString(cursor.getColumnIndex(EVENT_DATE)));

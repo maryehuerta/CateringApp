@@ -13,6 +13,11 @@ public class UserRequestEventScreenActivity extends AppCompatActivity {
     EditText eventName, firstName, lastName, attendees, timeOfEvent, duration, dateOfEvent, specialItems;
     RadioGroup formality, foodType, mealType, drinkType;
     Button createEventButton;
+
+    /**/
+    String UserID;
+    /**/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,9 @@ public class UserRequestEventScreenActivity extends AppCompatActivity {
         specialItems = (EditText) findViewById(R.id.editText8);
         createEventButton = (Button) findViewById(R.id.RequestBtn);
 
+        final String [] UserInfo = getIntent().getStringExtra("USERINFO").split(";");
+        UserID= UserInfo[0];
+
 
         createEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +56,8 @@ public class UserRequestEventScreenActivity extends AppCompatActivity {
                 event.setTimeOfEvent(timeOfEvent.getText().toString());
                 event.setAttendees(attendees.getText().toString());
                 event.setSpecialItems(specialItems.getText().toString());
+                event.setCatererID("NO_CATERER_ASSIGNED");
+                event.setUserID(UserID);
                 int bleh = foodType.getCheckedRadioButtonId();
                 switch(bleh)
                 {
@@ -132,7 +142,7 @@ public class UserRequestEventScreenActivity extends AppCompatActivity {
                     handler.addNewEvent(event);
                     Toast.makeText(UserRequestEventScreenActivity.this  , "Request Recorded!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(UserRequestEventScreenActivity.this  , UserHomeScreenActivity.class);
-                    startActivity(intent);
+                    finish();
 
                 }
 
