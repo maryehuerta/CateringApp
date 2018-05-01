@@ -34,6 +34,7 @@ public class UserHomeScreenActivity extends AppCompatActivity {
     public void RequestEventButtonClicked(View view) {
 
         Intent intent = new Intent(this, UserRequestEventScreenActivity.class);
+        intent.putExtra("USERINFO", UserInfo);
         startActivity(intent);
     }
 
