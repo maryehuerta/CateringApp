@@ -129,6 +129,7 @@ public class UserSelectedEventActivity extends AppCompatActivity {
     public void  ViewHallsButtonClicked(View view){
         Intent intent = new Intent(this, HallList.class);
         intent.putExtra(EVENT_NAME, eventName);
+        intent.putExtra("CAPACITY", item.getEstAttendees());
         startActivity(intent);
     }
 

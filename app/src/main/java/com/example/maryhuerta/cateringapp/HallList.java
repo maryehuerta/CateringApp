@@ -26,6 +26,7 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
     EditText monthText, yearText, dayText;
     long FilterDate;
     Intent intent = getIntent();
+    int Attendees=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,6 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
         Bundle data = getIntent().getExtras();
         setContentView(R.layout.available_halls);
         hallList = new ArrayList<>();
-
         monthText = (EditText) findViewById(R.id.MonthEditText);
         yearText = (EditText) findViewById(R.id.YearEditText);
         dayText = (EditText) findViewById(R.id.DayEditText);
@@ -44,6 +44,7 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
         monthText.setText(date[0]);
         dayText.setText(date[1]);
         yearText.setText(date[2]);
+        Attendees = Integer.parseInt(getIntent().getStringExtra("CAPACITY"));
         FilterList();
     }
 
@@ -65,16 +66,20 @@ public class HallList extends AppCompatActivity implements RecyclerViewClickList
 
         // hallList.add(new HallItem(AllHalls.get(1).getHallName(), AllHalls.get(1).getHallCapacity(), String.valueOf(100)));
 
-
         for (int i=0; i<24;i++){
             for (int j=0; j<AllHalls.size();j++){
                 boolean print = true;
                     //Don't ask
+                if (Integer.parseInt(AllHalls.get(j).getHallCapacity())<Attendees){
+                    print = false;
+                }
+                else{
                     for (int k=0;k<ReservedEvents.size();k++){
                         if (ReservedEvents.get(k).getDate().equals(String.valueOf(FilterDate+i)) && AllHalls.get(j).getHallName().equals(ReservedEvents.get(k).getHallName())){
                             print = false;
                         }
                     }
+                }
                     if (print){
                         hallList.add(new HallItem(AllHalls.get(j).getHallName(), AllHalls.get(j).getHallCapacity(), String.valueOf(i*100)));
                     }
