@@ -20,7 +20,7 @@ import java.util.Vector;
 
 public class DBManager extends SQLiteOpenHelper {
 
-    private static final int Db_VERSION = 7;
+    private static final int Db_VERSION = 8;
     private static final String DB_NAME = "users_db";
 
     //strings for usermodel
@@ -57,6 +57,8 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String EVENT_MEALTYPE = "event_mealType";
     private static final String EVENT_RESERVED = "event_reserved";
     private static final String EVENT_SPECIALITEMS = "event_specialItems";
+    private static final String EVENT_STAFF = "event_staff";
+
 
     //strings for Hall
     private static final String TABLE_HALL = "hall_data";
@@ -77,7 +79,8 @@ public class DBManager extends SQLiteOpenHelper {
         String CREATE_TABLE_R = "CREATE TABLE " + TABLE_NAME1 + "(" + EVENT_NAME + " TEXT PRIMARY KEY NOT NULL,"
                 + EVENT_FNAME + " TEXT," + EVENT_LNAME + " TEXT," + EVENT_DATE + " TEXT," + EVENT_TIMEOFEVENT + " TEXT," + EVENT_DURATION + " TEXT," + EVENT_HALLNAME + " TEXT,"
                 + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_DRINKTYPE + " TEXT," + EVENT_MEALTYPE + " TEXT,"
-                + EVENT_RESERVED + " TEXT," + EVENT_SPECIALITEMS + " TEXT )";
+                + EVENT_RESERVED + " TEXT," + EVENT_SPECIALITEMS + " TEXT" + EVENT_STAFF + " TEXT )";
+
         String CREATE_TABLE_H = "CREATE TABLE " + TABLE_HALL + "(" + HALL_NAME + " TEXT PRIMARY KEY NOT NULL,"
                 + HALL_CAPACITY + " TEXT)";
 
@@ -107,7 +110,6 @@ public class DBManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME1);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_HALL);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_STAFF);
-
 
         onCreate(sqLiteDatabase);
     }
@@ -227,13 +229,10 @@ public class DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void AddStaffToEvent(String StaffID, String EventName) {
+    public void AddStaffToEvent(String staffName, String eventName) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
 
-        values.put(EVENT_NAME, EventName);
-        values.put(KEY_ID, StaffID);
-        db.insert(TABLE_STAFF, null, values);
+        db.execSQL("UPDATE event_data SET event_specialItems=\"" + staffName + "\"" + " WHERE event_name=\"" + eventName + "\"");
         db.close();
     }
 

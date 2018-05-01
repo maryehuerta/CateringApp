@@ -15,6 +15,9 @@ public class AvailableStaffActivity extends AppCompatActivity implements Recycle
     public static final String ITEM = "ITEM";
     public final int SHOW_DETAIL = 1;
     DBManager handler;
+    String eventName;
+
+
 
     private RecyclerView eventRecyclerView;
     private AvailableStaffAdapter adapter;
@@ -24,6 +27,13 @@ public class AvailableStaffActivity extends AppCompatActivity implements Recycle
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        if(intent.getStringExtra(CatererSelectedEventScreenActivity.EVENT_NAME) != null){
+            eventName = intent.getStringExtra(CatererSelectedEventScreenActivity.EVENT_NAME);
+        }else{
+            finish();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_available_staff);
         Bundle data = getIntent().getExtras();
@@ -63,8 +73,10 @@ public class AvailableStaffActivity extends AppCompatActivity implements Recycle
     //When an Item in the list is clicked this function is triggered
     @Override
     public void recyclerViewListClicked(View v, int position) {
-        Toast.makeText(this, String.valueOf("Stored in database!"), Toast.LENGTH_SHORT).show();
-        handler.AddStaffToEvent(eventList.get(position).getID(), UserEvent.getEventName());
+        Toast.makeText(this, String.valueOf("Staff Selected!"), Toast.LENGTH_SHORT).show();
+        if(!eventName.isEmpty()){
+            handler.AddStaffToEvent(eventList.get(position).getFirstName(), eventName);
+        }
         finish();
         //Create an intent
     }

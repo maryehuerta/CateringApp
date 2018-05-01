@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class CatererSelectedEventScreenActivity extends AppCompatActivity {
     Button CancelSelectedCatererEventButton;
 
-    String eventName = null;
+    String eventName;
     public static final String ITEM = "ITEM";
     public static final String EVENT_NAME = "EVENT_NAME";
 
@@ -44,6 +44,9 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
             TextView DrinkTypeTextView = findViewById(R.id.DrinkType);
             TextView EntertainmentItemsTextView = findViewById(R.id.EntertainmentItems);
             TextView CostField = findViewById((R.id.CostField));
+            TextView StaffTextView = findViewById(R.id.Staff);
+
+            eventName = item.getEventName();
 
 
 //            dateTextView.setText(item.getDate());
@@ -60,9 +63,7 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
             durationTextView.setText(item.getDuration());
             hallNameTextView.setText(item.getHallName());
             eventNameTextView.setText(item.getEventName());
-
-
-
+            StaffTextView.setText(item.getStaff());
 
         }
         CancelSelectedCatererEventButton = (Button) findViewById(R.id.CancelEventButton);
@@ -84,7 +85,7 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
 
     public void ViewAvailableStaffButtonClicked(View view) {
         Intent intent = new Intent(this, AvailableStaffActivity.class);
-        intent.putExtra(ITEM, item);
+        intent.putExtra(EVENT_NAME, eventName);
         startActivityForResult(intent, SHOW_DETAIL);
 
     }
@@ -108,7 +109,6 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
 
 
     public void LogoutButtonClicked(View view) {
-
         Intent intent = new Intent(this, LoginScreenActivity.class);
         startActivity(intent);
 
@@ -119,8 +119,6 @@ public class CatererSelectedEventScreenActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Check which request we're responding to
         if (requestCode == SHOW_DETAIL) {
-            // Make sure the request was successful
-            
             finish();
         }
 
