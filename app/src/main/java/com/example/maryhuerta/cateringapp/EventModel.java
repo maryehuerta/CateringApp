@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class EventModel implements Serializable {
 
-    public EventModel(String eventName, String firstName, String lastName, String date, String timeOfEvent, String duration, String hallName, String attendees, String foodType, String formality, String mealType, String reserved, String specialItems) {
+    public EventModel(String eventName, String firstName, String lastName, String date, String timeOfEvent, String duration, String hallName, String attendees, String foodType, String formality, String drinkType, String mealType, String reserved, String specialItems) {
         this.eventName = eventName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -19,6 +19,7 @@ public class EventModel implements Serializable {
         this.attendees = attendees;
         this.foodType = foodType;
         this.formality = formality;
+        this.drinkType = drinkType;
         this.mealType = mealType;
         this.reserved = reserved;
         this.specialItems = specialItems;
@@ -29,7 +30,6 @@ public class EventModel implements Serializable {
 
     private String eventName;
     private String firstName;
-
     private String lastName;
     private String date;
     private String timeOfEvent;
@@ -38,9 +38,18 @@ public class EventModel implements Serializable {
     private String attendees;
     private String foodType;
     private String formality;
+    private String drinkType;
     private String mealType;
     private String reserved;
     private String specialItems;
+
+    public String getDrinkType() {
+        return drinkType;
+    }
+
+    public void setDrinkType(String drinkType) {
+        this.drinkType = drinkType;
+    }
 
     public String getTimeOfEvent() {
         return timeOfEvent;

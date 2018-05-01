@@ -53,6 +53,7 @@ public class DBManager extends SQLiteOpenHelper {
     private static final String EVENT_ATTENDEES = "event_attendees";
     private static final String EVENT_FOODTYPE = "event_foodType";
     private static final String EVENT_FORMALITY = "event_formality";
+    private static final String EVENT_DRINKTYPE = "event_drinkType";
     private static final String EVENT_MEALTYPE = "event_mealType";
     private static final String EVENT_RESERVED = "event_reserved";
     private static final String EVENT_SPECIALITEMS = "event_specialItems";
@@ -75,7 +76,7 @@ public class DBManager extends SQLiteOpenHelper {
                 + KEY_PHONENUMBER + " TEXT," + KEY_STREETADDRESS + " TEXT," + KEY_CITY + " TEXT," + KEY_ZIP + " TEXT," + KEY_STATE + " TEXT," + KEY_USERTYPE + " TEXT )";
         String CREATE_TABLE_R = "CREATE TABLE " + TABLE_NAME1 + "(" + EVENT_NAME + " TEXT PRIMARY KEY NOT NULL,"
                 + EVENT_FNAME + " TEXT," + EVENT_LNAME + " TEXT," + EVENT_DATE + " TEXT," + EVENT_TIMEOFEVENT + " TEXT," + EVENT_DURATION + " TEXT," + EVENT_HALLNAME + " TEXT,"
-                + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_MEALTYPE + " TEXT,"
+                + EVENT_ATTENDEES + " TEXT," + EVENT_FOODTYPE + " TEXT," + EVENT_FORMALITY + " TEXT," + EVENT_DRINKTYPE + " TEXT," + EVENT_MEALTYPE + " TEXT,"
                 + EVENT_RESERVED + " TEXT," + EVENT_SPECIALITEMS + " TEXT )";
         String CREATE_TABLE_H = "CREATE TABLE " + TABLE_HALL + "(" + HALL_NAME + " TEXT PRIMARY KEY NOT NULL,"
                 + HALL_CAPACITY + " TEXT)";
@@ -247,6 +248,7 @@ public class DBManager extends SQLiteOpenHelper {
         values.put(EVENT_DURATION, event.getDuration());
         values.put(EVENT_HALLNAME, event.getHallName());
         values.put(EVENT_ATTENDEES, event.getAttendees());
+        values.put(EVENT_DRINKTYPE, event.getDrinkType());
         values.put(EVENT_FOODTYPE, event.getFoodType());
         values.put(EVENT_FORMALITY, event.getFormality());
         values.put(EVENT_MEALTYPE, event.getMealType());
@@ -333,6 +335,7 @@ public class DBManager extends SQLiteOpenHelper {
             event.setTimeOfEvent(cursor.getString(cursor.getColumnIndex(EVENT_TIMEOFEVENT)));
             event.setHallName(cursor.getString(cursor.getColumnIndex(EVENT_HALLNAME)));
             event.setAttendees(cursor.getString(cursor.getColumnIndex(EVENT_ATTENDEES)));
+            event.setDrinkType(cursor.getString(cursor.getColumnIndex(EVENT_DRINKTYPE)));
             event.setFoodType(cursor.getString(cursor.getColumnIndex(EVENT_FOODTYPE)));
             event.setFormality(cursor.getString(cursor.getColumnIndex(EVENT_FORMALITY)));
             event.setMealType(cursor.getString(cursor.getColumnIndex(EVENT_MEALTYPE)));

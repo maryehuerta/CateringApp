@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class UserRequestEventScreenActivity extends AppCompatActivity {
     EditText eventName, firstName, lastName, attendees, timeOfEvent, duration, dateOfEvent, specialItems;
-    RadioGroup formality, foodType, mealType;
+    RadioGroup formality, foodType, mealType, drinkType;
     Button createEventButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,7 @@ public class UserRequestEventScreenActivity extends AppCompatActivity {
         foodType = (RadioGroup) findViewById(R.id.radioGroup2);
         formality = (RadioGroup) findViewById(R.id.radioGroup);
         mealType = (RadioGroup) findViewById(R.id.radioGroup1);
+        drinkType = (RadioGroup) findViewById(R.id.radioGroup_1);
         //reserved
         specialItems = (EditText) findViewById(R.id.editText8);
         createEventButton = (Button) findViewById(R.id.RequestBtn);
@@ -88,6 +89,18 @@ public class UserRequestEventScreenActivity extends AppCompatActivity {
                         event.setMealType("Supper");
                         break;
                 }
+
+                int bleh1_1 = drinkType.getCheckedRadioButtonId();
+                switch(bleh1_1)
+                {
+                    case R.id.formal_1:
+                        event.setDrinkType("Alcoholic");
+                        break;
+                    case R.id.informal_1:
+                        event.setDrinkType("Non-Alcoholic");
+                        break;
+                }
+
                 int bleh2 = formality.getCheckedRadioButtonId();
                 switch(bleh2)
                 {
