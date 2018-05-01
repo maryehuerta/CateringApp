@@ -111,7 +111,7 @@ public class UserRequestEventScreenActivity extends AppCompatActivity {
 
                     Toast.makeText(UserRequestEventScreenActivity.this  , "Unable to Request: Hall not open at that start time", Toast.LENGTH_LONG).show();
 
-                } else if ( event.getDuration() == "1" ) {
+                } else if (event.getDuration().equals("1")) {
                     Toast.makeText(UserRequestEventScreenActivity.this  , "Unable to Request: Duration should be minimum 2 hours", Toast.LENGTH_LONG).show();
 
                 } else {
