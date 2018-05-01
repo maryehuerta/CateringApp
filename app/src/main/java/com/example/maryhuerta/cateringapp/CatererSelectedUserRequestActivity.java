@@ -14,7 +14,8 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
     Button ApprovedSelectedUserRequestButton;
     Button CreateCateredEventPlanButton;
     String eventName = null;
-
+    String UserID;
+    UserRequestedEventItem item;
     // https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
     // TODO: return results/actions to be taken to parent
 
@@ -24,7 +25,10 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
         setContentView(R.layout.user_requested_event_details);
 
         Bundle data = getIntent().getExtras();
-        UserRequestedEventItem item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
+        item = (UserRequestedEventItem) data.getParcelable(UserRequestedEventsActivity.ITEM);
+        String [] UserInfo = getIntent().getStringExtra("USERINFO").split(";");
+        UserID= UserInfo[0];
+
         if (item != null){
             Log.d("UserDetails", item.getFirstName());
             TextView lastNameTextView = findViewById(R.id.lastNameTextView);
@@ -52,8 +56,36 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DBManager handler = new DBManager(CatererSelectedUserRequestActivity.this);
-                handler.approveSelectedUserrequest(eventName);
-                Toast.makeText(CatererSelectedUserRequestActivity.this  , "Request Approved!", Toast.LENGTH_LONG).show();
+                boolean available = true;
+                for (EventModel events : handler.getAllEvents()){
+                    if (events.getCatererID().equals(UserID)){
+                        if (events.getDate().equals(item.getDate())) {
+
+                            int startTimeList = Integer.parseInt(events.getTimeOfEvent());
+                            int durationList = Integer.parseInt(events.getDuration());
+                            int endtimeList = startTimeList + durationList;
+
+                            int startTimeCurr = Integer.parseInt(item.getStartTime());
+                            int durrationCurr = Integer.parseInt(item.getDuration());
+                            int endtimeCurr = startTimeCurr + durrationCurr;
+
+                            if (startTimeCurr == startTimeList) {
+                                available = false;
+                            } else if (!(endtimeList <= startTimeCurr || startTimeList >= endtimeCurr)) {
+                                available = false;
+                            }
+                        }
+                    }
+                }
+                String toast;
+                if (available){
+                    handler.approveSelectedUserrequest(eventName, UserID);
+                    toast = "Request Approved!";
+                }
+                else{
+                    toast = "Error: Already scheduled Event for this time";
+                }
+                Toast.makeText(CatererSelectedUserRequestActivity.this  , toast, Toast.LENGTH_LONG).show();
                 finish();
 
             }
@@ -65,7 +97,7 @@ public class CatererSelectedUserRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DBManager handler = new DBManager(CatererSelectedUserRequestActivity.this);
-                handler.approveSelectedUserrequest(eventName);
+                handler.approveSelectedUserrequest(eventName, UserID);
                 Toast.makeText(CatererSelectedUserRequestActivity.this  , "Caterer Event Created!", Toast.LENGTH_LONG).show();
 
                 finish();

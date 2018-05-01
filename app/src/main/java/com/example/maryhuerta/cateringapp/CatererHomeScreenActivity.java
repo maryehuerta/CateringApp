@@ -11,21 +11,25 @@ import android.view.View;
 
 public class CatererHomeScreenActivity extends AppCompatActivity {
 
+    String UserInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.caterer_home_screen);
-    }
-
-    public void ViewCatererEventSummaryButtonClicked(View view) {
-
-        Intent intent = new Intent(this, CatererEventSummaryActivity.class);
-        startActivity(intent);
+        UserInfo = getIntent().getStringExtra("USERINFO");
     }
 
     public void ViewUserRequestsSummaryButtonClicked(View view) {
 
         Intent intent = new Intent(this, UserRequestedEventsActivity.class);
+        intent.putExtra("USERINFO", UserInfo);
+        startActivity(intent);
+    }
+
+    public void ViewCatererEventSummaryButtonClicked (View view) {
+
+        Intent intent = new Intent(this, CatererEventSummaryActivity.class);
+        intent.putExtra("USERINFO", UserInfo);
         startActivity(intent);
     }
 

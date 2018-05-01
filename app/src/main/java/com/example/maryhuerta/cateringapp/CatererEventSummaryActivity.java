@@ -14,12 +14,14 @@ import java.util.ArrayList;
 public class CatererEventSummaryActivity extends AppCompatActivity implements RecyclerViewClickListener {
     public static final String ITEM = "ITEM";
     public final int SHOW_DETAIL = 1;
-
+    String UserID, UserType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caterer_event_summary);
-
+        String [] UserInfo = getIntent().getStringExtra("USERINFO").split(";");
+        UserID= UserInfo[0];
+        UserType = UserInfo[1];
         // Called in onCreate function gives random test data to work with
         populateuserRequestedEventsTest();
     }
@@ -38,10 +40,9 @@ public class CatererEventSummaryActivity extends AppCompatActivity implements Re
         DBManager handler = new DBManager(CatererEventSummaryActivity.this);
         eventList.clear();
         for (EventModel model: handler.getAllEvents()){
-            if ( model.getReserved().toLowerCase().equals("yes")){
 
+            if (UserType.equals("Caterer") && UserID.equals(model.getCatererID())){
                 eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), model.getDrinkType(), model.getSpecialItems(), model.getReserved(), model.getStaff()));
-
             }
         }
 

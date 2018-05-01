@@ -9,23 +9,32 @@ import android.view.View;
  * Created by Miguel Gomez on 3/24/2018.
  */
 
+
+
 public class UserHomeScreenActivity extends AppCompatActivity {
+
+
+    String UserInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_home_screen);
+
+        UserInfo = getIntent().getStringExtra("USERINFO");
     }
 
     public void ViewUserEventSummaryButtonClicked(View view) {
 
         Intent intent = new Intent(this, UserEventSummaryScreenActivity.class);
+        intent.putExtra("USERINFO", UserInfo);
         startActivity(intent);
     }
 
     public void RequestEventButtonClicked(View view) {
 
         Intent intent = new Intent(this, UserRequestEventScreenActivity.class);
+        intent.putExtra("USERINFO", UserInfo);
         startActivity(intent);
     }
 

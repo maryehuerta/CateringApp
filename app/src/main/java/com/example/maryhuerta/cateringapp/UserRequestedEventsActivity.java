@@ -19,10 +19,18 @@ public class UserRequestedEventsActivity extends AppCompatActivity implements Re
 
     public static final String ITEM = "ITEM";
     public final int SHOW_DETAIL = 1;
+    String UserInfo, UserID, UserType;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_requested_events);
+        UserInfo = getIntent().getStringExtra("USERINFO");
+        String SplitUserInfo [] = getIntent().getStringExtra("USERINFO").split(";");
+        UserID=SplitUserInfo [0];
+        UserType=SplitUserInfo [1];
         populateuserRequestedEventsTest();
     }
 
@@ -41,10 +49,10 @@ public class UserRequestedEventsActivity extends AppCompatActivity implements Re
         DBManager handler = new DBManager(UserRequestedEventsActivity.this);
         eventList.clear();
         for (EventModel model: handler.getAllEvents()){
-//            if ( model.getReserved().toLowerCase() == "no"){
-                eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), model.getDrinkType(), model.getSpecialItems(), model.getReserved(), model.getStaff()));
 
-//            }
+           if (model.getReserved().toLowerCase().equals("no") && ((model.getCatererID().compareTo(UserID))!=0)){
+               eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), model.getDrinkType(), model.getSpecialItems(), model.getReserved(), model.getStaff()));
+           }
         }
         adapter = new UserRequestedEventsAdapter(eventList, this, this);
         eventRecyclerView.setAdapter(adapter);
@@ -59,6 +67,7 @@ public class UserRequestedEventsActivity extends AppCompatActivity implements Re
         Intent intent = new Intent(this, CatererSelectedUserRequestActivity.class);
         UserRequestedEventItem item = adapter.getItem(position);
         intent.putExtra(ITEM, item);
+        intent.putExtra("USERINFO", UserInfo);
         startActivityForResult(intent, SHOW_DETAIL);
     }
 
