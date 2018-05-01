@@ -15,12 +15,19 @@ import java.util.ArrayList;
 public class UserEventSummaryScreenActivity extends AppCompatActivity implements RecyclerViewClickListener {
     public static final String ITEM = "ITEM";
     public final int SHOW_DETAIL = 1;
-    TextView deleteLater;
-    UserModel user;
+
+    String UserID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_event_summary_screen);
+
+        /**/
+        String [] UserInfo = getIntent().getStringExtra("USERINFO").split(";");
+        UserID= UserInfo[0];
+        /**/
+
 
         // Called in onCreate function gives random test data to work with
         populateuserRequestedEventsTest();
@@ -41,7 +48,10 @@ public class UserEventSummaryScreenActivity extends AppCompatActivity implements
         DBManager handler = new DBManager(UserEventSummaryScreenActivity.this);
         eventList.clear();
         for (EventModel model: handler.getAllEvents()){
-            eventList.add(new UserRequestedEventItem(model.getLastName(),model.getFirstName(),model.getDate(),model.getTimeOfEvent(), model.getDuration(),model.getHallName(),model.getAttendees(),model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), "DrinkType", model.getSpecialItems(), model.getReserved()));
+           // System.out.println("THE USER IS: "+ UserID);
+            if (UserID.equals(model.getUserID())) {
+                eventList.add(new UserRequestedEventItem(model.getLastName(), model.getFirstName(), model.getDate(), model.getTimeOfEvent(), model.getDuration(), model.getHallName(), model.getAttendees(), model.getEventName(), model.getFoodType(), model.getMealType(), model.getFormality(), "DrinkType", model.getSpecialItems(), model.getReserved()));
+            }
         }
         Log.d("event list", eventList.toString());
         adapter = new UserRequestedEventsAdapter(eventList, this, this);
