@@ -41,7 +41,7 @@ public class StaffSelectedEventSummary extends AppCompatActivity {
             foodTypeTextView.setText(item.getFoodType());
             MealTextView.setText(item.getMeal());
             MealFormailtyTextView.setText(item.getMealFormality());
-            DrinkTypeTextView.setText("Non-Alcoholic");
+            DrinkTypeTextView.setText(item.getDrinkType());
             EntertainmentItemsTextView.setText(item.getEntertainmentItems());
             lastNameTextView.setText(item.getLastName());
             firstNameTextView.setText(item.getFirstName());
