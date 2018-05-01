@@ -14,10 +14,12 @@ public class StaffHomeScreenActivity extends AppCompatActivity {
 
     UserModel userModel;
     TextView text;
+    String UserInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.staff_home_screen);
+        UserInfo = getIntent().getStringExtra("USERINFO");
 
         //how to get usermodel
         if (getIntent().hasExtra("USER")) {
@@ -30,6 +32,7 @@ public class StaffHomeScreenActivity extends AppCompatActivity {
     public void ViewStaffEventSummaryButtonClicked(View view) {
 
         Intent intent = new Intent(this, StaffEventSummaryActivity.class);
+        intent.putExtra("USERINFO", UserInfo);
         startActivity(intent);
     }
     public void LogoutButtonClicked(View view) {

@@ -92,6 +92,36 @@ public class DBManager extends SQLiteOpenHelper {
 
     }
 
+    public Vector<EventModel> getStaffEvents(String ID){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Vector<EventModel> eventList = new Vector<>();
+        String query = "SELECT distinct * from event_data, staff_Data where staff_data.user_id=" + "'" + ID + "'" + " and staff_data.event_name=event_data.event_name";
+        System.out.println(query);
+        Cursor cursor = db.rawQuery(query, null);
+
+        while (cursor.moveToNext()){
+            EventModel event = new EventModel();
+            event.setEventName(cursor.getString(cursor.getColumnIndex(EVENT_NAME)));
+            event.setCatererID(cursor.getString(cursor.getColumnIndex(EVENT_CATERERID)));
+            event.setUserID(cursor.getString(cursor.getColumnIndex(EVENT_USERID)));
+            event.setFirstName(cursor.getString(cursor.getColumnIndex(EVENT_FNAME)));
+            event.setLastName(cursor.getString(cursor.getColumnIndex(EVENT_LNAME)));
+            event.setDate(cursor.getString(cursor.getColumnIndex(EVENT_DATE)));
+            event.setDuration(cursor.getString(cursor.getColumnIndex(EVENT_DURATION)));
+            event.setTimeOfEvent(cursor.getString(cursor.getColumnIndex(EVENT_TIMEOFEVENT)));
+            event.setHallName(cursor.getString(cursor.getColumnIndex(EVENT_HALLNAME)));
+            event.setAttendees(cursor.getString(cursor.getColumnIndex(EVENT_ATTENDEES)));
+            event.setFoodType(cursor.getString(cursor.getColumnIndex(EVENT_FOODTYPE)));
+            event.setFormality(cursor.getString(cursor.getColumnIndex(EVENT_FORMALITY)));
+            event.setMealType(cursor.getString(cursor.getColumnIndex(EVENT_MEALTYPE)));
+            event.setReserved(cursor.getString(cursor.getColumnIndex(EVENT_RESERVED)));
+            event.setSpecialItems(cursor.getString(cursor.getColumnIndex(EVENT_SPECIALITEMS)));
+            eventList.add(event);
+        }
+        return eventList;
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
