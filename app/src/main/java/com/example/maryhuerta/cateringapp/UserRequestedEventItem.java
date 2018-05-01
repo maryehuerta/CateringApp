@@ -38,7 +38,7 @@ public class UserRequestedEventItem implements Parcelable {
         FoodType = foodType;
         Meal = meal;
         MealFormality = mealFormality;
-        DrinkType = "Non-Alcoholic";
+        DrinkType = drinkType;
         EntertainmentItems = entertainmentItems;
         Status = status;
         Staff = staff;
